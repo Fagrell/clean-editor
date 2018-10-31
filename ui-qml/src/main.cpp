@@ -1,6 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QFontDatabase>
+#include <QDebug>
 
 #include <main-controller.h>
 
@@ -8,11 +10,16 @@ static const constexpr auto kMainControllerInstance = "mainController";
 
 int main(int argc, char *argv[])
 {
-#if defined(Q_OS_WIN)
-  QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
+  QGuiApplication::setApplicationName("Clean Editor");
+  QGuiApplication::setOrganizationName("cleanqt.io");
+  QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
   QGuiApplication app(argc, argv);
+
+  QFontDatabase fontDatabase;
+  if (fontDatabase.addApplicationFont(":/fonts/fontello.ttf") == -1) {
+      qWarning() << "Failed to load fontello.ttf";
+  }
 
   qmlRegisterType<CleanEditor::Controllers::MainController>("CleanEditor", 1, 0, kMainControllerInstance);
 
