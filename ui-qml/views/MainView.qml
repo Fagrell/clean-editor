@@ -2,13 +2,17 @@ import QtQuick 2.11
 import QtQuick.Window 2.4
 import QtQuick.Controls 2.4
 
-Window {
+ApplicationWindow {
     visible: true
     width: 640
     height: 480
     title: qsTr("Client Management")
 
     Component.onCompleted: contentFrame.replace("qrc:/views/DashboardView.qml");
+
+    header: MenuView {
+
+    }
 
     FilesNavigationView {
         id: openedFilesBar

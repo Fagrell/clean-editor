@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.4
+import QtQuick.Controls.Material 2.4
 
 Item {
     id: root
@@ -30,13 +31,21 @@ Item {
         Component {
             id: openedFilesDelegate
             Item {
-                width: openedFilesBar.width; height: 40
+                width: openedFilesBar.width
+                height: 40
+
                 Button {
+                    id: button
                     checkable: true
                     anchors.fill: parent
                     text: name
                     ButtonGroup.group: openedFileButtonGroup
                     onClicked: root.fileSelected(name, name)
+                    background: Rectangle {
+                       color: button.checked ? "#696969" : "#C0C0C0"
+                       border.width: 0
+                       radius: 0
+                   }
                 }
             }
         }
