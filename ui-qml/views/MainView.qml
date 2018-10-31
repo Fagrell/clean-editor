@@ -10,20 +10,7 @@ Window {
 
     Component.onCompleted: contentFrame.replace("qrc:/views/DashboardView.qml");
 
-    ListModel {
-        id: openedFilesModel
-        ListElement {
-            name: "Example.qml"
-        }
-        ListElement {
-            name: "Example2.qml"
-        }
-        ListElement {
-            name: "Example3.qml"
-        }
-    }
-
-    Rectangle {
+    FilesNavigationView {
         id: openedFilesBar
         anchors {
             top: parent.top
@@ -31,29 +18,8 @@ Window {
             left: parent.left
         }
         width: 200
-        color: "#A9A9A9"
-
-        ButtonGroup { id: openedFileButtonGroup }
-
-        Component {
-            id: openedFilesDelegate
-            Item {
-                width: openedFilesBar.width; height: 40
-                Button {
-                    checkable: true
-                    anchors.fill: parent
-                    text: name
-                    ButtonGroup.group: openedFileButtonGroup
-                    onClicked: contentFrame.replace("qrc:/views/OpenedFileView.qml")
-                }
-            }
-        }
-
-        ListView {
-            anchors.fill: parent
-            model: openedFilesModel
-            delegate: openedFilesDelegate
-            focus: true
+        onFileSelected: {
+            contentFrame.replace("qrc:/views/OpenedFileView.qml")
         }
     }
 

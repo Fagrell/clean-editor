@@ -12,12 +12,13 @@ find_package(CleanEditor 1.0 REQUIRED)
 # Targets
 
 add_executable(${PROJECT_NAME}
-    src/main.cpp
-    views.qrc
+  src/main.cpp
+  views.qrc
 )
 
 target_include_directories(${PROJECT_NAME}
-  PUBLIC src
+  PUBLIC
+    src
 )
 
 target_link_libraries(${PROJECT_NAME}
