@@ -94,3 +94,8 @@ export(EXPORT ${PROJECT_NAME}-targets FILE ${CMAKE_CURRENT_BINARY_DIR}/CleanEdit
 
 #Register package in user's package registry
 export(PACKAGE CleanEditor)
+
+##############################################
+## Include tests
+
+add_subdirectory(tests)
