@@ -43,59 +43,6 @@ set_target_properties(${PROJECT_NAME}
 )
 
 ###########################
-# Installation instructions
-
-include(GNUInstallDirs)
-set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/CleanEditor)
-
-install(TARGETS ${PROJECT_NAME}
-    EXPORT ${PROJECT_NAME}-targets
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-)
-
-set_target_properties(${PROJECT_NAME} PROPERTIES EXPORT_NAME CleanEditor)
-
-install(DIRECTORY public/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
-#Export the targets to a script
-install(EXPORT ${PROJECT_NAME}-targets
-  FILE
-    CleanEditorTargets.cmake
-  NAMESPACE
-    CleanEditor::
-  DESTINATION
-    ${INSTALL_CONFIGDIR}
-)
-
-include(CMakePackageConfigHelpers)
-write_basic_package_version_file(
-    ${CMAKE_CURRENT_BINARY_DIR}/CleanEditorConfigVersion.cmake
-    VERSION ${PROJECT_VERSION}
-    COMPATIBILITY AnyNewerVersion
-)
-
-configure_package_config_file(${CMAKE_CURRENT_LIST_DIR}/cmake/CleanEditorConfig.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/CleanEditorConfig.cmake
-    INSTALL_DESTINATION ${INSTALL_CONFIGDIR}
-)
-
-install(FILES
-    ${CMAKE_CURRENT_LIST_DIR}/cmake/FindRapidJSON.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/CleanEditorConfig.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/CleanEditorConfigVersion.cmake
-    DESTINATION ${INSTALL_CONFIGDIR}
-)
-
-##############################################
-## Exporting from the build tree
-
-export(EXPORT ${PROJECT_NAME}-targets FILE ${CMAKE_CURRENT_BINARY_DIR}/CleanEditorTargets.cmake NAMESPACE CleanEditor::)
-
-#Register package in user's package registry
-export(PACKAGE CleanEditor)
-
-##############################################
-## Include tests
+# Include tests
 
 add_subdirectory(tests)
