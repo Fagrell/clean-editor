@@ -6,7 +6,6 @@ project(clean-editor-test VERSION 1.0.0 LANGUAGES C CXX)
 # Dependencies
 
 find_package(Qt5 COMPONENTS Test REQUIRED)
-find_package(CleanEditor 1.0 REQUIRED)
 
 ###########################
 # Targets
@@ -27,17 +26,11 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
   PRIVATE
     Qt5::Test
-    CleanEditor::CleanEditor
-)
-
-target_compile_options(${PROJECT_NAME}
-  PUBLIC
-    -Wall
-    -Werror
+    clean-editor-lib
 )
 
 target_compile_features(${PROJECT_NAME}
-  PUBLIC
+  PRIVATE
     cxx_std_11
 )
 

@@ -6,7 +6,6 @@ project(clean-editor-qml VERSION 1.0.0 LANGUAGES C CXX)
 # Dependencies
 
 find_package(Qt5 COMPONENTS Core Gui Qml Quick QuickControls2 REQUIRED)
-find_package(CleanEditor 1.0 REQUIRED)
 
 ###########################
 # Targets
@@ -28,7 +27,7 @@ target_link_libraries(${PROJECT_NAME}
     Qt5::Qml
     Qt5::Quick
     Qt5::QuickControls2
-    CleanEditor::CleanEditor
+    clean-editor-lib
 )
 
 target_compile_options(${PROJECT_NAME}
