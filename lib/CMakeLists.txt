@@ -10,8 +10,10 @@ find_package(Qt5 COMPONENTS Core REQUIRED)
 # Targets
 add_library(${PROJECT_NAME} SHARED
   src/main-controller.cpp
+  src/file-handler.cpp
   public/main-controller.h
   public/globals.h
+  public/file-handler.h
 )
 
 target_include_directories(${PROJECT_NAME}

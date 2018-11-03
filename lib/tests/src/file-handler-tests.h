@@ -2,19 +2,30 @@
 #define FILE_HANDLER_TESTS_H
 
 #include <QTest>
+#include <QTemporaryFile>
 
 #include "test-runner.h"
 
 namespace CleanEditor {
 namespace Tests {
 
-class FileHandlerTests: public QObject
-{
+class FileHandlerTests: public QObject {
   Q_OBJECT
 
 private slots:
   void initTestCase();
-  void myFirstTest();
+  void load_validFile_fileOpened();
+  void load_invalidFile_fileNotOpened();
+  void load_validFile_fileNameIsCorrect();
+  void load_validFile_fileTypeIsCorrect();
+  void load_validFile_fileUrlIsCorrect();
+  void load_validFile_fileContentIsCorrect();
+  void load_validFile_noErrorsRecieved();
+  void load_invalidFile_errorsRecieved();
+  void save_validFile_updatedData();
+
+private:
+  QTemporaryFile tmp_file_;
 };
 
 } //namespace Tests
