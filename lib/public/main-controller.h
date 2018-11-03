@@ -1,5 +1,5 @@
-#ifndef MAINCONTROLLER_H
-#define MAINCONTROLLER_H
+#ifndef MAIN_CONTROLLER_H
+#define MAIN_CONTROLLER_H
 
 #include <QObject>
 #include <QScopedPointer>
@@ -10,8 +10,7 @@
 namespace CleanEditor {
 namespace Controllers {
 
-class QML_EDITOR_EXPORT MainController : public QObject
-{
+class QML_EDITOR_EXPORT MainController : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(MainController)
 
