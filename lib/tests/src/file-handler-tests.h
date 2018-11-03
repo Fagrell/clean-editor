@@ -22,7 +22,8 @@ private slots:
   void load_validFile_fileContentIsCorrect();
   void load_validFile_noErrorsRecieved();
   void load_invalidFile_errorsRecieved();
-  void save_validFile_updatedData();
+  void save_emptyData_updatedData();
+  void saveAs_emptyData_updatedData();
 
 private:
   QTemporaryFile tmp_file_;

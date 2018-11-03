@@ -19,7 +19,7 @@ void FileHandlerTests::initTestCase() {
   QFile file{tmp_file_.fileName()};
 
   QVERIFY(file.open(QIODevice::ReadWrite));
-  QTextStream stream{&tmp_file_};
+  QTextStream stream{&file};
 
   stream << dummy_content;
 }
@@ -81,7 +81,7 @@ void FileHandlerTests::load_invalidFile_errorsRecieved() {
   QVERIFY(error_spy.count() == 1);
 }
 
-void FileHandlerTests::save_validFile_updatedData() {
+void FileHandlerTests::save_emptyData_updatedData() {
   QTemporaryFile tmp_file;
   QVERIFY(tmp_file.open());
 
@@ -90,6 +90,20 @@ void FileHandlerTests::save_validFile_updatedData() {
   file_handler.save("new data saved");
 
   QCOMPARE(file_handler.data().toLocal8Bit().data(), "new data saved");
+}
+
+void FileHandlerTests::saveAs_emptyData_updatedData() {
+  QTemporaryFile tmp_file;
+  QVERIFY(tmp_file.open());
+
+  FileHandler file_handler;
+  file_handler.saveAs(QUrl{tmp_file.fileName()}, "new data saved");
+
+  QFile file{tmp_file.fileName()};
+  QVERIFY(file.open(QIODevice::ReadWrite));
+
+  QTextStream stream{&file};
+  QCOMPARE(stream.readAll().toLocal8Bit().data(), "new data saved");
 }
 
 } //namespace Tests
