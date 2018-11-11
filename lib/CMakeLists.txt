@@ -11,9 +11,14 @@ find_package(Qt5 COMPONENTS Core REQUIRED)
 add_library(${PROJECT_NAME} SHARED
   src/main-controller.cpp
   src/file-handler.cpp
+  src/document-handler.cpp
+  src/documents-model.cpp
+
   public/main-controller.h
   public/globals.h
   public/file-handler.h
+  public/document-handler.h
+  public/documents-model.h
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -36,7 +41,7 @@ target_link_libraries(${PROJECT_NAME}
 
 target_compile_features(${PROJECT_NAME}
   PUBLIC
-    cxx_std_11
+    cxx_std_14
 )
 
 set_target_properties(${PROJECT_NAME}
