@@ -1,28 +1,16 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.4
 import QtQuick.Controls.Material 2.4
+import CleanEditor 1.0
 
 Item {
     id: root
-    signal fileSelected(string name, string path)
-
-    ListModel {
-        id: openedFilesModel
-        ListElement {
-            name: "Example.qml"
-        }
-        ListElement {
-            name: "Example2.qml"
-        }
-        ListElement {
-            name: "Example3.qml"
-        }
-    }
+    signal fileSelected(DocumentHandler document)
 
     Rectangle {
         id: openedFilesBar
         anchors.fill: parent
-        color: "#A9A9A9"
+        color: "#161161"
 
         ButtonGroup {
             id: openedFileButtonGroup
@@ -30,29 +18,44 @@ Item {
 
         Component {
             id: openedFilesDelegate
+
             Item {
                 width: openedFilesBar.width
-                height: 40
+                height: 25
 
                 Button {
                     id: button
                     checkable: true
                     anchors.fill: parent
-                    text: name
+                    text: document.fileName + (document.contentUpdated ? "*" : "")
                     ButtonGroup.group: openedFileButtonGroup
-                    onClicked: root.fileSelected(name, name)
+                    onClicked: root.fileSelected(document)
                     background: Rectangle {
-                       color: button.checked ? "#696969" : "#C0C0C0"
+                       color: {
+                           if (button.checked) {
+                               return "#223D6B";
+                           }
+                           if (button.hovered) {
+                               return "#1d195e";
+                           }
+
+                           return "#161161";
+                       }
                        border.width: 0
                        radius: 0
-                   }
+                    }
+                    contentItem: Text {
+                        text: button.text
+                        verticalAlignment: Text.AlignVCenter
+                        color: "white"
+                    }
                 }
             }
         }
 
         ListView {
             anchors.fill: parent
-            model: openedFilesModel
+            model: documentsModel
             delegate: openedFilesDelegate
             focus: true
         }
