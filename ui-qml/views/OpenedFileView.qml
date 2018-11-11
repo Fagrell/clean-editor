@@ -59,11 +59,10 @@ Item {
             id: textArea
             textFormat: Qt.PlainText
             background: null
-            font.family: "Hack"
-            font.pointSize: 12
+            font: Style.editorFont
             selectByMouse: true
             onLinkActivated: Qt.openUrlExternally(link)
-            selectionColor: "#b2d7ff"
+            selectionColor: Style.edtitorSelectionColor
             onTextChanged: root.contentChanged()
         }
 
