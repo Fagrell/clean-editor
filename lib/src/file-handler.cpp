@@ -10,7 +10,7 @@ namespace Logic {
 FileHandler::FileHandler(QObject* parent) : QObject{parent} {}
 
 QString FileHandler::fileName() const {
-  const QString file_path = file_url_.toString();
+  const QString file_path = file_url_.path();
   const QString file_name = QFileInfo(file_path).fileName();
   if (file_name.isEmpty()) {
     return QStringLiteral("untitled");
@@ -27,8 +27,7 @@ QUrl FileHandler::fileUrl() const {
 }
 
 QString FileHandler::data() const {
-
-  QFile file(file_url_.toString());
+  QFile file(file_url_.path());
   if (!file.open(QFile::ReadOnly)) {
     return "";
   }
@@ -41,7 +40,7 @@ void FileHandler::load(const QUrl& file_url) {
     return;
   }
 
-  const QString file_name = file_url.toString();
+  const QString file_name = file_url.path();
   if (!QFile::exists(file_name)) {
     emit error(tr("File not found"));
     return;
@@ -57,28 +56,29 @@ void FileHandler::load(const QUrl& file_url) {
   emit fileOpened();
 }
 
-void FileHandler::saveAs(const QUrl& file_url, const QString& data) {
-  const QString file_path = file_url.toString();
+bool FileHandler::saveAs(const QUrl& file_url, const QString& data) {
+  const QString file_path = file_url.path();
 
   QFile file(file_path);
   if (!file.open(QFile::WriteOnly | QFile::Truncate | QFile::Text)) {
       emit error(tr("Cannot save: ") + file.errorString());
-      return;
+      return false;
   }
 
   QTextStream stream{&file};
   stream << data;
 
   if (file_url == file_url_) {
-      return;
+      return true;
   }
 
   file_url_ = file_url;
   emit fileUrlChanged();
+  return true;
 }
 
-void FileHandler::save(const QString& data) {
-  saveAs(file_url_, data);
+bool FileHandler::save(const QString& data) {
+  return saveAs(file_url_, data);
 }
 
 } //namespace Logic

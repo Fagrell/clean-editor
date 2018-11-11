@@ -27,13 +27,12 @@ public:
   QString data() const;
 
 public Q_SLOTS:
-  void load(const QUrl &fileUrl);
-  void saveAs(const QUrl &fileUrl, const QString& data);
-  void save(const QString& data);
+  void load(const QUrl& file_url);
+  bool saveAs(const QUrl& file_url, const QString& data);
+  bool save(const QString& data);
 
 Q_SIGNALS:
   void fileUrlChanged();
-
   void fileOpened();
   void error(const QString &message);
 
