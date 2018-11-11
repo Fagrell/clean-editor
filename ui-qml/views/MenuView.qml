@@ -4,7 +4,7 @@ import QtQuick.Controls 2.4
 import QtQuick.Controls.Material 2.4
 import Qt.labs.platform 1.0
 import QtGraphicalEffects 1.0
-import "../styles" as Styles
+import "../styles"
 
 ToolBar {
 
@@ -17,13 +17,13 @@ ToolBar {
         id: fileRow
         anchors.fill: parent
 
-        Styles.MenuToolButton {
+        MenuToolButton {
             id: openButton
             text: "\uF115" // icon-folder-open-empty
             focusPolicy: Qt.TabFocus
             onClicked: openDialog.open()
         }
-        Styles.MenuToolButton {
+        MenuToolButton {
             id: saveButton
             text: "\uE800" // icon-floppy
             focusPolicy: Qt.TabFocus
@@ -35,9 +35,8 @@ ToolBar {
             horizontalAlignment: Qt.AlignHCenter
             verticalAlignment: Qt.AlignVCenter
             Layout.fillWidth: true
-            color: "#161161"
-            font.bold: true
-            font.pointSize: 16
+            color: Style.menuTitleColor
+            font: Style.menuTitleFont
         }
     }
 
