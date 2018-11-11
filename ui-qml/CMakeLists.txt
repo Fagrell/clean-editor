@@ -12,6 +12,8 @@ find_package(Qt5 COMPONENTS Core Gui Qml Quick QuickControls2 REQUIRED)
 
 add_executable(${PROJECT_NAME}
   src/main.cpp
+  src/line-numbers.cpp
+  src/line-numbers.h
   views.qrc
 )
 
@@ -38,7 +40,7 @@ target_compile_options(${PROJECT_NAME}
 
 target_compile_features(${PROJECT_NAME}
   PUBLIC
-    cxx_std_11
+    cxx_std_14
 )
 
 set_target_properties(${PROJECT_NAME}
