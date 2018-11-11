@@ -78,6 +78,14 @@ void LineNumbers::setDocument(QQuickTextDocument* document) {
   }
 
   document_ = document;
+  if (!document_) {
+      return;
+  }
+
+  auto text_document = document_->textDocument();
+  connect(text_document, &QTextDocument::contentsChanged, this, [this]() {
+    update();
+  });
   update();
 }
 
