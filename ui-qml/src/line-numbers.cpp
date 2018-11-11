@@ -19,55 +19,114 @@ LineNumbers::LineNumbers(QQuickPaintedItem* parent) :
 }
 
 void LineNumbers::setFont(const QFont& font) {
+  if (font_ == font) {
+    return;
+  }
+
   font_ = font;
+  update();
 }
 
 void LineNumbers::setSelectedBackgroundColor(const QColor& color) {
+  if (selected_background_color_ == color) {
+    return;
+  }
+
   selected_background_color_ = color;
+  update();
 }
 
 void LineNumbers::setCurrentBackgroundColor(const QColor& color) {
+  if (current_background_color_ == color) {
+    return;
+  }
+
   current_background_color_ = color;
+  update();
 }
 
 void LineNumbers::setSelectedTextColor(const QColor& color) {
+  if (selected_text_color_ == color) {
+    return;
+  }
+
   selected_text_color_ = color;
+  update();
 }
 
 void LineNumbers::setCurrentTextColor(const QColor& color) {
+  if (current_text_color_ == color) {
+    return;
+  }
+
   current_text_color_ = color;
+  update();
 }
 
 void LineNumbers::setTextColor(const QColor& color) {
+  if (text_color_ == color) {
+    return;
+  }
+
   text_color_ = color;
+  update();
 }
 
 void LineNumbers::setDocument(QQuickTextDocument* document) {
-  document_ = document;
-}
+  if (document_ == document) {
+    return;
+  }
 
-void LineNumbers::setLineCount(int line_count) {
-  line_count_ = line_count;
+  document_ = document;
+  update();
 }
 
 void LineNumbers::setOffsetY(int offset_y) {
+  if (offset_y_ == offset_y) {
+    return;
+  }
+
   offset_y_ = offset_y;
+  update();
 }
 
 void LineNumbers::setLineHeight(float line_height) {
+  if (line_height_ == line_height) {
+    return;
+  }
+
   line_height_ = line_height;
+  update();
 }
 
 void LineNumbers::setCursorPosition(int cursor_position) {
-  line_cursor_position_ = positionToLine(cursor_position);
+  auto line_cursor_position = positionToLine(cursor_position);
+  if (line_cursor_position_ == line_cursor_position) {
+    return;
+  }
+
+  line_cursor_position_ = line_cursor_position;
+  update();
 }
 
 void LineNumbers::setSelectionStart(int selection_start) {
-  line_selection_start_ = positionToLine(selection_start);
+  auto line_selection_start = positionToLine(selection_start);
+  if (line_selection_start_ == line_selection_start) {
+    return;
+  }
+
+  line_selection_start_ = line_selection_start;
+  update();
 }
 
 void LineNumbers::setSelectionEnd(int selection_end) {
-  line_selection_end_ = positionToLine(selection_end);
+  auto line_selection_end = positionToLine(selection_end);
+  if (line_selection_end_ == line_selection_end) {
+    return;
+  }
+
+  line_selection_end_ = line_selection_end;
+  update();
 }
 
 int LineNumbers::positionToLine(int position) const {
@@ -114,9 +173,18 @@ int LineNumbers::numberOfVisibleLines() const {
   auto possible_visible_lines = static_cast<int>(height() / line_height_);
 
   // Check if we've reached the bottom of the page
-  int possible_page_count = std::min(first_visible_line+possible_visible_lines, line_count_);
+  int possible_page_count = std::min(first_visible_line+possible_visible_lines, lineCount());
 
   return possible_page_count - first_visible_line + 1;
+}
+
+int LineNumbers::lineCount() const {
+  if (!document_) {
+    return 0;
+  }
+
+  auto text_document = document_->textDocument();
+  return text_document->lineCount();
 }
 
 bool LineNumbers::isLineSelected(int line) const {

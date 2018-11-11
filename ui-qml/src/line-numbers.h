@@ -11,6 +11,21 @@ class QQuickTextDocument;
 namespace CleanEditor {
 namespace UI {
 
+/*!
+ * \brief The LineNumbers class paints line numbers (vertically) in an item.
+ *        It's possible to define the text color and the background for the currently selected line, see currentTextColor
+ *        and currentBackgroundColor.
+ *
+ *        It's also possible to define the text color and the background for lines that have been selected across multiple rows,
+ *        see selectedTextColor and selectedBackgroundColor.
+ *
+ *        textColor is the color used by the lines that are not selected.
+ *
+ *        Internally uses the QTextDocument to identify selected lines.
+ *
+ *        offsetY is used to know if we've scrolled in the document. Top of the page means offsetY == 0.
+ *
+ */
 class LineNumbers : public QQuickPaintedItem {
   Q_OBJECT
   Q_DISABLE_COPY(LineNumbers)
@@ -23,7 +38,6 @@ class LineNumbers : public QQuickPaintedItem {
   Q_PROPERTY(QColor textColor WRITE setTextColor)
 
   Q_PROPERTY(QQuickTextDocument* document WRITE setDocument)
-  Q_PROPERTY(int lineCount WRITE setLineCount)
   Q_PROPERTY(int offsetY WRITE setOffsetY)
   Q_PROPERTY(float lineHeight WRITE setLineHeight)
   Q_PROPERTY(int cursorPosition WRITE setCursorPosition)
@@ -42,7 +56,6 @@ public Q_SLOTS:
   void setTextColor(const QColor& color);
 
   void setDocument(QQuickTextDocument* document);
-  void setLineCount(int line_count);
   void setOffsetY(int offset_y);
   void setLineHeight(float line_height);
   void setCursorPosition(int cursor_position);
@@ -61,7 +74,6 @@ private:
   int line_selection_end_{0};
 
   QPointer<QQuickTextDocument> document_;
-  QTextCursor text_cursor_;
   QFont font_{"Monospace", 12};
   QColor selected_background_color_{Qt::lightGray};
   QColor current_background_color_{Qt::darkGray};
@@ -72,6 +84,7 @@ private:
   int positionToLine(int position) const;
   int firstVisibleLine() const;
   int numberOfVisibleLines() const;
+  int lineCount() const;
   bool isLineSelected(int line) const;
   bool isCurrentLine(int line) const;
 
