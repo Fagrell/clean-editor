@@ -12,5 +12,12 @@
     </qresource>
     <qresource prefix="/fonts">
         <file alias="fontello.ttf">fonts/fontello.ttf</file>
+        <file alias="Hack-Regular.ttf">fonts/Hack-Regular.ttf</file>
+        <file alias="Hack-Bold.ttf">fonts/Hack-Bold.ttf</file>
+        <file alias="Hack-BoldItalic.ttf">fonts/Hack-BoldItalic.ttf</file>
+        <file alias="Hack-Italic.ttf">fonts/Hack-Italic.ttf</file>
+    </qresource>
+    <qresource prefix="/styles">
+        <file alias="MenuToolButton.qml">styles/MenuToolButton.qml</file>
     </qresource>
 </RCC>
