@@ -1,0 +1,4 @@
+module components
+EditorComponent 1.0 EditorComponent.qml
+FileNavigationComponent 1.0 FileNavigationComponent.qml
+MenuComponent 1.0 MenuComponent.qml

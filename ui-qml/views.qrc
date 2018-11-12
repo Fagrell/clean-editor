@@ -5,9 +5,11 @@
     <qresource prefix="/views">
         <file alias="MainView.qml">views/MainView.qml</file>
         <file alias="SplashView.qml">views/SplashView.qml</file>
-        <file alias="EditorComponent.qml">views/EditorComponent.qml</file>
-        <file alias="FileNavigationComponent.qml">views/FileNavigationComponent.qml</file>
-        <file alias="MenuComponent.qml">views/MenuComponent.qml</file>
+    </qresource>
+    <qresource prefix="/components">
+        <file alias="EditorComponent.qml">components/EditorComponent.qml</file>
+        <file alias="FileNavigationComponent.qml">components/FileNavigationComponent.qml</file>
+        <file alias="MenuComponent.qml">components/MenuComponent.qml</file>
     </qresource>
     <qresource prefix="/fonts">
         <file alias="fontello.ttf">fonts/fontello.ttf</file>

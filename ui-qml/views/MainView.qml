@@ -3,6 +3,7 @@ import QtQuick.Window 2.4
 import QtQuick.Controls 2.4
 import QtQml 2.11
 import CleanEditor 1.0
+import "../components"
 
 ApplicationWindow {
     id: root
@@ -37,7 +38,6 @@ ApplicationWindow {
         width: 200
         onFileSelected: root.setCurrentDocument(document)
     }
-
 
     EditorComponent {
         id: editor
