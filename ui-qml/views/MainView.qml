@@ -14,7 +14,7 @@ ApplicationWindow {
     height: 480
     title: qsTr("Clean Editor")
 
-    header: MenuView {
+    header: MenuComponent {
         id: menu
         width: parent.width
     }
@@ -22,12 +22,12 @@ ApplicationWindow {
     function setCurrentDocument(document) {
         root.currentDocument = null
         menu.title = document.fileName
-        openedFileEditor.text = document.textContent
+        editor.text = document.textContent
         root.currentDocument = document
     }
 
-    FilesNavigationView {
-        id: openedFilesBar
+    FileNavigationComponent {
+        id: fileNavigation
 
         anchors {
             top: parent.top
@@ -39,18 +39,18 @@ ApplicationWindow {
     }
 
 
-    OpenedFileView {
-        id: openedFileEditor
+    EditorComponent {
+        id: editor
         anchors {
             top: parent.top
             bottom: parent.bottom
             right: parent.right
-            left: openedFilesBar.right
+            left: fileNavigation.right
         }
 
         onContentChanged: {
             if (root.currentDocument) {
-                root.currentDocument.textContent = openedFileEditor.text
+                root.currentDocument.textContent = editor.text
             }
         }
     }
