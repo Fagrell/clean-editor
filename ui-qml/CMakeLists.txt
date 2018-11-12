@@ -14,7 +14,7 @@ add_executable(${PROJECT_NAME}
   src/main.cpp
   src/line-numbers.cpp
   src/line-numbers.h
-  views.qrc
+  resources.qrc
 )
 
 target_include_directories(${PROJECT_NAME}
