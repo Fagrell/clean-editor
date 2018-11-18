@@ -4,12 +4,12 @@
 #include <QFontDatabase>
 #include <QDebug>
 
-#include "main-controller.h"
+#include "main-router.h"
 #include "document-handler.h"
 #include "documents-model.h"
 #include "line-numbers.h"
 
-static const constexpr auto kMainControllerInstance = "mainController";
+static const constexpr auto kMainRouterInstance = "mainRouter";
 
 int main(int argc, char *argv[])
 {
@@ -29,15 +29,15 @@ int main(int argc, char *argv[])
     }
   }
 
-  qmlRegisterType<CleanEditor::Controllers::MainController>("CleanEditor", 1, 0, kMainControllerInstance);
+  qmlRegisterType<CleanEditor::Routers::MainRouter>("CleanEditor", 1, 0, kMainRouterInstance);
   qmlRegisterType<CleanEditor::Logic::DocumentHandler>("CleanEditor", 1, 0, "DocumentHandler");
   qmlRegisterType<CleanEditor::UI::LineNumbers>("CleanEditor", 1, 0, "LineNumbers");
 
-  CleanEditor::Controllers::MainController mainController;
+  CleanEditor::Routers::MainRouter mainRouter;
   CleanEditor::Model::DocumentsModel documentsModel;
 
   QQmlApplicationEngine engine;
-  engine.rootContext()->setContextProperty(kMainControllerInstance, &mainController);
+  engine.rootContext()->setContextProperty(kMainRouterInstance, &mainRouter);
   engine.rootContext()->setContextProperty("documentsModel", &documentsModel);
   engine.load(QUrl(QStringLiteral("qrc:/views/MainView.qml")));
 

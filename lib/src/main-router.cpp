@@ -1,18 +1,14 @@
 #include "main-router.h"
 
 namespace CleanEditor {
-namespace Controllers {
+namespace Routers {
 
-MainController::MainController(QObject* parent)
+MainRouter::MainRouter(QObject* parent)
   : QObject{parent}
 {}
 
-MainController::~MainController()
+MainRouter::~MainRouter()
 {}
 
-QString MainController::welcomeMessage() const {
-  return "Hello world!";
-}
-
-} // namespace Controllers
+} // namespace Routers
 } // namespace CleanEditor

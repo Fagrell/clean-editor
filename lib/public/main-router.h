@@ -1,5 +1,5 @@
-#ifndef MAIN_CONTROLLER_H
-#define MAIN_CONTROLLER_H
+#ifndef MAIN_ROUTER_H
+#define MAIN_ROUTER_H
 
 #include <QObject>
 #include <QScopedPointer>
@@ -8,22 +8,18 @@
 #include "globals.h"
 
 namespace CleanEditor {
-namespace Controllers {
+namespace Routers {
 
-class QML_EDITOR_EXPORT MainController : public QObject {
+class QML_EDITOR_EXPORT MainRouter : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(MainController)
-
-  Q_PROPERTY(QString ui_welcomeMessage READ welcomeMessage CONSTANT)
+  Q_DISABLE_COPY(MainRouter)
 
 public:
-  explicit MainController(QObject* parent = nullptr);
-  ~MainController();
-
-  QString welcomeMessage() const;
+  explicit MainRouter(QObject* parent = nullptr);
+  ~MainRouter();
 };
 
-} // namespace Controllers
+} // namespace Routers
 } // namespace CleanEditor
 
 #endif
