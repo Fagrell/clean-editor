@@ -9,12 +9,22 @@ find_package(Qt5 COMPONENTS Core REQUIRED)
 ###########################
 # Targets
 add_library(${PROJECT_NAME} SHARED
+  #  Routers
   src/main-router.cpp
+  src/file-navigation-router.cpp
+  src/editor-router.cpp
+  src/menu-router.cpp
+
   src/file-handler.cpp
   src/document-handler.cpp
   src/documents-model.cpp
 
+  #  Routers
   public/main-router.h
+  public/file-navigation-router.h
+  public/editor-router.h
+  public/menu-router.h
+
   public/globals.h
   public/file-handler.h
   public/document-handler.h
