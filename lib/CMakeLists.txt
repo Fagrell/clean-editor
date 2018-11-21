@@ -4,7 +4,7 @@ project(clean-editor-lib VERSION 1.0.0 LANGUAGES C CXX)
 
 ###########################
 # Dependencies
-find_package(Qt5 COMPONENTS Core REQUIRED)
+find_package(Qt5 COMPONENTS Core Gui REQUIRED)
 
 ###########################
 # Targets
@@ -18,6 +18,7 @@ add_library(${PROJECT_NAME} SHARED
   src/file-handler.cpp
   src/document-handler.cpp
   src/documents-model.cpp
+  src/editor-model.cpp
 
   #  Routers
   public/main-router.h
@@ -29,6 +30,7 @@ add_library(${PROJECT_NAME} SHARED
   public/file-handler.h
   public/document-handler.h
   public/documents-model.h
+  public/editor-model.h
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -47,6 +49,7 @@ target_compile_definitions(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
   PUBLIC
     Qt5::Core
+    Qt5::Gui
 )
 
 target_compile_features(${PROJECT_NAME}
