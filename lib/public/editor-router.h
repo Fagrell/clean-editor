@@ -33,8 +33,11 @@ public:
   void setModel(CleanEditor::Models::AbstractEditorModel* model);
 >>>>>>> Added AbstractEditorModel to the EditorRouter
 
+  QString text() const;
+  void setText(const QString& text);
+
 Q_SIGNALS:
-  void contentsChanged(const QString& text);
+  void textChanged();
 
 private:
 <<<<<<< HEAD
