@@ -37,7 +37,6 @@ QString EditorRouter::text() const {
 
   return model_->text();
 }
-
 void EditorRouter::setText(const QString& text) {
   if (!model_) {
     return;
