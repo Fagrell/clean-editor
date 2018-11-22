@@ -14,6 +14,8 @@ add_executable(${PROJECT_NAME}
   src/main.cpp
   src/line-numbers.cpp
   src/line-numbers.h
+  src/qml-editor-model.cpp
+  src/qml-editor-model.h
   resources.qrc
 )
 
