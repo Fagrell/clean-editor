@@ -23,8 +23,6 @@ public:
   virtual QString text() const = 0;
   virtual void setText(const QString& text) = 0;
 
-  virtual void setTextDocument(QTextDocument* text_document) = 0;
-
 Q_SIGNALS:
   void textChanged();
 

@@ -21,7 +21,7 @@ public:
   QString text() const override;
   void setText(const QString& text) override;
 
-  void setTextDocument(QTextDocument* text_document) override;
+  void setTextDocument(QTextDocument* text_document);
 
 Q_SIGNALS:
   void textChanged();
