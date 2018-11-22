@@ -19,6 +19,7 @@ add_library(${PROJECT_NAME} SHARED
   src/document-handler.cpp
   src/documents-model.cpp
   src/editor-model.cpp
+  src/abstract-editor-model.cpp
 
   #  Routers
   public/main-router.h
@@ -31,6 +32,7 @@ add_library(${PROJECT_NAME} SHARED
   public/document-handler.h
   public/documents-model.h
   public/editor-model.h
+  public/abstract-editor-model.h
 )
 
 target_include_directories(${PROJECT_NAME}

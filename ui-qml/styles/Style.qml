@@ -8,7 +8,7 @@ QtObject {
     property color mainBlueColor: "#161161"
 
     //LineNumbers properties
-    property color lineNumberBackground: "#D3D3D3"
+    property color lineNumberBackground: "#d3d3d3"
     property color lineNumberSelectedBackgroundColor: "#b2d7ff"
     property alias lineNumberCurrentBackgroundColor: style.mainBlueColor
     property alias lineNumberSelectedTextColor: style.mainBlueColor

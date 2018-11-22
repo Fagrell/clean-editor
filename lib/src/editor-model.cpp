@@ -5,7 +5,7 @@
 namespace CleanEditor {
 namespace Models {
 
-EditorModel::EditorModel(QObject* parent) : QObject{parent} {
+EditorModel::EditorModel(QObject* parent) : AbstractEditorModel{parent} {
 }
 
 QString EditorModel::text() const {

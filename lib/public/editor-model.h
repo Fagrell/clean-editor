@@ -1,31 +1,29 @@
 #ifndef EDITOR_MODEL_H
 #define EDITOR_MODEL_H
 
-#include <QObject>
-#include <QString>
-
+#include "abstract-editor-model.h"
 #include "globals.h"
+
+#include <QString>
 
 class QTextDocument;
 
 namespace CleanEditor {
 namespace Models {
 
-class QML_EDITOR_EXPORT EditorModel : public QObject {
+class QML_EDITOR_EXPORT EditorModel : public AbstractEditorModel {
   Q_OBJECT
   Q_DISABLE_COPY(EditorModel)
-
-  Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
 
 public:
   explicit EditorModel(QObject* parent = nullptr);
 
-  QString text() const;
-  void setText(const QString& text);
+  QString text() const override;
+  void setText(const QString& text) override;
 
-  void setTextDocument(QTextDocument* text_document);
+  void setTextDocument(QTextDocument* text_document) override;
 
-signals:
+Q_SIGNALS:
   void textChanged();
 
 private:
