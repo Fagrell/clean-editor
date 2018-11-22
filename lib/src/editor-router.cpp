@@ -19,7 +19,7 @@ EditorRouter::~EditorRouter() {
   delete model_.data();
 }
 
-void EditorRouter::setModel(EditorModel* model) {
+void EditorRouter::setModel(AbstractEditorModel* model) {
   model_ = model;
 }
 

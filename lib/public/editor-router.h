@@ -9,7 +9,11 @@
 
 namespace CleanEditor {
 namespace Models {
+<<<<<<< HEAD
   class EditorModel;
+=======
+  class AbstractEditorModel;
+>>>>>>> Added AbstractEditorModel to the EditorRouter
 }
 
 namespace Routers {
@@ -23,13 +27,21 @@ public:
   ~EditorRouter();
 
   //Takes ownership of model
+<<<<<<< HEAD
   void setModel(CleanEditor::Models::EditorModel* model);
+=======
+  void setModel(CleanEditor::Models::AbstractEditorModel* model);
+>>>>>>> Added AbstractEditorModel to the EditorRouter
 
 Q_SIGNALS:
   void contentsChanged(const QString& text);
 
 private:
+<<<<<<< HEAD
   QPointer<CleanEditor::Models::EditorModel> model_;
+=======
+  QPointer<CleanEditor::Models::AbstractEditorModel> model_;
+>>>>>>> Added AbstractEditorModel to the EditorRouter
 };
 
 } // namespace Routers
