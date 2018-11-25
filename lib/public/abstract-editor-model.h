@@ -25,9 +25,6 @@ public:
 
 Q_SIGNALS:
   void textChanged();
-
-private:
-  QTextDocument* text_document_{nullptr};
 };
 
 } // namespace Routers
