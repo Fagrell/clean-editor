@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
   qmlRegisterType<CleanEditor::UI::LineNumbers>("CleanEditor", 1, 0, "LineNumbers");
 
   CleanEditor::Routers::MainRouter mainRouter;
-  CleanEditor::Model::DocumentsModel documentsModel;
+  CleanEditor::Models::DocumentsModel documentsModel;
 
   QQmlApplicationEngine engine;
   engine.rootContext()->setContextProperty(kMainRouterInstance, &mainRouter);

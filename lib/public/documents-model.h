@@ -15,7 +15,7 @@ namespace Logic {
   class DocumentHandler;
 }
 
-namespace Model {
+namespace Models {
 
 class QML_EDITOR_EXPORT DocumentsModel : public QAbstractListModel {
   Q_OBJECT
@@ -27,6 +27,7 @@ public:
   };
 
   explicit DocumentsModel(QObject* parent = nullptr);
+  ~DocumentsModel() override;
 
   int rowCount(const QModelIndex& parent = QModelIndex()) const override;
   QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
@@ -44,7 +45,7 @@ private:
 
 };
 
-} //namespace Model
+} //namespace Models
 } //namespace CleanEditor
 
 #endif // DOCUMENTS_MODEL_H

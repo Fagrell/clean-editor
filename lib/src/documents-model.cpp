@@ -2,10 +2,12 @@
 #include "document-handler.h"
 
 namespace CleanEditor {
-namespace Model {
+namespace Models {
 
 DocumentsModel::DocumentsModel(QObject* parent) : QAbstractListModel{parent} {
 }
+
+DocumentsModel::~DocumentsModel() = default;
 
 int DocumentsModel::rowCount(const QModelIndex& parent) const {
   if (parent.isValid()) {
@@ -22,7 +24,7 @@ QVariant DocumentsModel::data(const QModelIndex& index, int role) const {
       return {};
   }
   QVariant data;
-  data.setValue(data_.at(static_cast<int>(index.row())).get());
+  data.setValue(data_.at(static_cast<size_t>(index.row())).get());
   return data;
 }
 
@@ -63,5 +65,5 @@ void DocumentsModel::closeFile(int id) {
   endRemoveRows();
 }
 
-} //namespace Model
+} //namespace Models
 } //namespace CleanEditor
