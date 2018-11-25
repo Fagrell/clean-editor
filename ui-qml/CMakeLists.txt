@@ -10,6 +10,10 @@ find_package(Qt5 COMPONENTS Core Gui Qml Quick QuickControls2 REQUIRED)
 ###########################
 # Targets
 
+# Only used to make qml files accessible in VS
+file(GLOB_RECURSE QML_SRC "*.qml")
+source_group("Qml Files" FILES ${QML_SRC})
+
 add_executable(${PROJECT_NAME}
   src/main.cpp
   src/line-numbers.cpp
@@ -17,6 +21,7 @@ add_executable(${PROJECT_NAME}
   src/qml-editor-model.cpp
   src/qml-editor-model.h
   resources.qrc
+  ${QML_SRC}
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -34,12 +39,6 @@ target_link_libraries(${PROJECT_NAME}
     clean-editor-lib
 )
 
-target_compile_options(${PROJECT_NAME}
-  PUBLIC
-    -Wall
-    -Werror
-)
-
 target_compile_features(${PROJECT_NAME}
   PUBLIC
     cxx_std_14
@@ -49,4 +48,5 @@ set_target_properties(${PROJECT_NAME}
   PROPERTIES
     AUTOMOC ON
     AUTORCC ON
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )

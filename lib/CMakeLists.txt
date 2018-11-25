@@ -62,6 +62,9 @@ target_compile_features(${PROJECT_NAME}
 set_target_properties(${PROJECT_NAME}
   PROPERTIES
     AUTOMOC ON
+    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
 
 ###########################

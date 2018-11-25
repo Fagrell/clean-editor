@@ -31,10 +31,11 @@ target_link_libraries(${PROJECT_NAME}
 
 target_compile_features(${PROJECT_NAME}
   PRIVATE
-    cxx_std_11
+    cxx_std_14
 )
 
 set_target_properties(${PROJECT_NAME}
   PROPERTIES
     AUTOMOC ON
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
