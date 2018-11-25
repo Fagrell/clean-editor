@@ -12,7 +12,7 @@ int DocumentsModel::rowCount(const QModelIndex& parent) const {
       return 0;
   }
 
-  return data_.size();
+  return static_cast<int>(data_.size());
 }
 
 QVariant DocumentsModel::data(const QModelIndex& index, int role) const {
@@ -22,7 +22,7 @@ QVariant DocumentsModel::data(const QModelIndex& index, int role) const {
       return {};
   }
   QVariant data;
-  data.setValue(data_.at(index.row()).get());
+  data.setValue(data_.at(static_cast<int>(index.row())).get());
   return data;
 }
 
@@ -57,8 +57,9 @@ void DocumentsModel::closeFile(int id) {
     return;
   }
 
-  beginRemoveRows({}, i, i);
-  data_.erase(data_.begin() + i);
+  int row_to_remove = static_cast<int>(i);
+  beginRemoveRows({}, row_to_remove, row_to_remove);
+  data_.erase(data_.begin() + row_to_remove);
   endRemoveRows();
 }
 

@@ -7,6 +7,8 @@
 #include <unordered_map>
 #include <memory>
 
+#include "globals.h"
+
 namespace CleanEditor {
 
 namespace Logic {
@@ -15,7 +17,7 @@ namespace Logic {
 
 namespace Model {
 
-class DocumentsModel : public QAbstractListModel {
+class QML_EDITOR_EXPORT DocumentsModel : public QAbstractListModel {
   Q_OBJECT
   Q_DISABLE_COPY(DocumentsModel)
 

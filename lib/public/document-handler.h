@@ -5,6 +5,8 @@
 #include <QUrl>
 #include <QPointer>
 
+#include "globals.h"
+
 class QTextDocument;
 class QQuickTextDocument;
 
@@ -13,7 +15,7 @@ namespace Logic {
 
 class FileHandler;
 
-class DocumentHandler : public QObject {
+class QML_EDITOR_EXPORT DocumentHandler : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(DocumentHandler)
 
