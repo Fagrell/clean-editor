@@ -20,7 +20,7 @@ QtObject {
     property alias edtitorSelectionColor: style.lineNumberSelectedBackgroundColor
 
     //Menu properties
-    property int menuIconSize: 20
+    property int menuIconSize: 14
     property color menuIconColor: "white"
     property alias menuTitleColor: style.mainBlueColor
     property font menuTitleFont: Qt.font({bold: true, pointSize: 16})
