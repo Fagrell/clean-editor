@@ -45,5 +45,21 @@ void EditorRouter::setText(const QString& text) {
   model_->setText(text);
 }
 
+int EditorRouter::id() const {
+  if (!model_) {
+    return 0;
+  }
+
+  model_->id();
+}
+
+void EditorRouter::setId(int id) {
+  if (!model_) {
+    return;
+  }
+
+  model_->setId(id);
+}
+
 } // namespace Routers
 } // namespace CleanEditor

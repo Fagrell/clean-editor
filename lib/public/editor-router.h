@@ -28,6 +28,9 @@ public:
   QString text() const;
   void setText(const QString& text);
 
+  int id() const;
+  void setId(int id);
+
 Q_SIGNALS:
   void textChanged();
 
