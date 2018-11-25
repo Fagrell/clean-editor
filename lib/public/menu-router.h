@@ -16,7 +16,6 @@ class QML_EDITOR_EXPORT MenuRouter : public QObject {
 
 public:
   explicit MenuRouter(QObject* parent = nullptr);
-  ~MenuRouter();
 };
 
 } // namespace Routers

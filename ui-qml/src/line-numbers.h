@@ -30,22 +30,24 @@ class LineNumbers : public QQuickPaintedItem {
   Q_OBJECT
   Q_DISABLE_COPY(LineNumbers)
 
-  Q_PROPERTY(QFont font WRITE setFont)
-  Q_PROPERTY(QColor selectedBackgroundColor WRITE setSelectedBackgroundColor)
-  Q_PROPERTY(QColor currentBackgroundColor WRITE setCurrentBackgroundColor)
-  Q_PROPERTY(QColor selectedTextColor WRITE setSelectedTextColor)
-  Q_PROPERTY(QColor currentTextColor WRITE setCurrentTextColor)
-  Q_PROPERTY(QColor textColor WRITE setTextColor)
+  Q_PROPERTY(QFont font MEMBER font_ WRITE setFont)
+  Q_PROPERTY(QColor selectedBackgroundColor MEMBER selected_background_color_ WRITE setSelectedBackgroundColor)
+  Q_PROPERTY(QColor currentBackgroundColor MEMBER current_background_color_ WRITE setCurrentBackgroundColor)
+  Q_PROPERTY(QColor selectedTextColor MEMBER selected_text_color_ WRITE setSelectedTextColor)
+  Q_PROPERTY(QColor currentTextColor MEMBER current_text_color_ WRITE setCurrentTextColor)
+  Q_PROPERTY(QColor textColor MEMBER text_color_ WRITE setTextColor)
 
-  Q_PROPERTY(QQuickTextDocument* document WRITE setDocument)
-  Q_PROPERTY(int offsetY WRITE setOffsetY)
-  Q_PROPERTY(float lineHeight WRITE setLineHeight)
-  Q_PROPERTY(int cursorPosition WRITE setCursorPosition)
-  Q_PROPERTY(int selectionStart WRITE setSelectionStart)
-  Q_PROPERTY(int selectionEnd WRITE setSelectionEnd)
+  Q_PROPERTY(QQuickTextDocument* document READ document WRITE setDocument)
+  Q_PROPERTY(int offsetY MEMBER offset_y_ WRITE setOffsetY)
+  Q_PROPERTY(qreal lineHeight MEMBER line_height_ WRITE setLineHeight)
+  Q_PROPERTY(int cursorPosition MEMBER cursor_position_ WRITE setCursorPosition)
+  Q_PROPERTY(int selectionStart MEMBER selection_start_ WRITE setSelectionStart)
+  Q_PROPERTY(int selectionEnd MEMBER selection_end_ WRITE setSelectionEnd)
 
 public:
   explicit LineNumbers(QQuickPaintedItem* parent = nullptr);
+
+  QQuickTextDocument* document() const;
 
 public Q_SLOTS:
   void setFont(const QFont& font);
@@ -57,7 +59,7 @@ public Q_SLOTS:
 
   void setDocument(QQuickTextDocument* document);
   void setOffsetY(int offset_y);
-  void setLineHeight(float line_height);
+  void setLineHeight(qreal line_height);
   void setCursorPosition(int cursor_position);
   void setSelectionStart(int selection_start);
   void setSelectionEnd(int selection_end);
@@ -68,7 +70,12 @@ protected:
 private:
   int line_count_{0};
   int offset_y_{0};
-  float line_height_{0.f};
+  qreal line_height_{0};
+
+  int cursor_position_{-1};
+  int selection_start_{-1};
+  int selection_end_{-1};
+
   int line_cursor_position_{0};
   int line_selection_start_{0};
   int line_selection_end_{0};
@@ -88,8 +95,10 @@ private:
   bool isLineSelected(int line) const;
   bool isCurrentLine(int line) const;
 
-  void drawLineBackground(QPainter* painter, float y_position, QColor background_color);
-  void drawLineNumber(QPainter* painter, float y_position, QColor text_color, int line_number);
+  void drawLineBackground(QPainter& painter, qreal y_position, const QColor& background_color);
+  void drawLineNumber(QPainter& painter, qreal y_position, const QColor& text_color, int line_number);
+
+  static bool almostEqual(qreal a, qreal b);
 };
 
 } //namspace UI

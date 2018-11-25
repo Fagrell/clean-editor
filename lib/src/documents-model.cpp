@@ -36,7 +36,7 @@ void DocumentsModel::openFile(const QUrl& file_url) {
   auto document_handler = std::make_unique<CleanEditor::Logic::DocumentHandler>();
   document_handler->load(file_url);
 
-  int index = static_cast<int>(data_.size());
+  auto index = static_cast<int>(data_.size());
   beginInsertRows({}, index, index);
   data_.emplace_back(std::move(document_handler));
   endInsertRows();
@@ -57,7 +57,7 @@ void DocumentsModel::closeFile(int id) {
     return;
   }
 
-  int row_to_remove = static_cast<int>(i);
+  auto row_to_remove = static_cast<int>(i);
   beginRemoveRows({}, row_to_remove, row_to_remove);
   data_.erase(data_.begin() + row_to_remove);
   endRemoveRows();

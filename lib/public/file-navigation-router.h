@@ -16,7 +16,6 @@ class QML_EDITOR_EXPORT FileNavigationRouter : public QObject {
 
 public:
   explicit FileNavigationRouter(QObject* parent = nullptr);
-  ~FileNavigationRouter();
 };
 
 } // namespace Routers

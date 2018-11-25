@@ -52,7 +52,7 @@ Item {
         clip: true
         contentWidth: textArea.width
         contentHeight: textArea.height
-        onContentYChanged: root.update()
+        onContentYChanged: lineNumbersItem.update()
         boundsBehavior: Flickable.StopAtBounds
 
         TextArea.flickable: TextArea {

@@ -7,8 +7,5 @@ MainRouter::MainRouter(QObject* parent)
   : QObject{parent}
 {}
 
-MainRouter::~MainRouter()
-{}
-
 } // namespace Routers
 } // namespace CleanEditor

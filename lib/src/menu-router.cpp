@@ -7,8 +7,5 @@ MenuRouter::MenuRouter(QObject* parent)
   : QObject{parent}
 {}
 
-MenuRouter::~MenuRouter()
-{}
-
 } // namespace Routers
 } // namespace CleanEditor

@@ -7,8 +7,5 @@ FileNavigationRouter::FileNavigationRouter(QObject* parent)
   : QObject{parent}
 {}
 
-FileNavigationRouter::~FileNavigationRouter()
-{}
-
 } // namespace Routers
 } // namespace CleanEditor

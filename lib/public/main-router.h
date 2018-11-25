@@ -16,7 +16,6 @@ class QML_EDITOR_EXPORT MainRouter : public QObject {
 
 public:
   explicit MainRouter(QObject* parent = nullptr);
-  ~MainRouter();
 };
 
 } // namespace Routers

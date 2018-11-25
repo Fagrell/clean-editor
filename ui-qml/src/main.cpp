@@ -22,9 +22,9 @@ int main(int argc, char *argv[])
   QStringList fonts = QStringList{} << ":/fonts/Hack-Regular.ttf" << ":/fonts/Hack-Bold.ttf"
                                     << ":/fonts/Hack-BoldItalic.ttf" << ":/fonts/Hack-Italic.ttf"
                                     << ":/fonts/fontello.ttf";
-  QFontDatabase fontDatabase;
+
   for (const auto& font : fonts) {
-    if (fontDatabase.addApplicationFont(font) == -1) {
+    if (QFontDatabase::addApplicationFont(font) == -1) {
         qWarning() << "Failed to load font: " << font;
     }
   }

@@ -18,6 +18,10 @@ LineNumbers::LineNumbers(QQuickPaintedItem* parent) :
   font_.setStyleHint(QFont::TypeWriter);
 }
 
+QQuickTextDocument* LineNumbers::document() const {
+  return document_.data();
+}
+
 void LineNumbers::setFont(const QFont& font) {
   if (font_ == font) {
     return;
@@ -98,8 +102,8 @@ void LineNumbers::setOffsetY(int offset_y) {
   update();
 }
 
-void LineNumbers::setLineHeight(float line_height) {
-  if (line_height_ == line_height) {
+void LineNumbers::setLineHeight(qreal line_height) {
+  if (almostEqual(line_height_, line_height)) {
     return;
   }
 
@@ -108,32 +112,32 @@ void LineNumbers::setLineHeight(float line_height) {
 }
 
 void LineNumbers::setCursorPosition(int cursor_position) {
-  auto line_cursor_position = positionToLine(cursor_position);
-  if (line_cursor_position_ == line_cursor_position) {
+  if (cursor_position_ == cursor_position) {
     return;
   }
 
-  line_cursor_position_ = line_cursor_position;
+  cursor_position_ = cursor_position;
+  line_cursor_position_ = positionToLine(cursor_position);
   update();
 }
 
 void LineNumbers::setSelectionStart(int selection_start) {
-  auto line_selection_start = positionToLine(selection_start);
-  if (line_selection_start_ == line_selection_start) {
+  if (selection_start_ == selection_start) {
     return;
   }
 
-  line_selection_start_ = line_selection_start;
+  selection_start_ = selection_start;
+  line_selection_start_ = positionToLine(selection_start);
   update();
 }
 
 void LineNumbers::setSelectionEnd(int selection_end) {
-  auto line_selection_end = positionToLine(selection_end);
-  if (line_selection_end_ == line_selection_end) {
+  if (selection_end_ == selection_end) {
     return;
   }
 
-  line_selection_end_ = line_selection_end;
+  selection_end_ = selection_end;
+  line_selection_end_ = positionToLine(selection_end);
   update();
 }
 
@@ -155,25 +159,25 @@ void LineNumbers::paint(QPainter* painter) {
 
   for (int i{0}; i < visible_lines; i++) {
     int line_number = i + first_visible_line;
-    float line_y_position = i*line_height_ - additional_offset;
+    qreal line_y_position = i*line_height_ - additional_offset;
 
     if (isCurrentLine(line_number)) {
-      drawLineBackground(painter, line_y_position, current_background_color_);
+      drawLineBackground(*painter, line_y_position, current_background_color_);
       text_color = current_text_color_;
     } else if (isLineSelected(line_number)) {
-      drawLineBackground(painter, line_y_position, selected_background_color_);
+      drawLineBackground(*painter, line_y_position, selected_background_color_);
       text_color = selected_text_color_;
     } else {
       text_color = text_color_;
     }
 
-    drawLineNumber(painter, line_y_position, text_color, line_number);
+    drawLineNumber(*painter, line_y_position, text_color, line_number);
 
   }
 }
 
 int LineNumbers::firstVisibleLine() const {
-  return offset_y_ / line_height_ + 1;
+  return offset_y_ / static_cast<int>(line_height_) + 1;
 }
 
 int LineNumbers::numberOfVisibleLines() const {
@@ -203,17 +207,23 @@ bool LineNumbers::isCurrentLine(int line) const {
   return line == line_cursor_position_;
 }
 
-void LineNumbers::drawLineBackground(QPainter* painter, float y_position, QColor background_color) {
+void LineNumbers::drawLineBackground(QPainter& painter, qreal y_position, const QColor& background_color) {
   QRectF background_rectangle(0, y_position, width(), line_height_);
-  painter->setPen(background_color);
-  painter->drawRect(background_rectangle);
-  painter->fillRect(background_rectangle, background_color);
+  painter.setPen(QPen{background_color});
+  painter.drawRect(background_rectangle);
+  painter.fillRect(background_rectangle, background_color);
 }
 
-void LineNumbers::drawLineNumber(QPainter* painter, float y_position, QColor text_color, int line_number) {
-  painter->setFont(font_);
-  painter->setPen(text_color);
-  painter->drawText(0, y_position, width() - kLineNumberXOffset, line_height_, Qt::AlignRight, QString::number(line_number));
+void LineNumbers::drawLineNumber(QPainter& painter, qreal y_position, const QColor& text_color, int line_number) {
+  painter.setFont(font_);
+  painter.setPen(QPen{text_color});
+  QRectF text_bounding_rectangle{0, y_position, width() - kLineNumberXOffset, line_height_};
+  painter.drawText(text_bounding_rectangle, Qt::AlignRight, QString::number(line_number));
+}
+
+bool LineNumbers::almostEqual(qreal a, qreal b) {
+  return std::nextafter(a, std::numeric_limits<double>::lowest()) <= b
+    && std::nextafter(a, std::numeric_limits<double>::max()) >= b;
 }
 
 } //namspace UI
