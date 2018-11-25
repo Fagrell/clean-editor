@@ -56,36 +56,4 @@ ToolBar {
         folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
     }
 
-    MenuBar {
-        Menu {
-            title: qsTr("&File")
-
-            MenuItem {
-                text: qsTr("&Open")
-                onTriggered: openDialog.open()
-            }
-            MenuItem {
-                text: qsTr("&Save As...")
-                onTriggered: saveDialog.open()
-            }
-            MenuItem {
-                text: qsTr("&Quit")
-                onTriggered: Qt.quit()
-            }
-        }
-
-        Menu {
-            title: qsTr("&Edit")
-
-            MenuItem {
-                text: qsTr("&Copy")
-            }
-            MenuItem {
-                text: qsTr("Cu&t")
-            }
-            MenuItem {
-                text: qsTr("&Paste")
-            }
-        }
-    }
 }
