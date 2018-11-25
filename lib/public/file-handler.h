@@ -38,6 +38,7 @@ Q_SIGNALS:
 
 private:
   QUrl file_url_;
+  static QString localPathFromUrl(const QUrl& file_url);
 };
 
 } //namespace Logic
