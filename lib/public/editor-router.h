@@ -20,7 +20,6 @@ class QML_EDITOR_EXPORT EditorRouter : public QObject {
 
 public:
   explicit EditorRouter(QObject* parent = nullptr);
-  ~EditorRouter() noexcept;
 
   //Takes ownership of model
   void setModel(CleanEditor::Models::AbstractEditorModel* model);

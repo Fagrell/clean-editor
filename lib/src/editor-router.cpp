@@ -11,14 +11,6 @@ EditorRouter::EditorRouter(QObject* parent)
   : QObject{parent}
 {}
 
-EditorRouter::~EditorRouter() {
-  if (!model_) {
-    return;
-  }
-
-  delete model_.data();
-}
-
 void EditorRouter::setModel(AbstractEditorModel* model) {
   model_ = model;
 
@@ -26,6 +18,7 @@ void EditorRouter::setModel(AbstractEditorModel* model) {
   if (!model_) {
     return;
   }
+  model_->setParent(this);
 
   connect(model, &AbstractEditorModel::textChanged, this, &EditorRouter::textChanged);
 }
@@ -50,7 +43,7 @@ int EditorRouter::id() const {
     return 0;
   }
 
-  model_->id();
+  return model_->id();
 }
 
 void EditorRouter::setId(int id) {
