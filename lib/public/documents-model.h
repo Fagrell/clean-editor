@@ -6,8 +6,10 @@
 
 #include <unordered_map>
 #include <memory>
+#include <utility>
 
 #include "globals.h"
+#include "document-handler.h"
 
 namespace CleanEditor {
 
@@ -23,18 +25,32 @@ class QML_EDITOR_EXPORT DocumentsModel : public QAbstractListModel {
 
 public:
   enum DocumentsRoles {
-    DocumentRole = Qt::UserRole + 1,
+    FileIdRole = Qt::UserRole + 1,
+    FilenameRole,
+    FileTypeRole,
+    FileUrlRole,
+    FileContentRole,
+    FileUpdatedRole
   };
 
   explicit DocumentsModel(QObject* parent = nullptr);
-  ~DocumentsModel() override;
 
   int rowCount(const QModelIndex& parent = QModelIndex()) const override;
   QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
   QHash<int, QByteArray> roleNames() const override;
 
+  QString filename(int id) const;
+  QString fileType(int id) const;
+  QUrl fileUrl(int id) const;
+
+  QString fileContent(int id) const;
+  void setFileContent(int id, const QString& text);
+
+  void save(int id);
+  void saveAs(int id, const QUrl& file_url);
+
 public Q_SLOTS:
-  void openFile(const QUrl& file_url);
+  void openFile(const QUrl& file_url); //TODO should return id!!!
   void closeFile(int id);
 
 Q_SIGNALS:
@@ -42,6 +58,30 @@ Q_SIGNALS:
 
 private:
   std::vector<std::unique_ptr<CleanEditor::Logic::DocumentHandler>> data_;
+
+  QModelIndex indexForId(int id) const;
+
+  template <class T>
+  T getData(int id, DocumentsRoles role, const T& default_value) const {
+    QModelIndex index = indexForId(id);
+    if (!index.isValid()) {
+      return default_value;
+    }
+
+    return data(index, role).value<T>();
+  }
+
+  template <class TFunc, class... Values>
+  void setData(int id, TFunc function, Values&&... values) {
+    for (size_t i{0}; i < data_.size(); i++) {
+      if (data_.at(i)->id() == id) {
+        std::bind(function, data_.at(i).get(), std::forward<Values>(values)...)();
+        auto model_index = index(static_cast<int>(i),0);
+        emit dataChanged(model_index, model_index);
+        return;
+      }
+    }
+  }
 
 };
 
