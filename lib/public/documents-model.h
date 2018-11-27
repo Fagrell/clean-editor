@@ -54,7 +54,7 @@ public Q_SLOTS:
   void closeFile(int id);
 
 Q_SIGNALS:
-  void documentCreated(CleanEditor::Logic::DocumentHandler* document);
+  void documentCreated(int id);
 
 private:
   std::vector<std::unique_ptr<CleanEditor::Logic::DocumentHandler>> data_;

@@ -95,7 +95,7 @@ void DocumentsModel::openFile(const QUrl& file_url) {
   data_.emplace_back(std::move(document_handler));
   endInsertRows();
 
-  emit documentCreated(document_handler.get());
+  emit documentCreated(document_handler->id());
 }
 
 void DocumentsModel::closeFile(int id) {
