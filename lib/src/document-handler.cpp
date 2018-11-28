@@ -18,7 +18,7 @@ DocumentHandler::DocumentHandler(QObject *parent) :
   connect(file_handler_, &FileHandler::fileOpened, this, &DocumentHandler::onFileOpened);
 }
 
-QString DocumentHandler::fileName() const {
+QString DocumentHandler::filename() const {
   return file_handler_->fileName();
 }
 

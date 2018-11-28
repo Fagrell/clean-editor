@@ -19,8 +19,8 @@ class QML_EDITOR_EXPORT DocumentHandler : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(DocumentHandler)
 
-  Q_PROPERTY(QString fileName READ fileName NOTIFY fileUrlChanged)
-  Q_PROPERTY(QString fileType READ fileType NOTIFY fileUrlChanged)
+  Q_PROPERTY(QString filename READ filename)
+  Q_PROPERTY(QString fileType READ fileType)
   Q_PROPERTY(QUrl fileUrl READ fileUrl NOTIFY fileUrlChanged)
   Q_PROPERTY(QString textContent READ textContent WRITE setTextContent)
   Q_PROPERTY(bool contentUpdated READ contentUpdated NOTIFY contentUpdatedChanged)
@@ -29,7 +29,7 @@ class QML_EDITOR_EXPORT DocumentHandler : public QObject {
 public:
   explicit DocumentHandler(QObject *parent = nullptr);
 
-  QString fileName() const;
+  QString filename() const;
   QString fileType() const;
   QUrl fileUrl() const;
   QString textContent() const;
