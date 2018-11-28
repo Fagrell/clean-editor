@@ -2,12 +2,16 @@
 #define MAIN_ROUTER_H
 
 #include <QObject>
-#include <QScopedPointer>
+#include <QPointer>
 #include <QString>
 
 #include "globals.h"
 
 namespace CleanEditor {
+namespace Models {
+  class DocumentsModel;
+}
+
 namespace Routers {
 
 class MenuRouter;
@@ -25,6 +29,9 @@ class QML_EDITOR_EXPORT MainRouter : public QObject {
 public:
   explicit MainRouter(QObject* parent = nullptr);
 
+  //Takes ownership of model
+  void setDocumentsModel(CleanEditor::Models::DocumentsModel* documents_model);
+
   MenuRouter* menuRouter() const;
   EditorRouter* editorRouter() const;
   FileNavigationRouter* fileNavigationRouter() const;
@@ -33,9 +40,11 @@ private:
   MenuRouter* menu_router_{nullptr};
   EditorRouter* editor_router_{nullptr};
   FileNavigationRouter* file_navigation_router_{nullptr};
+  QPointer<CleanEditor::Models::DocumentsModel> documents_model_;
 
 private Q_SLOTS:
   void handleEditorTextChanged();
+  void openDocument(int id);
 };
 
 } // namespace Routers
