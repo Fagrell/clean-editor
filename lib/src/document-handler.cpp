@@ -42,6 +42,19 @@ int DocumentHandler::id() const {
   return id_;
 }
 
+bool DocumentHandler::needsUpdating() const {
+  return needs_updating_;
+}
+
+void DocumentHandler::setNeedsUpdating(bool needs_updating) {
+  if (needs_updating_ == needs_updating) {
+    return;
+  }
+
+  needs_updating_ = needs_updating;
+  emit needsUpdatingChanged();
+}
+
 void DocumentHandler::load(const QUrl& file_url) {
   file_handler_->load(file_url);
 }
@@ -59,6 +72,7 @@ void DocumentHandler::save() {
 void DocumentHandler::setTextContent(const QString& text) {
   text_content_ = text;
   setContentUpdated(true);
+  setNeedsUpdating(false);
 }
 
 void DocumentHandler::setContentUpdated(bool content_updated) {
