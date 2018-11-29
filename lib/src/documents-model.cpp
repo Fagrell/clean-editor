@@ -41,6 +41,9 @@ QVariant DocumentsModel::data(const QModelIndex& index, int role) const {
     case FileUpdatedRole:
       data.setValue(document->contentUpdated());
       break;
+    case FileNeedsUpdatingRole:
+      data.setValue(document->needsUpdating());
+      break;
     default:
       return {};
   }
@@ -49,12 +52,13 @@ QVariant DocumentsModel::data(const QModelIndex& index, int role) const {
 
 QHash<int, QByteArray> DocumentsModel::roleNames() const {
     QHash<int, QByteArray> roles;
-    roles[FileIdRole] = "FileId";
-    roles[FilenameRole] = "Filename";
-    roles[FileTypeRole] = "FileType";
-    roles[FileUrlRole] = "FileUrl";
-    roles[FileContentRole] = "FileContent";
-    roles[FileUpdatedRole] = "FileUpdated";
+    roles[FileIdRole] = "fileId";
+    roles[FilenameRole] = "filename";
+    roles[FileTypeRole] = "fileType";
+    roles[FileUrlRole] = "fileUrl";
+    roles[FileContentRole] = "fileContent";
+    roles[FileUpdatedRole] = "fileUpdated";
+    roles[FileNeedsUpdatingRole] = "fileNeedsUpdating";
     return roles;
 }
 
@@ -86,16 +90,21 @@ void DocumentsModel::saveAs(int id, const QUrl& file_url) {
   setData(id, &DocumentHandler::saveAs, file_url);
 }
 
+void DocumentsModel::setNeedsUpdating(int id) {
+  setData(id, &DocumentHandler::setNeedsUpdating, true);
+}
+
 void DocumentsModel::openFile(const QUrl& file_url) {
   auto document_handler = std::make_unique<CleanEditor::Logic::DocumentHandler>();
   document_handler->load(file_url);
 
+  int id = document_handler->id();
   auto index = static_cast<int>(data_.size());
   beginInsertRows({}, index, index);
   data_.emplace_back(std::move(document_handler));
   endInsertRows();
 
-  emit documentCreated(document_handler->id());
+  emit documentCreated(id);
 }
 
 void DocumentsModel::closeFile(int id) {

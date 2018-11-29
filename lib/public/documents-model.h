@@ -30,7 +30,8 @@ public:
     FileTypeRole,
     FileUrlRole,
     FileContentRole,
-    FileUpdatedRole
+    FileUpdatedRole,
+    FileNeedsUpdatingRole,
   };
 
   explicit DocumentsModel(QObject* parent = nullptr);
@@ -49,8 +50,10 @@ public:
   void save(int id);
   void saveAs(int id, const QUrl& file_url);
 
+  void setNeedsUpdating(int id);
+
 public Q_SLOTS:
-  void openFile(const QUrl& file_url); //TODO should return id!!!
+  void openFile(const QUrl& file_url);
   void closeFile(int id);
 
 Q_SIGNALS:
