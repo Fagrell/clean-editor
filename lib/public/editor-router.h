@@ -35,6 +35,7 @@ Q_SIGNALS:
 
 private:
   QPointer<CleanEditor::Models::AbstractEditorModel> model_;
+  QMetaObject::Connection text_changed_connection_;
 };
 
 } // namespace Routers

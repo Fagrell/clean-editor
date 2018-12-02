@@ -12,15 +12,15 @@ EditorRouter::EditorRouter(QObject* parent)
 {}
 
 void EditorRouter::setModel(AbstractEditorModel* model) {
-  model_ = model;
+  disconnect(text_changed_connection_);
 
-  disconnect();
+  model_ = model;
   if (!model_) {
     return;
   }
   model_->setParent(this);
 
-  connect(model, &AbstractEditorModel::textChanged, this, &EditorRouter::textChanged);
+  text_changed_connection_ = connect(model, &AbstractEditorModel::textChanged, this, &EditorRouter::textChanged);
 }
 
 QString EditorRouter::text() const {
