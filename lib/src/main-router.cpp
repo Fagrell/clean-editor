@@ -51,6 +51,7 @@ void MainRouter::handleEditorTextChanged() {
     return;
   }
 
+  documents_model_->setNeedsUpdating(true);
 }
 
 void MainRouter::openDocument(int id) {
