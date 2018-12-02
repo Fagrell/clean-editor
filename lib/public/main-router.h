@@ -41,6 +41,8 @@ private:
   EditorRouter* editor_router_{nullptr};
   FileNavigationRouter* file_navigation_router_{nullptr};
   QPointer<CleanEditor::Models::DocumentsModel> documents_model_;
+  QMetaObject::Connection document_created_connection_;
+  QMetaObject::Connection open_file_clicked_connection_;
 
 private Q_SLOTS:
   void handleEditorTextChanged();

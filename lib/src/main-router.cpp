@@ -21,15 +21,17 @@ MainRouter::MainRouter(QObject* parent) :
 }
 
 void MainRouter::setDocumentsModel(CleanEditor::Models::DocumentsModel* documents_model) {
-  documents_model_ = documents_model;
+  disconnect(document_created_connection_);
+  disconnect(open_file_clicked_connection_);
 
-  disconnect();
+  documents_model_ = documents_model;
   if (!documents_model_) {
     return;
   }
 
   documents_model_->setParent(this);
-  connect(documents_model_, &DocumentsModel::documentCreated, this, &MainRouter::openDocument);
+  document_created_connection_ = connect(documents_model_, &DocumentsModel::documentCreated, this, &MainRouter::openDocument);
+  open_file_clicked_connection_ = connect(menu_router_, &MenuRouter::openFileClicked, documents_model_, &DocumentsModel::openFile);
 }
 
 MenuRouter* MainRouter::menuRouter() const {
