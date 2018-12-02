@@ -50,6 +50,7 @@ private Q_SLOTS:
   void handleSaveFileClicked();
   void handleSaveAsFileClicked(const QUrl& url);
   void handleNewFileClicked();
+  void handleOpenFileClicked(int id);
 };
 
 } // namespace Routers

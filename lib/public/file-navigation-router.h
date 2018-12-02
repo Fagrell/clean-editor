@@ -18,7 +18,7 @@ public:
   explicit FileNavigationRouter(QObject* parent = nullptr);
 
 Q_SIGNALS:
-  void fileOpened(int id);
+  void fileOpenedClicked(int id);
 };
 
 } // namespace Routers
