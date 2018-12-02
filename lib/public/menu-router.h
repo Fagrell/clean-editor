@@ -16,6 +16,10 @@ class QML_EDITOR_EXPORT MenuRouter : public QObject {
 
 public:
   explicit MenuRouter(QObject* parent = nullptr);
+
+Q_SIGNALS:
+  void openFileClicked(const QUrl& file_url);
+
 };
 
 } // namespace Routers
