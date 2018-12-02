@@ -18,6 +18,7 @@ public:
   explicit MenuRouter(QObject* parent = nullptr);
 
 Q_SIGNALS:
+  void newFileClicked();
   void openFileClicked(const QUrl& file_url);
   void saveFileClicked();
   void saveAsFileClicked(const QUrl& file_url);

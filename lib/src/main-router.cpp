@@ -20,6 +20,7 @@ MainRouter::MainRouter(QObject* parent) :
   connect(editor_router_, &EditorRouter::textChanged, this, &MainRouter::handleEditorTextChanged);
   connect(menu_router_, &MenuRouter::saveFileClicked, this, &MainRouter::handleSaveFileClicked);
   connect(menu_router_, &MenuRouter::saveAsFileClicked, this, &MainRouter::handleSaveAsFileClicked);
+  connect(menu_router_, &MenuRouter::newFileClicked, this, &MainRouter::handleNewFileClicked);
 
 }
 
@@ -34,6 +35,7 @@ void MainRouter::setDocumentsModel(CleanEditor::Models::DocumentsModel* document
   documents_model_->setParent(this);
   document_created_connection_ = connect(documents_model_, &DocumentsModel::documentCreated, this, &MainRouter::openDocument);
   open_file_clicked_connection_ = connect(menu_router_, &MenuRouter::openFileClicked, documents_model_, &DocumentsModel::openFile);
+  documents_model->newFile();
 }
 
 MenuRouter* MainRouter::menuRouter() const {
@@ -84,6 +86,14 @@ void MainRouter::handleSaveAsFileClicked(const QUrl& url) {
   int current_file_id = editor_router_->id();
   documents_model_->setFileContent(current_file_id, editor_router_->text());
   documents_model_->saveAs(current_file_id, url);
+}
+
+void MainRouter::handleNewFileClicked() {
+  if (!documents_model_) {
+    return;
+  }
+
+  documents_model_->newFile();
 }
 
 } // namespace Routers

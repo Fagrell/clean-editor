@@ -26,6 +26,7 @@ class QML_EDITOR_EXPORT DocumentHandler : public QObject {
   Q_PROPERTY(bool contentUpdated READ contentUpdated NOTIFY contentUpdatedChanged)
   Q_PROPERTY(int id READ id)
   Q_PROPERTY(bool needsUpdating READ needsUpdating WRITE setNeedsUpdating NOTIFY needsUpdatingChanged)
+  Q_PROPERTY(bool isNewFile READ isNewFile WRITE setIsNewFile NOTIFY isNewFileChanged)
 
 public:
   explicit DocumentHandler(QObject *parent = nullptr);
@@ -40,6 +41,8 @@ public:
   bool needsUpdating() const;
   void setNeedsUpdating(bool needs_updating);
 
+  bool isNewFile() const;
+
 public Q_SLOTS:
   void load(const QUrl& file_url);
   void saveAs(const QUrl& file_url);
@@ -52,15 +55,18 @@ Q_SIGNALS:
   void error(const QString &message);
   void contentUpdatedChanged();
   void needsUpdatingChanged();
+  void isNewFileChanged();
 
 private:
   void setContentUpdated(bool content_updated);
+  void setIsNewFile(bool new_file);
 
   int id_{0};
   QPointer<FileHandler> file_handler_;
   QString text_content_;
   bool content_updated_{false};
   bool needs_updating_{false};
+  bool is_new_file_{true};
 
 private Q_SLOTS:
   void onFileOpened();

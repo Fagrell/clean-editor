@@ -94,17 +94,16 @@ void DocumentsModel::setNeedsUpdating(int id) {
   setData(id, &DocumentHandler::setNeedsUpdating, true);
 }
 
+void DocumentsModel::newFile() {
+  auto document_handler = std::make_unique<CleanEditor::Logic::DocumentHandler>();
+  appendNewDocument(std::move(document_handler));
+}
+
 void DocumentsModel::openFile(const QUrl& file_url) {
   auto document_handler = std::make_unique<CleanEditor::Logic::DocumentHandler>();
   document_handler->load(file_url);
 
-  int id = document_handler->id();
-  auto index = static_cast<int>(data_.size());
-  beginInsertRows({}, index, index);
-  data_.emplace_back(std::move(document_handler));
-  endInsertRows();
-
-  emit documentCreated(id);
+  appendNewDocument(std::move(document_handler));
 }
 
 void DocumentsModel::closeFile(int id) {
@@ -134,6 +133,20 @@ QModelIndex DocumentsModel::indexForId(int id) const {
   }
 
   return index(static_cast<int>(i),0);
+}
+
+void DocumentsModel::appendNewDocument(std::unique_ptr<DocumentHandler> document) {
+  if (!document) {
+    return;
+  }
+
+  int id = document->id();
+  auto index = static_cast<int>(data_.size());
+  beginInsertRows({}, index, index);
+  data_.emplace_back(std::move(document));
+  endInsertRows();
+
+  emit documentCreated(id);
 }
 
 } //namespace Models

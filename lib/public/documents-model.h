@@ -53,6 +53,7 @@ public:
   void setNeedsUpdating(int id);
 
 public Q_SLOTS:
+  void newFile();
   void openFile(const QUrl& file_url);
   void closeFile(int id);
 
@@ -63,6 +64,7 @@ private:
   std::vector<std::unique_ptr<CleanEditor::Logic::DocumentHandler>> data_;
 
   QModelIndex indexForId(int id) const;
+  void appendNewDocument(std::unique_ptr<CleanEditor::Logic::DocumentHandler> document);
 
   template <class T>
   T getData(int id, DocumentsRoles role, const T& default_value) const {

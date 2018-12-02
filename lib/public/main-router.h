@@ -49,6 +49,7 @@ private Q_SLOTS:
   void openDocument(int id);
   void handleSaveFileClicked();
   void handleSaveAsFileClicked(const QUrl& url);
+  void handleNewFileClicked();
 };
 
 } // namespace Routers
