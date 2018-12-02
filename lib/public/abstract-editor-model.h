@@ -15,7 +15,7 @@ class QML_EDITOR_EXPORT AbstractEditorModel : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(AbstractEditorModel)
 
-  Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
+  Q_PROPERTY(QString text READ text WRITE setText NOTIFY textReplaced)
   Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged)
 
 public:
@@ -28,7 +28,11 @@ public:
   void setId(int id);
 
 Q_SIGNALS:
+  //! Used when the a minor change has been made in the text
   void textChanged();
+
+  //! Used when setText is called (and therefore replaced).
+  void textReplaced();
   void idChanged();
 
 private:

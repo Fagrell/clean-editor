@@ -1,6 +1,7 @@
 #include "editor-model.h"
 
 #include <QTextDocument>
+#include <QSignalBlocker>
 
 namespace CleanEditor {
 namespace Models {
@@ -21,7 +22,12 @@ void EditorModel::setText(const QString& text) {
     return;
   }
 
-  text_document_->setPlainText(text);
+  { // Only block signals in scope
+    QSignalBlocker block_signals{this};
+    text_document_->setPlainText(text);
+  }
+
+  emit textReplaced();
 }
 
 void EditorModel::setTextDocument(QTextDocument* text_document) {
