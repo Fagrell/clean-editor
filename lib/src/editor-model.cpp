@@ -30,7 +30,7 @@ void EditorModel::setTextDocument(QTextDocument* text_document) {
     return;
   }
 
-  connect(text_document_, &QTextDocument::contentsChanged, this, &EditorModel::textChanged);
+  connect(text_document_, &QTextDocument::contentsChanged, this, &AbstractEditorModel::textChanged);
 }
 
 } //namespace Models
