@@ -21,12 +21,12 @@ MainRouter::MainRouter(QObject* parent) :
   connect(menu_router_, &MenuRouter::saveFileClicked, this, &MainRouter::handleSaveFileClicked);
   connect(menu_router_, &MenuRouter::saveAsFileClicked, this, &MainRouter::handleSaveAsFileClicked);
   connect(menu_router_, &MenuRouter::newFileClicked, this, &MainRouter::handleNewFileClicked);
-  connect(file_navigation_router_, &FileNavigationRouter::fileOpenedClicked, this, &MainRouter::handleOpenFileClicked);
+  connect(menu_router_, &MenuRouter::openFileClicked, this, &MainRouter::handleOpenFileClicked);
+  connect(file_navigation_router_, &FileNavigationRouter::fileOpenedClicked, this, &MainRouter::handleOpenedFileClicked);
 }
 
 void MainRouter::setDocumentsModel(CleanEditor::Models::DocumentsModel* documents_model) {
   disconnect(document_created_connection_);
-  disconnect(open_file_clicked_connection_);
   documents_model_ = documents_model;
   if (!documents_model_) {
     return;
@@ -34,8 +34,6 @@ void MainRouter::setDocumentsModel(CleanEditor::Models::DocumentsModel* document
 
   documents_model_->setParent(this);
   document_created_connection_ = connect(documents_model_, &DocumentsModel::documentCreated, this, &MainRouter::openDocument);
-  open_file_clicked_connection_ = connect(menu_router_, &MenuRouter::openFileClicked, documents_model_, &DocumentsModel::openFile);
-  documents_model->newFile();
 }
 
 MenuRouter* MainRouter::menuRouter() const {
@@ -55,7 +53,8 @@ void MainRouter::handleEditorTextChanged() {
     return;
   }
 
-  documents_model_->setNeedsUpdating(true);
+  int current_file_id = editor_router_->id();
+  documents_model_->setNeedsUpdating(current_file_id);
 }
 
 void MainRouter::openDocument(int id) {
@@ -96,16 +95,27 @@ void MainRouter::handleNewFileClicked() {
   documents_model_->newFile();
 }
 
-void MainRouter::handleOpenFileClicked(int id) {
+void MainRouter::handleOpenedFileClicked(int id) {
   if (!documents_model_) {
     return;
   }
 
+
+  int current_file_id = editor_router_->id();
+  if (current_file_id == id) {
+    return;
+  }
+
   //First set the file content
+  documents_model_->setFileContent(current_file_id, editor_router_->text());
+  //Then open
+  openDocument(id);
+}
+
+void MainRouter::handleOpenFileClicked(const QUrl& url) {
   int current_file_id = editor_router_->id();
   documents_model_->setFileContent(current_file_id, editor_router_->text());
-
-  openDocument(id);
+  documents_model_->openFile(url);
 }
 
 } // namespace Routers

@@ -42,7 +42,6 @@ private:
   FileNavigationRouter* file_navigation_router_{nullptr};
   QPointer<CleanEditor::Models::DocumentsModel> documents_model_;
   QMetaObject::Connection document_created_connection_;
-  QMetaObject::Connection open_file_clicked_connection_;
 
 private Q_SLOTS:
   void handleEditorTextChanged();
@@ -50,7 +49,8 @@ private Q_SLOTS:
   void handleSaveFileClicked();
   void handleSaveAsFileClicked(const QUrl& url);
   void handleNewFileClicked();
-  void handleOpenFileClicked(int id);
+  void handleOpenedFileClicked(int id);
+  void handleOpenFileClicked(const QUrl& url);
 };
 
 } // namespace Routers
