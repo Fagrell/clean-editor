@@ -38,11 +38,11 @@ QVariant DocumentsModel::data(const QModelIndex& index, int role) const {
     case FileContentRole:
       data.setValue(document->textContent());
       break;
-    case FileUpdatedRole:
-      data.setValue(document->contentUpdated());
-      break;
     case FileNeedsUpdatingRole:
       data.setValue(document->needsUpdating());
+      break;
+    case FileNeedsSavingRole:
+      data.setValue(document->needsSaving());
       break;
     default:
       return {};
@@ -57,8 +57,8 @@ QHash<int, QByteArray> DocumentsModel::roleNames() const {
     roles[FileTypeRole] = "fileType";
     roles[FileUrlRole] = "fileUrl";
     roles[FileContentRole] = "fileContent";
-    roles[FileUpdatedRole] = "fileUpdated";
     roles[FileNeedsUpdatingRole] = "fileNeedsUpdating";
+    roles[FileNeedsSavingRole] = "fileNeedsSaving";
     return roles;
 }
 

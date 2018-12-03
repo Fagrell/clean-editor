@@ -34,10 +34,6 @@ QString DocumentHandler::textContent() const {
   return text_content_;
 }
 
-bool DocumentHandler::contentUpdated() const {
-  return content_updated_;
-}
-
 int DocumentHandler::id() const {
   return id_;
 }
@@ -51,8 +47,16 @@ void DocumentHandler::setNeedsUpdating(bool needs_updating) {
     return;
   }
 
+  if (needs_updating) {
+    setNeedsSaving(true);
+  }
+
   needs_updating_ = needs_updating;
   emit needsUpdatingChanged();
+}
+
+bool DocumentHandler::needsSaving() const {
+  return needs_saving_;
 }
 
 bool DocumentHandler::isNewFile() const {
@@ -67,8 +71,8 @@ void DocumentHandler::saveAs(const QUrl& file_url) {
   if (!file_handler_->saveAs(file_url, text_content_)) {
     return;
   }
-  setContentUpdated(false);
   setIsNewFile(false);
+  setNeedsSaving(false);
 }
 
 void DocumentHandler::save() {
@@ -79,23 +83,15 @@ void DocumentHandler::save() {
   if (!file_handler_->save(text_content_)) {
     return;
   }
-
-  setContentUpdated(false);
 }
 
 void DocumentHandler::setTextContent(const QString& text) {
-  text_content_ = text;
-  setContentUpdated(true);
-  setNeedsUpdating(false);
-}
-
-void DocumentHandler::setContentUpdated(bool content_updated) {
-  if (content_updated_ == content_updated) {
+  if (!needs_updating_) {
     return;
   }
-
-  content_updated_ = content_updated;
-  emit contentUpdatedChanged();
+  text_content_ = text;
+  setNeedsUpdating(false);
+  emit contentUpdated();
 }
 
 void DocumentHandler::setIsNewFile(bool is_new_file) {
@@ -107,9 +103,19 @@ void DocumentHandler::setIsNewFile(bool is_new_file) {
   emit isNewFileChanged();
 }
 
+void DocumentHandler::setNeedsSaving(bool needs_saving) {
+  if (needs_saving_ == needs_saving) {
+    return;
+  }
+
+  needs_saving_ = needs_saving;
+  emit needsSavingChanged();
+}
+
 void DocumentHandler::onFileOpened() {
+  needs_updating_ = true;
   setTextContent(file_handler_->data());
-  setContentUpdated(false);
+  needs_updating_ = false;
   setIsNewFile(false);
   emit fileOpened();
 }

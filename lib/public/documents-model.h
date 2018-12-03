@@ -30,8 +30,8 @@ public:
     FileTypeRole,
     FileUrlRole,
     FileContentRole,
-    FileUpdatedRole,
     FileNeedsUpdatingRole,
+    FileNeedsSavingRole,
   };
 
   explicit DocumentsModel(QObject* parent = nullptr);
