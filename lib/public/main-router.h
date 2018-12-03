@@ -37,6 +37,8 @@ public:
   FileNavigationRouter* fileNavigationRouter() const;
 
 private:
+  void storeTextToCurrentFile();
+
   MenuRouter* menu_router_{nullptr};
   EditorRouter* editor_router_{nullptr};
   FileNavigationRouter* file_navigation_router_{nullptr};

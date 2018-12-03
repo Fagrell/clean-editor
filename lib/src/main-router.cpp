@@ -82,8 +82,9 @@ void MainRouter::handleSaveAsFileClicked(const QUrl& url) {
     return;
   }
 
+  storeTextToCurrentFile();
+
   int current_file_id = editor_router_->id();
-  documents_model_->setFileContent(current_file_id, editor_router_->text());
   documents_model_->saveAs(current_file_id, url);
 }
 
@@ -92,6 +93,7 @@ void MainRouter::handleNewFileClicked() {
     return;
   }
 
+  storeTextToCurrentFile();
   documents_model_->newFile();
 }
 
@@ -107,15 +109,19 @@ void MainRouter::handleOpenedFileClicked(int id) {
   }
 
   //First set the file content
-  documents_model_->setFileContent(current_file_id, editor_router_->text());
+  storeTextToCurrentFile();
   //Then open
   openDocument(id);
 }
 
 void MainRouter::handleOpenFileClicked(const QUrl& url) {
+  storeTextToCurrentFile();
+  documents_model_->openFile(url);
+}
+
+void MainRouter::storeTextToCurrentFile() {
   int current_file_id = editor_router_->id();
   documents_model_->setFileContent(current_file_id, editor_router_->text());
-  documents_model_->openFile(url);
 }
 
 } // namespace Routers
