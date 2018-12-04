@@ -26,7 +26,7 @@ private:
   QTextDocument* text_document_{nullptr};
 };
 
-} // namespace Routers
+} // namespace Models
 } // namespace CleanEditor
 
 #endif
