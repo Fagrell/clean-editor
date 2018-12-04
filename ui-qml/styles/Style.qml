@@ -24,4 +24,10 @@ QtObject {
     property color menuIconColor: "white"
     property alias menuTitleColor: style.mainBlueColor
     property font menuTitleFont: Qt.font({bold: true, pointSize: 16})
+
+    //FileNavigation properties
+    property alias fileNavigationBackgroundColor: style.mainBlueColor
+    property color fileNavigationSelectedColor: "#223D6B"
+    property color fileNavigationHoveredColor: "#1d195e"
+    property color fileNavigationTextColor: "white"
 }

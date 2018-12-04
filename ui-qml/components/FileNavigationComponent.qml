@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.4
 import QtQuick.Controls.Material 2.4
 import CleanEditor 1.0
+import "../styles"
 
 Item {
     id: root
@@ -10,7 +11,7 @@ Item {
     Rectangle {
         id: openedFilesBar
         anchors.fill: parent
-        color: "#161161"
+        color: Style.fileNavigationBackgroundColor
 
         ButtonGroup {
             id: openedFileButtonGroup
@@ -33,13 +34,13 @@ Item {
                     background: Rectangle {
                        color: {
                            if (button.checked) {
-                               return "#223D6B";
+                               return Style.fileNavigationSelectedColor
                            }
                            if (button.hovered) {
-                               return "#1d195e";
+                               return Style.fileNavigationHoveredColor
                            }
 
-                           return "#161161";
+                           return Style.fileNavigationBackgroundColor
                        }
                        border.width: 0
                        radius: 0
@@ -47,7 +48,7 @@ Item {
                     contentItem: Text {
                         text: button.text
                         verticalAlignment: Text.AlignVCenter
-                        color: "white"
+                        color: Style.fileNavigationTextColor
                     }
                 }
             }
