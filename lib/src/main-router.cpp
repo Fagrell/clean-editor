@@ -62,9 +62,11 @@ void MainRouter::openDocument(int id) {
     return;
   }
 
-  QString file_content = documents_model_->fileContent(id);
-  editor_router_->setText(file_content);
+  editor_router_->setText(documents_model_->fileContent(id));
   editor_router_->setId(id);
+
+  menu_router_->setTitle(documents_model_->filename(id));
+  menu_router_->setIsNewFile(documents_model_->isFileNew(id));
 }
 
 void MainRouter::handleSaveFileClicked() {
@@ -101,7 +103,6 @@ void MainRouter::handleOpenedFileClicked(int id) {
   if (!documents_model_) {
     return;
   }
-
 
   int current_file_id = editor_router_->id();
   if (current_file_id == id) {
