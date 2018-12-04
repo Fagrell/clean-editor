@@ -44,6 +44,9 @@ QVariant DocumentsModel::data(const QModelIndex& index, int role) const {
     case FileNeedsSavingRole:
       data.setValue(document->needsSaving());
       break;
+    case FileIsNewRole:
+      data.setValue(document->isNewFile());
+      break;
     default:
       return {};
   }
@@ -72,6 +75,10 @@ QString DocumentsModel::fileType(int id) const {
 
 QUrl DocumentsModel::fileUrl(int id) const {
   return getData(id, FileUrlRole, QUrl{""});
+}
+
+bool DocumentsModel::isFileNew(int id) const {
+  return getData(id, FileIsNewRole, false);
 }
 
 QString DocumentsModel::fileContent(int id) const {

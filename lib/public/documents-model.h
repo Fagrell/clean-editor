@@ -32,6 +32,7 @@ public:
     FileContentRole,
     FileNeedsUpdatingRole,
     FileNeedsSavingRole,
+    FileIsNewRole,
   };
 
   explicit DocumentsModel(QObject* parent = nullptr);
@@ -43,6 +44,7 @@ public:
   QString filename(int id) const;
   QString fileType(int id) const;
   QUrl fileUrl(int id) const;
+  bool isFileNew(int id) const;
 
   QString fileContent(int id) const;
   void setFileContent(int id, const QString& text);
