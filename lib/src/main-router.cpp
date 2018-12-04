@@ -74,9 +74,9 @@ void MainRouter::handleSaveFileClicked() {
     return;
   }
 
+  storeTextToCurrentFile();
   int current_file_id = editor_router_->id();
-  QUrl current_url = documents_model_->fileUrl(current_file_id);
-  handleSaveAsFileClicked(current_url);
+  documents_model_->save(current_file_id);
 }
 
 void MainRouter::handleSaveAsFileClicked(const QUrl& url) {
