@@ -11,6 +11,9 @@ namespace CleanEditor {
 namespace Models {
   class MenuModel;
 }
+namespace Logic {
+  class DocumentHandler;
+}
 
 namespace Routers {
 
@@ -24,8 +27,7 @@ public:
   //Takes ownership of model
   void setModel(CleanEditor::Models::MenuModel* model);
 
-  void setTitle(const QString& title);
-  void setIsNewFile(bool is_new_file);
+  void setDocument(CleanEditor::Logic::DocumentHandler* document_handler);
 
 Q_SIGNALS:
   void newFileClicked();

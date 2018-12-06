@@ -16,21 +16,12 @@ void MenuRouter::setModel(CleanEditor::Models::MenuModel* model) {
   model_->setParent(this);
 }
 
-void MenuRouter::setTitle(const QString& title) {
+void MenuRouter::setDocument(CleanEditor::Logic::DocumentHandler* document_handler) {
   if (!model_) {
     return;
   }
 
-  model_->setTitle(title);
+  model_->setDocument(document_handler);
 }
-
-void MenuRouter::setIsNewFile(bool is_new_file) {
-  if (!model_) {
-    return;
-  }
-
-  model_->setIsNewFile(is_new_file);
-}
-
 } // namespace Routers
 } // namespace CleanEditor

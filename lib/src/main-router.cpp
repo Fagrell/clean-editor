@@ -65,8 +65,7 @@ void MainRouter::openDocument(int id) {
   editor_router_->setText(documents_model_->fileContent(id));
   editor_router_->setId(id);
 
-  menu_router_->setTitle(documents_model_->filename(id));
-  menu_router_->setIsNewFile(documents_model_->isFileNew(id));
+  menu_router_->setDocument(documents_model_->document(id));
 }
 
 void MainRouter::handleSaveFileClicked() {

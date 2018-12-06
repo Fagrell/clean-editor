@@ -5,10 +5,14 @@
 
 #include <QString>
 #include <QObject>
+#include <QPointer>
 
 class QTextDocument;
 
 namespace CleanEditor {
+namespace Logic {
+  class DocumentHandler;
+}
 namespace Models {
 
 class QML_EDITOR_EXPORT MenuModel : public QObject {
@@ -21,19 +25,17 @@ class QML_EDITOR_EXPORT MenuModel : public QObject {
 public:
   explicit MenuModel(QObject* parent = nullptr);
 
-  QString title() const;
-  void setTitle(const QString& text);
+  void setDocument(CleanEditor::Logic::DocumentHandler* document_handler);
 
+  QString title() const;
   bool isNewFile() const;
-  void setIsNewFile(bool is_new_file);
 
 Q_SIGNALS:
   void titleChanged();
   void isNewFileChanged();
 
 private:
-  QString title_;
-  bool is_new_file_{false};
+  QPointer<CleanEditor::Logic::DocumentHandler> document_handler_;
 };
 
 } // namespace Models

@@ -1,4 +1,7 @@
 #include "menu-model.h"
+#include "document-handler.h"
+
+using namespace CleanEditor::Logic;
 
 namespace CleanEditor {
 namespace Models {
@@ -6,31 +9,43 @@ namespace Models {
 MenuModel::MenuModel(QObject* parent) : QObject{parent} {
 }
 
-QString MenuModel::title() const {
-  return title_;
-}
-
-void MenuModel::setTitle(const QString& title) {
-  if (title_ == title) {
+void MenuModel::setDocument(DocumentHandler* document_handler) {
+  if (document_handler_ == document_handler) {
     return;
   }
 
-  title_ = title;
+  if (document_handler_) {
+    disconnect(document_handler_.data(), &DocumentHandler::fileUrlChanged, this, &MenuModel::titleChanged);
+    disconnect(document_handler_.data(), &DocumentHandler::isNewFileChanged, this, &MenuModel::isNewFileChanged);
+  }
+
+  document_handler_ = document_handler;
+  if (!document_handler_) {
+    return;
+  }
+
+  connect(document_handler_.data(), &DocumentHandler::fileUrlChanged, this, &MenuModel::titleChanged);
+  connect(document_handler_.data(), &DocumentHandler::isNewFileChanged, this, &MenuModel::isNewFileChanged);
+
   emit titleChanged();
+  emit isNewFileChanged();
+}
+
+QString MenuModel::title() const {
+  if (!document_handler_) {
+    return tr("");
+  }
+
+  return document_handler_->filename();
 }
 
 bool MenuModel::isNewFile() const {
-  return is_new_file_;
-}
-
-void MenuModel::setIsNewFile(bool is_new_file) {
-  if (is_new_file_ == is_new_file) {
-    return;
+  if (!document_handler_) {
+    return false;
   }
-
-  is_new_file_ = is_new_file;
-  emit isNewFileChanged();
+  return document_handler_->isNewFile();
 }
+
 
 } //namespace Models
 } //namespace CleanEditor

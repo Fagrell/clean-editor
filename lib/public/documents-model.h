@@ -26,6 +26,7 @@ class QML_EDITOR_EXPORT DocumentsModel : public QAbstractListModel {
 public:
   enum DocumentsRoles {
     FileIdRole = Qt::UserRole + 1,
+    FileDocumentRole,
     FilenameRole,
     FileTypeRole,
     FileUrlRole,
@@ -40,6 +41,8 @@ public:
   int rowCount(const QModelIndex& parent = QModelIndex()) const override;
   QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
   QHash<int, QByteArray> roleNames() const override;
+
+  CleanEditor::Logic::DocumentHandler* document(int id) const;
 
   QString filename(int id) const;
   QString fileType(int id) const;

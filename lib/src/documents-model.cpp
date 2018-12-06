@@ -22,6 +22,9 @@ QVariant DocumentsModel::data(const QModelIndex& index, int role) const {
   DocumentHandler* document = data_.at(static_cast<size_t>(index.row())).get();
   QVariant data;
   switch (role) {
+    case FileDocumentRole:
+      data.setValue(document);
+      break;
     case FileIdRole:
       data.setValue(document->id());
       break;
@@ -55,6 +58,7 @@ QVariant DocumentsModel::data(const QModelIndex& index, int role) const {
 
 QHash<int, QByteArray> DocumentsModel::roleNames() const {
     QHash<int, QByteArray> roles;
+    roles[FileDocumentRole] = "fileDocumentRole";
     roles[FileIdRole] = "fileId";
     roles[FilenameRole] = "filename";
     roles[FileTypeRole] = "fileType";
@@ -63,6 +67,10 @@ QHash<int, QByteArray> DocumentsModel::roleNames() const {
     roles[FileNeedsUpdatingRole] = "fileNeedsUpdating";
     roles[FileNeedsSavingRole] = "fileNeedsSaving";
     return roles;
+}
+
+DocumentHandler* DocumentsModel::document(int id) const {
+  return getData<DocumentHandler*>(id, FileDocumentRole, nullptr);
 }
 
 QString DocumentsModel::filename(int id) const {
