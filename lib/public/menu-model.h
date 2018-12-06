@@ -1,5 +1,4 @@
-#ifndef MENU_MODEL_H
-#define MENU_MODEL_H
+#pragma once
 
 #include "globals.h"
 
@@ -40,5 +39,3 @@ private:
 
 } // namespace Models
 } // namespace CleanEditor
-
-#endif

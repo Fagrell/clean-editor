@@ -1,5 +1,4 @@
-#ifndef DOCUMENTS_MODEL_H
-#define DOCUMENTS_MODEL_H
+#pragma once
 
 #include <QAbstractListModel>
 #include <QUrl>
@@ -97,5 +96,3 @@ private:
 
 } //namespace Models
 } //namespace CleanEditor
-
-#endif // DOCUMENTS_MODEL_H

@@ -1,5 +1,4 @@
-#ifndef DOCUMENT_HANDLER_H
-#define DOCUMENT_HANDLER_H
+#pragma once
 
 #include <QObject>
 #include <QUrl>
@@ -79,5 +78,3 @@ private Q_SLOTS:
 } //namespace CleanEditor
 
 Q_DECLARE_METATYPE(CleanEditor::Logic::DocumentHandler*)
-
-#endif // DOCUMENT_HANDLER_H

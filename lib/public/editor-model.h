@@ -1,5 +1,4 @@
-#ifndef EDITOR_MODEL_H
-#define EDITOR_MODEL_H
+#pragma once
 
 #include "abstract-editor-model.h"
 #include "globals.h"
@@ -28,5 +27,3 @@ private:
 
 } // namespace Models
 } // namespace CleanEditor
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef ABSTRACT_EDITOR_MODEL_H
-#define ABSTRACT_EDITOR_MODEL_H
+#pragma once
 
 #include <QObject>
 #include <QString>
@@ -42,5 +41,3 @@ private:
 
 } // namespace Routers
 } // namespace CleanEditor
-
-#endif

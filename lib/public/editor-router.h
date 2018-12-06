@@ -1,5 +1,4 @@
-#ifndef EDITOR_ROUTER_H
-#define EDITOR_ROUTER_H
+#pragma once
 
 #include <QObject>
 #include <QPointer>
@@ -40,5 +39,3 @@ private:
 
 } // namespace Routers
 } // namespace CleanEditor
-
-#endif

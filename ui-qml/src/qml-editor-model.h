@@ -1,5 +1,4 @@
-#ifndef QML_EDITOR_MODEL_H
-#define QML_EDITOR_MODEL_H
+#pragma once
 
 #include "editor-model.h"
 class QQuickTextDocument;
@@ -30,5 +29,3 @@ private:
 
 } //namespace Models
 } //namespace CleanEditor
-
-#endif // QML_EDITOR_MODEL_H

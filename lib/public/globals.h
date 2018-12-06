@@ -1,5 +1,4 @@
-#ifndef QML_EDITOR_BACKEND_GLOBAL_H
-#define QML_EDITOR_BACKEND_GLOBAL_H
+#pragma once
 
 #include <QtCore/qglobal.h>
 
@@ -7,6 +6,4 @@
 #  define QML_EDITOR_EXPORT Q_DECL_EXPORT
 #else
 #  define QML_EDITOR_EXPORT Q_DECL_IMPORT
-#endif
-
 #endif

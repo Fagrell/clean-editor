@@ -1,5 +1,4 @@
-#ifndef MAIN_ROUTER_H
-#define MAIN_ROUTER_H
+#pragma once
 
 #include <QObject>
 #include <QPointer>
@@ -57,5 +56,3 @@ private Q_SLOTS:
 
 } // namespace Routers
 } // namespace CleanEditor
-
-#endif

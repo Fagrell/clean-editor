@@ -1,5 +1,4 @@
-#ifndef MENU_ROUTER_H
-#define MENU_ROUTER_H
+#pragma once
 
 #include <QObject>
 #include <QString>
@@ -42,5 +41,3 @@ private:
 
 } // namespace Routers
 } // namespace CleanEditor
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef LINE_NUMBERS_H
-#define LINE_NUMBERS_H
+#pragma once
 
 #include <QQuickPaintedItem>
 #include <QTextCursor>
@@ -103,5 +102,3 @@ private:
 
 } //namspace UI
 } //namespace CleanEditor
-
-#endif // LINE_NUMBERS_H

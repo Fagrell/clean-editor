@@ -1,5 +1,4 @@
-#ifndef FILE_NAVIGATION_ROUTER_H
-#define FILE_NAVIGATION_ROUTER_H
+#pragma once
 
 #include <QObject>
 #include <QScopedPointer>
@@ -23,5 +22,3 @@ Q_SIGNALS:
 
 } // namespace Routers
 } // namespace CleanEditor
-
-#endif

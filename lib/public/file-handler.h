@@ -1,5 +1,4 @@
-#ifndef FILE_HANDLER_H
-#define FILE_HANDLER_H
+#pragma once
 
 #include <QObject>
 #include <QUrl>
@@ -43,5 +42,3 @@ private:
 
 } //namespace Logic
 } //namespace CleanEditor
-
-#endif // DOCUMENTHANDLER_H
