@@ -1,5 +1,4 @@
-#ifndef FILE_HANDLER_TESTS_H
-#define FILE_HANDLER_TESTS_H
+#pragma once
 
 #include <QTest>
 #include <QTemporaryFile>
@@ -33,5 +32,3 @@ private:
 } //namespace CleanEditor
 
 ADD_TEST_CLASS(CleanEditor::Tests::FileHandlerTests);
-
-#endif

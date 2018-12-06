@@ -1,5 +1,4 @@
-#ifndef TEST_RUNNER_H
-#define TEST_RUNNER_H
+#pragma once
 
 #include <QObject>
 #include <vector>
@@ -35,6 +34,3 @@ private:
   int main(int argc, char** argv) { \
     return CleanEditor::Util::TestRunner::instance().execTests(argc, argv); \
   }
-
-
-#endif
