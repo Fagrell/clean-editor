@@ -83,6 +83,7 @@ void DocumentHandler::save() {
   if (!file_handler_->save(text_content_)) {
     return;
   }
+  setNeedsSaving(false);
 }
 
 void DocumentHandler::setTextContent(const QString& text) {
