@@ -2,6 +2,7 @@
 
 #include <QObject>
 #include <vector>
+#include <algorithm>
 
 namespace CleanEditor {
 namespace Util {
@@ -14,7 +15,10 @@ public:
    template <class T>
    T & addTest() {
      static T test;
-     tests_.emplace_back(&test);
+     auto it = std::find(tests_.cbegin(), tests_.cend(), &test);
+     if (it == tests_.cend()) {
+      tests_.emplace_back(&test);
+     }
      return test;
    }
    int execTests(int argc = 0, char **argv = nullptr);
