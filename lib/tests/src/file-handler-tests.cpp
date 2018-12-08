@@ -6,7 +6,7 @@
 #include <QTextStream>
 
 using namespace CleanEditor::Logic;
-static const constexpr char * dummy_content = "dummy content in file";
+static const constexpr char * kDummyContent = "dummy content in file";
 
 namespace CleanEditor {
 namespace Tests {
@@ -21,7 +21,7 @@ void FileHandlerTests::initTestCase() {
   QVERIFY(file.open(QIODevice::ReadWrite));
   QTextStream stream{&file};
 
-  stream << dummy_content;
+  stream << kDummyContent;
 }
 
 void FileHandlerTests::load_validFile_fileOpened() {
@@ -62,7 +62,7 @@ void FileHandlerTests::load_validFile_fileUrlIsCorrect() {
 void FileHandlerTests::load_validFile_fileContentIsCorrect() {
   FileHandler file_handler;
   file_handler.load(QUrl{tmp_file_.fileName()});
-  QCOMPARE(file_handler.data().toLocal8Bit().data(), dummy_content);
+  QCOMPARE(file_handler.data(), QString{kDummyContent});
 }
 
 void FileHandlerTests::load_validFile_noErrorsRecieved() {
