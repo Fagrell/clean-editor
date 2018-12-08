@@ -13,7 +13,14 @@ class DocumentHandlerTests: public QObject {
 
 private slots:
   void initTestCase();
-  void checkInitialState_createEmptyfile_allPublicParameters();
+  void checkInitialState_createEmptyFile_allPublicParameters();
+  void checkInitialState_openedFile_allPublicParameters();
+  void save_newFile_stillNewFile();
+  void saveAs_newFile_noLongerNewFile();
+  void setContent_notNeedsUpdating_contentNotChanged();
+  void needsSaving_setNeedsUpdatingThenSave_needsSavingIsStillTrue();
+  void needsSaving_setNeedsUpdatingThenSaveAs_needsSavingIsNowFalse();
+  void textContent_updateTextContentAndSave_checkDifferentParams();
 
 private:
   QTemporaryFile tmp_file_;

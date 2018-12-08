@@ -73,6 +73,7 @@ void DocumentHandler::saveAs(const QUrl& file_url) {
   }
   setIsNewFile(false);
   setNeedsSaving(false);
+  setNeedsUpdating(false);
 }
 
 void DocumentHandler::save() {
@@ -84,6 +85,7 @@ void DocumentHandler::save() {
     return;
   }
   setNeedsSaving(false);
+  setNeedsUpdating(false);
 }
 
 void DocumentHandler::setTextContent(const QString& text) {
