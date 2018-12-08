@@ -28,7 +28,7 @@ private:
 } //namespace CleanEditor
 
 #define ADD_TEST_CLASS(Class) \
-  static Class& test = CleanEditor::Util::TestRunner::instance().addTest<Class>()
+  static Class& test_##Class = CleanEditor::Util::TestRunner::instance().addTest<Class>()
 
 #define RUN_TESTS_MAIN \
   int main(int argc, char** argv) { \

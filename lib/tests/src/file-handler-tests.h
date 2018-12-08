@@ -28,7 +28,7 @@ private:
   QTemporaryFile tmp_file_;
 };
 
+ADD_TEST_CLASS(FileHandlerTests);
+
 } //namespace Tests
 } //namespace CleanEditor
-
-ADD_TEST_CLASS(CleanEditor::Tests::FileHandlerTests);
