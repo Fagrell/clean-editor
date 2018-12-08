@@ -11,8 +11,14 @@ find_package(Qt5 COMPONENTS Test REQUIRED)
 # Targets
 
 add_executable(${PROJECT_NAME}
+# Tests
   src/file-handler-tests.h
   src/file-handler-tests.cpp
+
+  src/document-handler-tests.h
+  src/document-handler-tests.cpp
+
+# Necessary test runner classes
   src/test-runner.h
   src/test-runner.cpp
   src/main.cpp
