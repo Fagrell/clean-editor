@@ -11,14 +11,14 @@ namespace Models {
   class AbstractEditorModel;
 }
 
-namespace Routers {
+namespace Controllers {
 
-class QML_EDITOR_EXPORT EditorRouter : public QObject {
+class QML_EDITOR_EXPORT EditorController : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(EditorRouter)
+  Q_DISABLE_COPY(EditorController)
 
 public:
-  explicit EditorRouter(QObject* parent = nullptr);
+  explicit EditorController(QObject* parent = nullptr);
 
   //Takes ownership of model
   void setModel(CleanEditor::Models::AbstractEditorModel* model);
@@ -37,5 +37,5 @@ private:
   QMetaObject::Connection text_changed_connection_;
 };
 
-} // namespace Routers
+} // namespace Controllers
 } // namespace CleanEditor

@@ -5,13 +5,13 @@
 using namespace CleanEditor::Models;
 
 namespace CleanEditor {
-namespace Routers {
+namespace Controllers {
 
-EditorRouter::EditorRouter(QObject* parent)
+EditorController::EditorController(QObject* parent)
   : QObject{parent}
 {}
 
-void EditorRouter::setModel(AbstractEditorModel* model) {
+void EditorController::setModel(AbstractEditorModel* model) {
   disconnect(text_changed_connection_);
 
   model_ = model;
@@ -20,17 +20,17 @@ void EditorRouter::setModel(AbstractEditorModel* model) {
   }
   model_->setParent(this);
 
-  text_changed_connection_ = connect(model, &AbstractEditorModel::textChanged, this, &EditorRouter::textChanged);
+  text_changed_connection_ = connect(model, &AbstractEditorModel::textChanged, this, &EditorController::textChanged);
 }
 
-QString EditorRouter::text() const {
+QString EditorController::text() const {
   if (!model_) {
     return "";
   }
 
   return model_->text();
 }
-void EditorRouter::setText(const QString& text) {
+void EditorController::setText(const QString& text) {
   if (!model_) {
     return;
   }
@@ -38,7 +38,7 @@ void EditorRouter::setText(const QString& text) {
   model_->setText(text);
 }
 
-int EditorRouter::id() const {
+int EditorController::id() const {
   if (!model_) {
     return 0;
   }
@@ -46,7 +46,7 @@ int EditorRouter::id() const {
   return model_->id();
 }
 
-void EditorRouter::setId(int id) {
+void EditorController::setId(int id) {
   if (!model_) {
     return;
   }
@@ -54,5 +54,5 @@ void EditorRouter::setId(int id) {
   model_->setId(id);
 }
 
-} // namespace Routers
+} // namespace Controllers
 } // namespace CleanEditor

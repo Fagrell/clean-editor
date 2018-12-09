@@ -11,36 +11,36 @@ namespace Models {
   class DocumentsModel;
 }
 
-namespace Routers {
+namespace Controllers {
 
-class MenuRouter;
-class EditorRouter;
-class FileNavigationRouter;
+class MenuController;
+class EditorController;
+class FileNavigationController;
 
-class QML_EDITOR_EXPORT MainRouter : public QObject {
+class QML_EDITOR_EXPORT MainController : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(MainRouter)
+  Q_DISABLE_COPY(MainController)
 
-  Q_PROPERTY(CleanEditor::Routers::MenuRouter* menuRouter READ menuRouter CONSTANT)
-  Q_PROPERTY(CleanEditor::Routers::EditorRouter* editorRouter READ editorRouter CONSTANT)
-  Q_PROPERTY(CleanEditor::Routers::FileNavigationRouter* fileNavigationRouter READ fileNavigationRouter CONSTANT)
+  Q_PROPERTY(CleanEditor::Controllers::MenuController* menuController READ menuController CONSTANT)
+  Q_PROPERTY(CleanEditor::Controllers::EditorController* editorController READ editorController CONSTANT)
+  Q_PROPERTY(CleanEditor::Controllers::FileNavigationController* fileNavigationController READ fileNavigationController CONSTANT)
 
 public:
-  explicit MainRouter(QObject* parent = nullptr);
+  explicit MainController(QObject* parent = nullptr);
 
   //Takes ownership of model
   void setDocumentsModel(CleanEditor::Models::DocumentsModel* documents_model);
 
-  MenuRouter* menuRouter() const;
-  EditorRouter* editorRouter() const;
-  FileNavigationRouter* fileNavigationRouter() const;
+  MenuController* menuController() const;
+  EditorController* editorController() const;
+  FileNavigationController* fileNavigationController() const;
 
 private:
   void storeTextToCurrentFile();
 
-  MenuRouter* menu_router_{nullptr};
-  EditorRouter* editor_router_{nullptr};
-  FileNavigationRouter* file_navigation_router_{nullptr};
+  MenuController* menu_controller_{nullptr};
+  EditorController* editor_controller_{nullptr};
+  FileNavigationController* file_navigation_controller_{nullptr};
   QPointer<CleanEditor::Models::DocumentsModel> documents_model_;
   QMetaObject::Connection document_created_connection_;
 
@@ -54,5 +54,5 @@ private Q_SLOTS:
   void handleOpenFileClicked(const QUrl& url);
 };
 
-} // namespace Routers
+} // namespace Controllers
 } // namespace CleanEditor

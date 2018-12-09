@@ -1,11 +1,11 @@
 #include "file-navigation-router.h"
 
 namespace CleanEditor {
-namespace Routers {
+namespace Controllers {
 
-FileNavigationRouter::FileNavigationRouter(QObject* parent)
+FileNavigationController::FileNavigationController(QObject* parent)
   : QObject{parent}
 {}
 
-} // namespace Routers
+} // namespace Controllers
 } // namespace CleanEditor

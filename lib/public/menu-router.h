@@ -14,14 +14,14 @@ namespace Logic {
   class DocumentHandler;
 }
 
-namespace Routers {
+namespace Controllers {
 
-class QML_EDITOR_EXPORT MenuRouter : public QObject {
+class QML_EDITOR_EXPORT MenuController : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(MenuRouter)
+  Q_DISABLE_COPY(MenuController)
 
 public:
-  explicit MenuRouter(QObject* parent = nullptr);
+  explicit MenuController(QObject* parent = nullptr);
 
   //Takes ownership of model
   void setModel(CleanEditor::Models::MenuModel* model);
@@ -39,5 +39,5 @@ private:
 
 };
 
-} // namespace Routers
+} // namespace Controllers
 } // namespace CleanEditor

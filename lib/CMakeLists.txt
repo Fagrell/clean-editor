@@ -9,7 +9,7 @@ find_package(Qt5 COMPONENTS Core Gui REQUIRED)
 ###########################
 # Targets
 add_library(${PROJECT_NAME} SHARED
-  #  Routers
+  #  Controllers
   src/main-router.cpp
   src/file-navigation-router.cpp
   src/editor-router.cpp
@@ -22,7 +22,7 @@ add_library(${PROJECT_NAME} SHARED
   src/abstract-editor-model.cpp
   src/menu-model.cpp
 
-  #  Routers
+  #  Controllers
   public/main-router.h
   public/file-navigation-router.h
   public/editor-router.h

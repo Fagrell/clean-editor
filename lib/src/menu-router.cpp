@@ -2,13 +2,13 @@
 #include "menu-model.h"
 
 namespace CleanEditor {
-namespace Routers {
+namespace Controllers {
 
-MenuRouter::MenuRouter(QObject* parent)
+MenuController::MenuController(QObject* parent)
   : QObject{parent}
 {}
 
-void MenuRouter::setModel(CleanEditor::Models::MenuModel* model) {
+void MenuController::setModel(CleanEditor::Models::MenuModel* model) {
   model_ = model;
   if (!model_) {
     return;
@@ -16,12 +16,12 @@ void MenuRouter::setModel(CleanEditor::Models::MenuModel* model) {
   model_->setParent(this);
 }
 
-void MenuRouter::setDocument(CleanEditor::Logic::DocumentHandler* document_handler) {
+void MenuController::setDocument(CleanEditor::Logic::DocumentHandler* document_handler) {
   if (!model_) {
     return;
   }
 
   model_->setDocument(document_handler);
 }
-} // namespace Routers
+} // namespace Controllers
 } // namespace CleanEditor

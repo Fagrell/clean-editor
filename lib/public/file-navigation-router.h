@@ -7,18 +7,18 @@
 #include "globals.h"
 
 namespace CleanEditor {
-namespace Routers {
+namespace Controllers {
 
-class QML_EDITOR_EXPORT FileNavigationRouter : public QObject {
+class QML_EDITOR_EXPORT FileNavigationController : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(FileNavigationRouter)
+  Q_DISABLE_COPY(FileNavigationController)
 
 public:
-  explicit FileNavigationRouter(QObject* parent = nullptr);
+  explicit FileNavigationController(QObject* parent = nullptr);
 
 Q_SIGNALS:
   void fileOpenedClicked(int id);
 };
 
-} // namespace Routers
+} // namespace Controllers
 } // namespace CleanEditor
