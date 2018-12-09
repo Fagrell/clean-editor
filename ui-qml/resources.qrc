@@ -4,7 +4,6 @@
     </qresource>
     <qresource prefix="/views">
         <file alias="MainView.qml">views/MainView.qml</file>
-        <file alias="SplashView.qml">views/SplashView.qml</file>
     </qresource>
     <qresource prefix="/components">
         <file alias="EditorComponent.qml">components/EditorComponent.qml</file>
