@@ -17,6 +17,7 @@ class DocumentsModelTests : public QObject {
 private slots:
   void initTestCase();
   void newFile_empty_newEmptyFileHasBeenCreated();
+  void saveAs_newFile_openFileWithNewContent();
 
 private:
   QTemporaryFile tmp_file_;
