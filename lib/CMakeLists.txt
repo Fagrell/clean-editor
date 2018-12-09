@@ -10,10 +10,10 @@ find_package(Qt5 COMPONENTS Core Gui REQUIRED)
 # Targets
 add_library(${PROJECT_NAME} SHARED
   #  Controllers
-  src/main-router.cpp
-  src/file-navigation-router.cpp
-  src/editor-router.cpp
-  src/menu-router.cpp
+  src/main-controller.cpp
+  src/file-navigation-controller.cpp
+  src/editor-controller.cpp
+  src/menu-controller.cpp
 
   src/file-handler.cpp
   src/document-handler.cpp
@@ -23,10 +23,10 @@ add_library(${PROJECT_NAME} SHARED
   src/menu-model.cpp
 
   #  Controllers
-  public/main-router.h
-  public/file-navigation-router.h
-  public/editor-router.h
-  public/menu-router.h
+  public/main-controller.h
+  public/file-navigation-controller.h
+  public/editor-controller.h
+  public/menu-controller.h
 
   public/globals.h
   public/file-handler.h

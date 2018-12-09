@@ -1,8 +1,8 @@
-#include "main-router.h"
+#include "main-controller.h"
 
-#include "menu-router.h"
-#include "editor-router.h"
-#include "file-navigation-router.h"
+#include "menu-controller.h"
+#include "editor-controller.h"
+#include "file-navigation-controller.h"
 
 #include "documents-model.h"
 

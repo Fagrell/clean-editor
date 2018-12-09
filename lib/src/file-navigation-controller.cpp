@@ -1,4 +1,4 @@
-#include "file-navigation-router.h"
+#include "file-navigation-controller.h"
 
 namespace CleanEditor {
 namespace Controllers {
