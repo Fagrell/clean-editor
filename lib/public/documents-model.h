@@ -48,6 +48,9 @@ public:
   QUrl fileUrl(int id) const;
   bool isFileNew(int id) const;
 
+  bool needsUpdating(int id) const;
+  bool needsSaving(int id) const;
+
   QString fileContent(int id) const;
   void setFileContent(int id, const QString& text);
 

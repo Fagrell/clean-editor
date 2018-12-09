@@ -89,6 +89,14 @@ bool DocumentsModel::isFileNew(int id) const {
   return getData(id, FileIsNewRole, false);
 }
 
+bool DocumentsModel::needsUpdating(int id) const {
+  return getData(id, FileNeedsUpdatingRole, false);
+}
+
+bool DocumentsModel::needsSaving(int id) const {
+  return getData(id, FileNeedsSavingRole, false);
+}
+
 QString DocumentsModel::fileContent(int id) const {
   return getData(id, FileContentRole, QString{""});
 }
