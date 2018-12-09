@@ -18,6 +18,9 @@ add_executable(${PROJECT_NAME}
   src/document-handler-tests.h
   src/document-handler-tests.cpp
 
+  src/documents-model-tests.h
+  src/documents-model-tests.cpp
+
 # Necessary test runner classes
   src/test-runner.h
   src/test-runner.cpp
