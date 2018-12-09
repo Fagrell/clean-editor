@@ -8,8 +8,6 @@ import "../components"
 ApplicationWindow {
     id: root
 
-    property DocumentHandler currentDocument
-
     visible: true
     width: 640
     height: 480
@@ -20,23 +18,14 @@ ApplicationWindow {
         width: parent.width
     }
 
-    function setCurrentDocument(document) {
-        root.currentDocument = null
-        menu.title = document.fileName
-        editor.text = document.textContent
-        root.currentDocument = document
-    }
-
     FileNavigationComponent {
         id: fileNavigation
-
         anchors {
             top: parent.top
             left: parent.left
             bottom: parent.bottom
         }
         width: 200
-        onFileSelected: root.setCurrentDocument(document)
     }
 
     EditorComponent {
@@ -46,12 +35,6 @@ ApplicationWindow {
             bottom: parent.bottom
             right: parent.right
             left: fileNavigation.right
-        }
-
-        onContentChanged: {
-            if (root.currentDocument) {
-                root.currentDocument.textContent = editor.text
-            }
         }
     }
 }

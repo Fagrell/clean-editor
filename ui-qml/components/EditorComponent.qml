@@ -7,8 +7,6 @@ Item {
     id: root
     property alias text: textArea.text
 
-    signal contentChanged()
-
     Rectangle {
         id: lineNumberPanel
         width: 50
@@ -30,12 +28,13 @@ Item {
             selectedTextColor: Style.lineNumberSelectedTextColor
             currentTextColor: Style.lineNumberCurrentTextColor
             textColor: Style.lineNumberTextColor
+            font: Style.editorFont
 
             document: textArea.textDocument
             cursorPosition: textArea.cursorPosition
             selectionStart: textArea.selectionStart
             selectionEnd: textArea.selectionEnd
-            lineHeight: 14
+            lineHeight: 19
             offsetY: textEditor.contentY
         }
     }
@@ -63,11 +62,13 @@ Item {
             selectByMouse: true
             onLinkActivated: Qt.openUrlExternally(link)
             selectionColor: Style.edtitorSelectionColor
-            onTextChanged: root.contentChanged()
+
+            Component.onCompleted: {
+                editorModel.document = textArea.textDocument
+            }
         }
 
         ScrollBar.vertical: ScrollBar {}
         ScrollBar.horizontal: ScrollBar {}
     }
-
 }

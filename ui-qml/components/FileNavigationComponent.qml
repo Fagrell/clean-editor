@@ -6,7 +6,6 @@ import "../styles"
 
 Item {
     id: root
-    signal fileSelected(DocumentHandler document)
 
     Rectangle {
         id: openedFilesBar
@@ -28,9 +27,9 @@ Item {
                     id: button
                     checkable: true
                     anchors.fill: parent
-                    text: document.fileName + (document.contentUpdated ? "*" : "")
+                    text: filename + (fileNeedsSaving ? "*" : "")
                     ButtonGroup.group: openedFileButtonGroup
-                    onClicked: root.fileSelected(document)
+                    onClicked: mainController.fileNavigationController.fileOpenedClicked(fileId)
                     background: Rectangle {
                        color: {
                            if (button.checked) {
@@ -54,12 +53,17 @@ Item {
             }
         }
 
-        ListView {
+        ScrollView {
+            id: scrollView
             anchors.fill: parent
-            model: documentsModel
-            delegate: openedFilesDelegate
-            focus: true
+
+            ListView {
+                id: listView
+                anchors.fill: parent
+                model: documentsModel
+                delegate: openedFilesDelegate
+                focus: true
+            }
         }
     }
-
 }

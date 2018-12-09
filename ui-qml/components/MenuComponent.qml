@@ -31,7 +31,7 @@ ToolBar {
         }
         Text {
             id: menuTitle
-            text: "Title"
+            text: menuModel.title
             horizontalAlignment: Qt.AlignHCenter
             verticalAlignment: Qt.AlignVCenter
             Layout.fillWidth: true
@@ -46,7 +46,7 @@ ToolBar {
         selectedNameFilter.index: 1
         nameFilters: ["*"]
         folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
-        onAccepted: documentsModel.openFile(file)
+        onAccepted: mainController.menuController.openFileClicked(file)
     }
 
     FileDialog {
@@ -54,6 +54,30 @@ ToolBar {
         fileMode: FileDialog.SaveFile
         nameFilters: openDialog.nameFilters
         folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
+        onAccepted: mainController.menuController.saveAsFileClicked(file);
     }
 
+    Shortcut {
+        id: openShortcut
+        sequence: StandardKey.Open
+        onActivated: openDialog.open()
+    }
+
+    Shortcut {
+        id: saveAsShortcut
+        sequence: StandardKey.SaveAs
+        onActivated: saveDialog.open()
+    }
+
+    Shortcut {
+        id: saveShortcut
+        sequence: StandardKey.Save
+        onActivated: menuModel.isNewFile ? saveDialog.open() : mainController.menuController.saveFileClicked();
+    }
+
+    Shortcut {
+        id: newShortcut
+        sequence: StandardKey.New
+        onActivated: mainController.menuController.newFileClicked();
+    }
 }
