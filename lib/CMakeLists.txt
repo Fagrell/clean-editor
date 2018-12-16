@@ -21,6 +21,7 @@ add_library(${PROJECT_NAME} SHARED
   src/editor-model.cpp
   src/abstract-editor-model.cpp
   src/menu-model.cpp
+  src/file-navigation-model.cpp
 
   #  Controllers
   public/main-controller.h
@@ -35,6 +36,7 @@ add_library(${PROJECT_NAME} SHARED
   public/editor-model.h
   public/abstract-editor-model.h
   public/menu-model.h
+  public/file-navigation-model.h
 )
 
 target_include_directories(${PROJECT_NAME}

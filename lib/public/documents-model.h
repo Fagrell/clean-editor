@@ -59,6 +59,8 @@ public:
 
   void setNeedsUpdating(int id);
 
+  QModelIndex indexForId(int id) const;
+
 public Q_SLOTS:
   void newFile();
   void openFile(const QUrl& file_url);
@@ -70,7 +72,6 @@ Q_SIGNALS:
 private:
   std::vector<std::unique_ptr<CleanEditor::Logic::DocumentHandler>> data_;
 
-  QModelIndex indexForId(int id) const;
   void appendNewDocument(std::unique_ptr<CleanEditor::Logic::DocumentHandler> document);
 
   template <class T>

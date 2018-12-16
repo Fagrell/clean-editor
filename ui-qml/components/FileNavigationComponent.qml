@@ -25,6 +25,7 @@ Item {
 
                 Button {
                     id: button
+                    checked: (index === listView.currentIndex) ? true : false
                     checkable: true
                     anchors.fill: parent
                     text: filename + (fileNeedsSaving ? "*" : "")
@@ -63,6 +64,8 @@ Item {
                 model: documentsModel
                 delegate: openedFilesDelegate
                 focus: true
+                highlightFollowsCurrentItem: true
+                currentIndex: fileNavigationModel.selectedIndex
             }
         }
     }

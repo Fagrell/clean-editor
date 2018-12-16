@@ -13,6 +13,7 @@
 #include "documents-model.h"
 #include "qml-editor-model.h"
 #include "menu-model.h"
+#include "file-navigation-model.h"
 #include "line-numbers.h"
 
 using namespace CleanEditor::Controllers;
@@ -54,6 +55,9 @@ int main(int argc, char *argv[])
   auto menu_model = new MenuModel;
   main_controller.menuController()->setModel(menu_model);
 
+  auto file_navigation_model = new FileNavigationModel;
+  main_controller.fileNavigationController()->setModel(file_navigation_model);
+
   main_controller.menuController()->newFileClicked(); //Create a new file to start with!
 
   QQmlApplicationEngine engine;
@@ -61,6 +65,7 @@ int main(int argc, char *argv[])
   engine.rootContext()->setContextProperty("documentsModel", documents_model);
   engine.rootContext()->setContextProperty("editorModel", editor_model);
   engine.rootContext()->setContextProperty("menuModel", menu_model);
+  engine.rootContext()->setContextProperty("fileNavigationModel", file_navigation_model);
   engine.load(QUrl(QStringLiteral("qrc:/views/MainView.qml")));
 
   if (engine.rootObjects().isEmpty()) {

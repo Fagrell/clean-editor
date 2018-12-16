@@ -66,6 +66,7 @@ void MainController::openDocument(int id) {
   editor_controller_->setId(id);
 
   menu_controller_->setDocument(documents_model_->document(id));
+  file_navigation_controller_->setSelectedIndex(documents_model_->indexForId(id).row());
 }
 
 void MainController::handleSaveFileClicked() {

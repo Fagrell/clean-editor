@@ -1,12 +1,14 @@
 #pragma once
 
 #include <QObject>
-#include <QScopedPointer>
-#include <QString>
+#include <QPointer>
 
 #include "globals.h"
 
 namespace CleanEditor {
+namespace Models {
+  class FileNavigationModel;
+}
 namespace Controllers {
 
 class QML_EDITOR_EXPORT FileNavigationController : public QObject {
@@ -16,8 +18,18 @@ class QML_EDITOR_EXPORT FileNavigationController : public QObject {
 public:
   explicit FileNavigationController(QObject* parent = nullptr);
 
+  //Takes ownership of model
+  void setModel(CleanEditor::Models::FileNavigationModel* model);
+
+  int selectedIndex() const;
+  void setSelectedIndex(int index);
+
 Q_SIGNALS:
   void fileOpenedClicked(int id);
+
+private:
+  QPointer<CleanEditor::Models::FileNavigationModel> model_;
+
 };
 
 } // namespace Controllers
