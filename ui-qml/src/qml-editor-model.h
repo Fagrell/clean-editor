@@ -6,6 +6,13 @@ class QQuickTextDocument;
 namespace CleanEditor {
 namespace Models {
 
+/*!
+ * \brief The QmlEditorModel class is used to expose the EditorModel to an
+ *        Qml-component that's using a QQuickTextDocument internally.
+ *        See EditorModel for more information.
+ *
+ * \sa EditorModel
+ */
 class QmlEditorModel : public EditorModel {
   Q_OBJECT
   Q_DISABLE_COPY(QmlEditorModel)
