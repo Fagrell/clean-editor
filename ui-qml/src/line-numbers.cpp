@@ -3,6 +3,7 @@
 #include <QPainter>
 #include <QQuickTextDocument>
 #include <QTextBlock>
+#include <QRegularExpression>
 
 #include <algorithm>
 #include <cmath>
@@ -147,8 +148,7 @@ int LineNumbers::positionToLine(int position) const {
   }
 
   auto text_document = document_->textDocument();
-  QTextBlock block = text_document->findBlock(position);
-  return block.firstLineNumber() + 1;
+  return countLines(text_document->toPlainText().leftRef(position));
 }
 
 void LineNumbers::paint(QPainter* painter) {
@@ -196,7 +196,7 @@ int LineNumbers::lineCount() const {
   }
 
   auto text_document = document_->textDocument();
-  return text_document->lineCount();
+  return countLines(text_document->toPlainText());
 }
 
 bool LineNumbers::isLineSelected(int line) const {
@@ -224,6 +224,16 @@ void LineNumbers::drawLineNumber(QPainter& painter, qreal y_position, const QCol
 bool LineNumbers::almostEqual(qreal a, qreal b) {
   return std::nextafter(a, std::numeric_limits<double>::lowest()) <= b
     && std::nextafter(a, std::numeric_limits<double>::max()) >= b;
+}
+
+int LineNumbers::countLines(QStringView text) {
+  int lines = 1;
+  for(const auto& symbol : text) {
+    if (symbol == '\n' || symbol == '\r') {
+      lines++;
+    }
+  }
+  return lines;
 }
 
 } //namspace UI

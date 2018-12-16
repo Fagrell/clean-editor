@@ -4,6 +4,7 @@
 #include <QTextCursor>
 #include <QPointer>
 #include <QFont>
+#include <QStringView>
 
 class QQuickTextDocument;
 
@@ -98,6 +99,7 @@ private:
   void drawLineNumber(QPainter& painter, qreal y_position, const QColor& text_color, int line_number);
 
   static bool almostEqual(qreal a, qreal b);
+  static int countLines(QStringView text);
 };
 
 } //namspace UI
