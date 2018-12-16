@@ -12,14 +12,6 @@ ToolButton {
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         color: Style.menuIconColor
-
-        layer.enabled: true
-        layer.effect: DropShadow {
-            verticalOffset: 0
-            color: "black"
-            radius: 2
-            samples: 2
-        }
     }
 }
 

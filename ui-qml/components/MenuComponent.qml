@@ -16,16 +16,22 @@ ToolBar {
     RowLayout {
         id: fileRow
         anchors.fill: parent
+        MenuToolButton {
+            id: newButton
+            text: "\uE800" // icon-doc-text-inv-1
+            focusPolicy: Qt.TabFocus
+            onClicked: mainController.menuController.newFileClicked();
+        }
 
         MenuToolButton {
             id: openButton
-            text: "\uF115" // icon-folder-open-empty
+            text: "\uE802" // icon-folder
             focusPolicy: Qt.TabFocus
             onClicked: openDialog.open()
         }
         MenuToolButton {
             id: saveButton
-            text: "\uE800" // icon-floppy
+            text: "\uE801" // icon-floppy
             focusPolicy: Qt.TabFocus
             onClicked: saveDialog.open()
         }

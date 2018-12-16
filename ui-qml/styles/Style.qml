@@ -21,7 +21,7 @@ QtObject {
 
     //Menu properties
     property int menuIconSize: 14
-    property color menuIconColor: "white"
+    property alias menuIconColor: style.mainBlueColor
     property alias menuTitleColor: style.mainBlueColor
     property font menuTitleFont: Qt.font({bold: true, pointSize: 16})
 
