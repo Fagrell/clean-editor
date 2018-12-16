@@ -34,7 +34,6 @@ Item {
             cursorPosition: textArea.cursorPosition
             selectionStart: textArea.selectionStart
             selectionEnd: textArea.selectionEnd
-            lineHeight: 19
             offsetY: textEditor.contentY
         }
     }

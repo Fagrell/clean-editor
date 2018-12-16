@@ -39,7 +39,6 @@ class LineNumbers : public QQuickPaintedItem {
 
   Q_PROPERTY(QQuickTextDocument* document READ document WRITE setDocument)
   Q_PROPERTY(int offsetY MEMBER offset_y_ WRITE setOffsetY)
-  Q_PROPERTY(qreal lineHeight MEMBER line_height_ WRITE setLineHeight)
   Q_PROPERTY(int cursorPosition MEMBER cursor_position_ WRITE setCursorPosition)
   Q_PROPERTY(int selectionStart MEMBER selection_start_ WRITE setSelectionStart)
   Q_PROPERTY(int selectionEnd MEMBER selection_end_ WRITE setSelectionEnd)
@@ -50,6 +49,7 @@ public:
   QQuickTextDocument* document() const;
 
 public Q_SLOTS:
+  //! Set the font (and internally also sets the line height)
   void setFont(const QFont& font);
   void setSelectedBackgroundColor(const QColor& color);
   void setCurrentBackgroundColor(const QColor& color);
@@ -59,7 +59,6 @@ public Q_SLOTS:
 
   void setDocument(QQuickTextDocument* document);
   void setOffsetY(int offset_y);
-  void setLineHeight(qreal line_height);
   void setCursorPosition(int cursor_position);
   void setSelectionStart(int selection_start);
   void setSelectionEnd(int selection_end);
@@ -98,7 +97,6 @@ private:
   void drawLineBackground(QPainter& painter, qreal y_position, const QColor& background_color);
   void drawLineNumber(QPainter& painter, qreal y_position, const QColor& text_color, int line_number);
 
-  static bool almostEqual(qreal a, qreal b);
   static int countLines(QStringView text);
 };
 

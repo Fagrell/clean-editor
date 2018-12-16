@@ -4,6 +4,7 @@
 #include <QQuickTextDocument>
 #include <QTextBlock>
 #include <QRegularExpression>
+#include <QFontMetrics>
 
 #include <algorithm>
 #include <cmath>
@@ -29,6 +30,7 @@ void LineNumbers::setFont(const QFont& font) {
   }
 
   font_ = font;
+  line_height_ = QFontMetrics{font}.height();
   update();
 }
 
@@ -100,15 +102,6 @@ void LineNumbers::setOffsetY(int offset_y) {
   }
 
   offset_y_ = offset_y;
-  update();
-}
-
-void LineNumbers::setLineHeight(qreal line_height) {
-  if (almostEqual(line_height_, line_height)) {
-    return;
-  }
-
-  line_height_ = line_height;
   update();
 }
 
@@ -219,11 +212,6 @@ void LineNumbers::drawLineNumber(QPainter& painter, qreal y_position, const QCol
   painter.setPen(QPen{text_color});
   QRectF text_bounding_rectangle{0, y_position, width() - kLineNumberXOffset, line_height_};
   painter.drawText(text_bounding_rectangle, Qt::AlignRight, QString::number(line_number));
-}
-
-bool LineNumbers::almostEqual(qreal a, qreal b) {
-  return std::nextafter(a, std::numeric_limits<double>::lowest()) <= b
-    && std::nextafter(a, std::numeric_limits<double>::max()) >= b;
 }
 
 int LineNumbers::countLines(QStringView text) {
