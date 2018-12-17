@@ -10,6 +10,15 @@ class QTextDocument;
 namespace CleanEditor {
 namespace Models {
 
+/*!
+ * \brief The AbstractEditorModel class defines an abstract class that wraps around
+ *        data and functionality and is used in a text editor.
+ *
+ *        text() and setText() needs to be overridden. When the text has been replaced (i.e. when
+ *        setText is called), textReplaced needs to be emitted.
+ *
+ *        id_ (id() and setId) is used to identify the currently opened document that's being edited.
+ */
 class QML_EDITOR_EXPORT AbstractEditorModel : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(AbstractEditorModel)

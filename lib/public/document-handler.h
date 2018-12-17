@@ -15,6 +15,22 @@ namespace Logic {
 
 class FileHandler;
 
+/*!
+ * \brief The DocumentHandler class handles a document that has been opened or is newly created.
+ *
+ *        A newly created DocumentHandler is automatically considered a new file until load() or
+ *        saveAs() is called. An id is generated automatically.
+ *
+ *        The document can be flagged as 'needsUpdating' which needs to be set in order to update
+ *        the content using setContent().
+ *
+ *        needsSaving is automatically set when the content has been updated but not saved.
+ *
+ *        filename and fileType are parsed from the fileUrl.
+ *
+ * \sa FileHandler
+ *
+ */
 class QML_EDITOR_EXPORT DocumentHandler : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(DocumentHandler)

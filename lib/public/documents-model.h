@@ -18,6 +18,19 @@ namespace Logic {
 
 namespace Models {
 
+/*!
+ * \brief The DocumentsModel class is a Qt List Model and can be shown using a Qt View.
+ *        The class wraps around a list of DocumentHandlers (Documents).
+ *
+ *        A new document is created by calling newFile() or openFile(), which will then signal
+ *        documentCreated(), including a document ID.
+ *
+ *        The ID is used to GET specific data from the document using one of the getters.
+ *        Or, likewise, the ID can be used to SET specific data for the document using one
+ *        of the setters.
+ *
+ * \sa DocumentHandler
+ */
 class QML_EDITOR_EXPORT DocumentsModel : public QAbstractListModel {
   Q_OBJECT
   Q_DISABLE_COPY(DocumentsModel)
