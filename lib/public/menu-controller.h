@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QObject>
-#include <QString>
 #include <QPointer>
 
 #include "globals.h"

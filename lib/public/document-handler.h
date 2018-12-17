@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QUrl>
 #include <QPointer>
+#include <QString>
 
 #include "globals.h"
 

@@ -2,6 +2,7 @@
 
 #include <QObject>
 #include <QUrl>
+#include <QString>
 
 #include "globals.h"
 
