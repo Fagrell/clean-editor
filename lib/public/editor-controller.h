@@ -13,6 +13,12 @@ namespace Models {
 
 namespace Controllers {
 
+/*!
+ * \brief The EditorController class is the router that passes data onto the model.
+ *        The class also recieves user input directly from a corresponding view (using the signals).
+ *
+ * \sa AbstractEditorModel
+ */
 class QML_EDITOR_EXPORT EditorController : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(EditorController)
