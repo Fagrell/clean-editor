@@ -9,42 +9,58 @@ find_package(Qt5 COMPONENTS Core Gui REQUIRED)
 ###########################
 # Targets
 add_library(${PROJECT_NAME} SHARED
-  #  Controllers
-  src/main-controller.cpp
-  src/file-navigation-controller.cpp
-  src/editor-controller.cpp
-  src/menu-controller.cpp
+  # Src
+  ## Controllers
+  src/controllers/main-controller.cpp
+  src/controllers/file-navigation-controller.cpp
+  src/controllers/editor-controller.cpp
+  src/controllers/menu-controller.cpp
+
+  ## Models
+  src/models/documents-model.cpp
+  src/models/editor-model.cpp
+  src/models/abstract-editor-model.cpp
+  src/models/menu-model.cpp
+  src/models/file-navigation-model.cpp
 
   src/file-handler.cpp
   src/document-handler.cpp
-  src/documents-model.cpp
-  src/editor-model.cpp
-  src/abstract-editor-model.cpp
-  src/menu-model.cpp
-  src/file-navigation-model.cpp
 
-  #  Controllers
-  public/main-controller.h
-  public/file-navigation-controller.h
-  public/editor-controller.h
-  public/menu-controller.h
+  # Public
+  ## Controllers
+  public/controllers/main-controller.h
+  public/controllers/file-navigation-controller.h
+  public/controllers/editor-controller.h
+  public/controllers/menu-controller.h
+
+  ## Models
+  public/models/documents-model.h
+  public/models/editor-model.h
+  public/models/abstract-editor-model.h
+  public/models/menu-model.h
+  public/models/file-navigation-model.h
 
   public/globals.h
   public/file-handler.h
   public/document-handler.h
-  public/documents-model.h
-  public/editor-model.h
-  public/abstract-editor-model.h
-  public/menu-model.h
-  public/file-navigation-model.h
 )
 
 target_include_directories(${PROJECT_NAME}
   PUBLIC
-    $<INSTALL_INTERFACE:public>
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/public>
+    $<INSTALL_INTERFACE:
+      public
+      public/controllers
+      public/models
+     >
+    $<BUILD_INTERFACE:
+      ${CMAKE_CURRENT_SOURCE_DIR}/public
+      ${CMAKE_CURRENT_SOURCE_DIR}/public/controllers
+      ${CMAKE_CURRENT_SOURCE_DIR}/public/models
+     >
   PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/controllers
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/models
 )
 
 target_compile_definitions(${PROJECT_NAME}
