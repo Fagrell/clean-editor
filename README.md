@@ -1,6 +1,7 @@
-# Clean Editor - Sample code editor using Qt Qml/Quick and Widgets
+# Clean Editor
 
 <center>
+  <h3><i>A simple code editor using Qt Qml/Quick and Widgets front-ends</i></h3>
   <img src="screencapture.png?raw=true" width="600">
 </center>
 
