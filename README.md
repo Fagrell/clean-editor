@@ -30,11 +30,10 @@ mkdir build
 cd build
 ```
 
-2. Generate the desired project by using `cmake`. Specify the generator with the `-G` option. See `cmake --help` for more information.
+2. Generate the desired project by using `cmake`. Specify the generator with the `-G` option. See `cmake --help` for more information. Example using default generator and debug build:
 
 ```
-cmake -DCMAKE_BUILD_TYPE=Debug .. # For debug
-cmake -DCMAKE_BUILD_TYPE=Release .. # For release
+cmake -DCMAKE_PREFIX_PATH=/qt5/install/path -DCMAKE_BUILD_TYPE=Debug ..
 ```
 
 3. Build by running either of the following commands:
