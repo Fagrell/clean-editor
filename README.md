@@ -11,7 +11,7 @@ Sample project that demonstrates how to structure a Qt example with two front-en
 
 The project is a simple code editor, where it's possible to open and edit files.
 
-Further details of the project can be found on my blog www.cleanqt.io, where it's thoroughly covered in the [Crash Course for C++ developers series](https://www.cleanqt.io/blog/crash-course-in-qt-for-c%2B%2B-developers,-part-6).
+Further details of the project can be found on my blog www.cleanqt.io, where it's thoroughly covered in the [Crash Course for C++ developers series](https://www.cleanqt.io/blog/crash-course-in-qt-for-c%2B%2B-developers,-part-7).
 
 ## Building
 
