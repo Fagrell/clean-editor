@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QObject>
-#include <QPointer>
 #include <QString>
 
 #include "globals.h"
@@ -39,7 +38,7 @@ Q_SIGNALS:
   void textChanged();
 
 private:
-  QPointer<CleanEditor::Models::AbstractEditorModel> model_;
+  CleanEditor::Models::AbstractEditorModel* model_{nullptr};
   QMetaObject::Connection text_changed_connection_;
 };
 

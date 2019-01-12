@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QObject>
-#include <QPointer>
 #include <QString>
 
 #include "globals.h"
@@ -41,7 +40,7 @@ private:
   MenuController* menu_controller_{nullptr};
   EditorController* editor_controller_{nullptr};
   FileNavigationController* file_navigation_controller_{nullptr};
-  QPointer<CleanEditor::Models::DocumentsModel> documents_model_;
+  CleanEditor::Models::DocumentsModel* documents_model_{nullptr};
   QMetaObject::Connection document_created_connection_;
 
 private Q_SLOTS:

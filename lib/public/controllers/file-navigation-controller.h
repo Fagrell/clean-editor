@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QObject>
-#include <QPointer>
 
 #include "globals.h"
 
@@ -28,7 +27,7 @@ Q_SIGNALS:
   void fileOpenedClicked(int id);
 
 private:
-  QPointer<CleanEditor::Models::FileNavigationModel> model_;
+  CleanEditor::Models::FileNavigationModel* model_{nullptr};
 
 };
 

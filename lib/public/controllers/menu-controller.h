@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QObject>
-#include <QPointer>
 
 #include "globals.h"
 
@@ -34,7 +33,7 @@ Q_SIGNALS:
   void saveAsFileClicked(const QUrl& file_url);
 
 private:
-  QPointer<CleanEditor::Models::MenuModel> model_;
+  CleanEditor::Models::MenuModel* model_{nullptr};
 
 };
 
