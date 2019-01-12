@@ -31,7 +31,7 @@ class FileHandler;
  * \sa FileHandler
  *
  */
-class QML_EDITOR_EXPORT DocumentHandler : public QObject {
+class CLEAN_EDITOR_EXPORT DocumentHandler : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(DocumentHandler)
 

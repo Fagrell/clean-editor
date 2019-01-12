@@ -19,7 +19,7 @@ namespace Controllers {
  *
  * \sa AbstractEditorModel
  */
-class QML_EDITOR_EXPORT EditorController : public QObject {
+class CLEAN_EDITOR_EXPORT EditorController : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(EditorController)
 

@@ -7,7 +7,7 @@
 namespace CleanEditor {
 namespace Models {
 
-class QML_EDITOR_EXPORT FileNavigationModel : public QObject {
+class CLEAN_EDITOR_EXPORT FileNavigationModel : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(FileNavigationModel)
 

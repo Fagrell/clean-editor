@@ -31,7 +31,7 @@ namespace Models {
  *
  * \sa DocumentHandler
  */
-class QML_EDITOR_EXPORT DocumentsModel : public QAbstractListModel {
+class CLEAN_EDITOR_EXPORT DocumentsModel : public QAbstractListModel {
   Q_OBJECT
   Q_DISABLE_COPY(DocumentsModel)
 

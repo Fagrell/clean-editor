@@ -11,7 +11,7 @@ namespace Models {
 }
 namespace Controllers {
 
-class QML_EDITOR_EXPORT FileNavigationController : public QObject {
+class CLEAN_EDITOR_EXPORT FileNavigationController : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(FileNavigationController)
 

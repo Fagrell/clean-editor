@@ -9,7 +9,7 @@
 namespace CleanEditor {
 namespace Logic {
 
-class QML_EDITOR_EXPORT FileHandler : public QObject {
+class CLEAN_EDITOR_EXPORT FileHandler : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(FileHandler)
 

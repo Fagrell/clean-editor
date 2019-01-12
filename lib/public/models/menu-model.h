@@ -14,7 +14,7 @@ namespace Logic {
 }
 namespace Models {
 
-class QML_EDITOR_EXPORT MenuModel : public QObject {
+class CLEAN_EDITOR_EXPORT MenuModel : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(MenuModel)
 

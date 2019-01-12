@@ -9,7 +9,7 @@ class QTextDocument;
 
 namespace CleanEditor {
 namespace Models {
-class QML_EDITOR_EXPORT EditorModel : public AbstractEditorModel {
+class CLEAN_EDITOR_EXPORT EditorModel : public AbstractEditorModel {
   Q_OBJECT
   Q_DISABLE_COPY(EditorModel)
 

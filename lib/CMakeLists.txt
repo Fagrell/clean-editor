@@ -65,7 +65,7 @@ target_include_directories(${PROJECT_NAME}
 
 target_compile_definitions(${PROJECT_NAME}
   PRIVATE
-    QML_EDITOR_LIBRARY
+    CLEAN_EDITOR_LIBRARY
 )
 
 target_link_libraries(${PROJECT_NAME}

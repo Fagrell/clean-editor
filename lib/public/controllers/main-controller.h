@@ -17,7 +17,7 @@ class MenuController;
 class EditorController;
 class FileNavigationController;
 
-class QML_EDITOR_EXPORT MainController : public QObject {
+class CLEAN_EDITOR_EXPORT MainController : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(MainController)
 

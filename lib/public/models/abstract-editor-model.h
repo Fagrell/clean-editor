@@ -19,7 +19,7 @@ namespace Models {
  *
  *        id_ (id() and setId) is used to identify the currently opened document that's being edited.
  */
-class QML_EDITOR_EXPORT AbstractEditorModel : public QObject {
+class CLEAN_EDITOR_EXPORT AbstractEditorModel : public QObject {
   Q_OBJECT
   Q_DISABLE_COPY(AbstractEditorModel)
 
