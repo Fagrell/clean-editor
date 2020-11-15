@@ -25,7 +25,7 @@ class CLEAN_EDITOR_EXPORT MenuModel : public QObject
 public:
     explicit MenuModel(QObject *parent = nullptr);
 
-    void setDocument(CleanEditor::Logic::DocumentHandler *document_handler);
+    void setDocument(CleanEditor::Logic::DocumentHandler &document_handler);
 
     QString title() const;
     bool isNewFile() const;

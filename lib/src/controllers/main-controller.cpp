@@ -83,7 +83,7 @@ void MainController::openDocument(const int id)
     editor_controller_.setText(documents_model_->fileContent(id));
     editor_controller_.setId(id);
 
-    menu_controller_.setDocument(documents_model_->document(id));
+    menu_controller_.setDocument(*documents_model_->document(id));
     file_navigation_controller_.setSelectedIndex(documents_model_->indexForId(id).row());
 }
 

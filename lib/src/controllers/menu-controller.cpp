@@ -12,7 +12,7 @@ void MenuController::setModel(CleanEditor::Models::MenuModel &model)
     model_ = &model;
 }
 
-void MenuController::setDocument(CleanEditor::Logic::DocumentHandler *document_handler)
+void MenuController::setDocument(CleanEditor::Logic::DocumentHandler &document_handler)
 {
     if (!model_) {
         return;

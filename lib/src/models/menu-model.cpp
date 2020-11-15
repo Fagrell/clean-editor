@@ -9,9 +9,9 @@ MenuModel::MenuModel(QObject *parent)
     : QObject{parent}
 {}
 
-void MenuModel::setDocument(DocumentHandler *document_handler)
+void MenuModel::setDocument(DocumentHandler &document_handler)
 {
-    if (document_handler_ == document_handler) {
+    if (document_handler_ == &document_handler) {
         return;
     }
 
@@ -26,7 +26,7 @@ void MenuModel::setDocument(DocumentHandler *document_handler)
                    &MenuModel::isNewFileChanged);
     }
 
-    document_handler_ = document_handler;
+    document_handler_ = &document_handler;
     if (!document_handler_) {
         return;
     }

@@ -24,7 +24,7 @@ public:
 
     void setModel(CleanEditor::Models::MenuModel &model);
 
-    void setDocument(CleanEditor::Logic::DocumentHandler *document_handler);
+    void setDocument(CleanEditor::Logic::DocumentHandler &document_handler);
 
 Q_SIGNALS:
     void newFileClicked();
