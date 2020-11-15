@@ -74,7 +74,7 @@ void MainController::handleEditorTextChanged()
     documents_model_->setNeedsUpdating(current_file_id);
 }
 
-void MainController::openDocument(int id)
+void MainController::openDocument(const int id)
 {
     if (!documents_model_) {
         return;
@@ -120,7 +120,7 @@ void MainController::handleNewFileClicked()
     documents_model_->newFile();
 }
 
-void MainController::handleOpenedFileClicked(int id)
+void MainController::handleOpenedFileClicked(const int id)
 {
     if (!documents_model_) {
         return;

@@ -11,7 +11,7 @@ int FileNavigationModel::selectedIndex() const
     return selected_index_;
 }
 
-void FileNavigationModel::setSelectedIndex(int index)
+void FileNavigationModel::setSelectedIndex(const int index)
 {
     if (selected_index_ == index) {
         return;

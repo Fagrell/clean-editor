@@ -44,7 +44,7 @@ bool DocumentHandler::needsUpdating() const
     return needs_updating_;
 }
 
-void DocumentHandler::setNeedsUpdating(bool needs_updating)
+void DocumentHandler::setNeedsUpdating(const bool needs_updating)
 {
     if (needs_updating_ == needs_updating) {
         return;
@@ -106,7 +106,7 @@ void DocumentHandler::setTextContent(const QString &text)
     emit contentUpdated();
 }
 
-void DocumentHandler::setIsNewFile(bool is_new_file)
+void DocumentHandler::setIsNewFile(const bool is_new_file)
 {
     if (is_new_file_ == is_new_file) {
         return;

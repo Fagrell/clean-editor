@@ -100,7 +100,7 @@ void LineNumbers::setDocument(QQuickTextDocument *document)
     update();
 }
 
-void LineNumbers::setOffsetY(int offset_y)
+void LineNumbers::setOffsetY(const int offset_y)
 {
     if (offset_y_ == offset_y) {
         return;
@@ -110,7 +110,7 @@ void LineNumbers::setOffsetY(int offset_y)
     update();
 }
 
-void LineNumbers::setCursorPosition(int cursor_position)
+void LineNumbers::setCursorPosition(const int cursor_position)
 {
     if (cursor_position_ == cursor_position) {
         return;
@@ -121,7 +121,7 @@ void LineNumbers::setCursorPosition(int cursor_position)
     update();
 }
 
-void LineNumbers::setSelectionStart(int selection_start)
+void LineNumbers::setSelectionStart(const int selection_start)
 {
     if (selection_start_ == selection_start) {
         return;
@@ -132,7 +132,7 @@ void LineNumbers::setSelectionStart(int selection_start)
     update();
 }
 
-void LineNumbers::setSelectionEnd(int selection_end)
+void LineNumbers::setSelectionEnd(const int selection_end)
 {
     if (selection_end_ == selection_end) {
         return;
@@ -143,7 +143,7 @@ void LineNumbers::setSelectionEnd(int selection_end)
     update();
 }
 
-int LineNumbers::positionToLine(int position) const
+int LineNumbers::positionToLine(const int position) const
 {
     if (!document_) {
         return -1;
@@ -204,18 +204,18 @@ int LineNumbers::lineCount() const
     return countLines(text_document->toPlainText());
 }
 
-bool LineNumbers::isLineSelected(int line) const
+bool LineNumbers::isLineSelected(const int line) const
 {
     return (line >= line_selection_start_) && (line <= line_selection_end_);
 }
 
-bool LineNumbers::isCurrentLine(int line) const
+bool LineNumbers::isCurrentLine(const int line) const
 {
     return line == line_cursor_position_;
 }
 
 void LineNumbers::drawLineBackground(QPainter &painter,
-                                     qreal y_position,
+                                     const qreal y_position,
                                      const QColor &background_color)
 {
     QRectF background_rectangle(0, y_position, width(), line_height_);
@@ -225,9 +225,9 @@ void LineNumbers::drawLineBackground(QPainter &painter,
 }
 
 void LineNumbers::drawLineNumber(QPainter &painter,
-                                 qreal y_position,
+                                 const qreal y_position,
                                  const QColor &text_color,
-                                 int line_number)
+                                 const int line_number)
 {
     painter.setFont(font_);
     painter.setPen(QPen{text_color});

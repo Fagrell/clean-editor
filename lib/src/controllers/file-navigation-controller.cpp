@@ -21,7 +21,7 @@ int FileNavigationController::selectedIndex() const
     return model_->selectedIndex();
 }
 
-void FileNavigationController::setSelectedIndex(int index)
+void FileNavigationController::setSelectedIndex(const int index)
 {
     if (!model_) {
         return;

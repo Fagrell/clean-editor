@@ -89,9 +89,9 @@ private:
     void appendNewDocument(std::unique_ptr<CleanEditor::Logic::DocumentHandler> document);
 
     template<class T>
-    T getData(int id, DocumentsRoles role, const T &default_value) const
+    T getData(const int id, const DocumentsRoles role, const T &default_value) const
     {
-        QModelIndex index = indexForId(id);
+        const auto index = indexForId(id);
         if (!index.isValid()) {
             return default_value;
         }
@@ -100,7 +100,7 @@ private:
     }
 
     template<class TFunc, class... Values>
-    void setData(int id, TFunc function, Values &&... values)
+    void setData(const int id, const TFunc function, Values &&... values)
     {
         for (size_t i{0}; i < data_.size(); i++) {
             if (data_.at(i)->id() == id) {

@@ -46,7 +46,7 @@ int EditorController::id() const
     return model_->id();
 }
 
-void EditorController::setId(int id)
+void EditorController::setId(const int id)
 {
     if (!model_) {
         return;

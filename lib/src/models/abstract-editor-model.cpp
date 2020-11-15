@@ -11,7 +11,7 @@ int AbstractEditorModel::id() const
     return id_;
 }
 
-void AbstractEditorModel::setId(int id)
+void AbstractEditorModel::setId(const int id)
 {
     if (id_ == id) {
         return;

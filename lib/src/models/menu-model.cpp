@@ -47,7 +47,7 @@ void MenuModel::setDocument(DocumentHandler *document_handler)
 QString MenuModel::title() const
 {
     if (!document_handler_) {
-        return tr("");
+        return {};
     }
 
     return document_handler_->filename();

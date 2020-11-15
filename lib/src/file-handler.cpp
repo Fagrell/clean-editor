@@ -12,8 +12,8 @@ FileHandler::FileHandler(QObject *parent)
 
 QString FileHandler::fileName() const
 {
-    const QString file_path = localPathFromUrl(file_url_);
-    const QString file_name = QFileInfo(file_path).fileName();
+    const auto file_path = localPathFromUrl(file_url_);
+    const auto file_name = QFileInfo(file_path).fileName();
     if (file_name.isEmpty()) {
         return QStringLiteral("untitled");
     }
@@ -48,7 +48,7 @@ void FileHandler::load(const QUrl &file_url)
 
     file_url_ = file_url;
     emit fileUrlChanged();
-    const QString file_name = localPathFromUrl(file_url_);
+    const auto file_name = localPathFromUrl(file_url_);
     if (!QFile::exists(file_name)) {
         emit error(tr("File not found"));
         return;
@@ -64,7 +64,7 @@ void FileHandler::load(const QUrl &file_url)
 
 bool FileHandler::saveAs(const QUrl &file_url, const QString &data)
 {
-    const QString file_path = localPathFromUrl(file_url);
+    const auto file_path = localPathFromUrl(file_url);
 
     QFile file(file_path);
     if (!file.open(QFile::WriteOnly | QFile::Truncate | QFile::Text)) {
@@ -91,7 +91,7 @@ bool FileHandler::save(const QString &data)
 
 QString FileHandler::localPathFromUrl(const QUrl &file_url)
 {
-    QString path = file_url.toLocalFile();
+    const auto path = file_url.toLocalFile();
     if (!path.isEmpty()) {
         return path;
     }
