@@ -2,27 +2,27 @@
 
 #include <QQuickTextDocument>
 
-namespace CleanEditor {
-namespace Models {
+namespace CleanEditor::Models {
 
-QmlEditorModel::QmlEditorModel(QObject* parent) :
-  EditorModel{parent} {
+QmlEditorModel::QmlEditorModel(QObject *parent)
+    : EditorModel{parent}
+{}
+
+QQuickTextDocument *QmlEditorModel::document() const
+{
+    return document_;
 }
 
-QQuickTextDocument* QmlEditorModel::document() const {
-  return document_;
+void QmlEditorModel::setDocument(QQuickTextDocument *document)
+{
+    setTextDocument(nullptr);
+    document_ = document;
+
+    if (!document_) {
+        return;
+    }
+
+    setTextDocument(document_->textDocument());
 }
 
-void QmlEditorModel::setDocument(QQuickTextDocument* document) {
-  setTextDocument(nullptr);
-  document_ = document;
-
-  if (!document_) {
-    return;
-  }
-
-  setTextDocument(document_->textDocument());
-}
-
-} //namespace Models
-} //namespace CleanEditor
+} //namespace CleanEditor::Models

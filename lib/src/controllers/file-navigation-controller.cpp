@@ -1,37 +1,33 @@
 #include "file-navigation-controller.h"
 #include "file-navigation-model.h"
 
-namespace CleanEditor {
-namespace Controllers {
+namespace CleanEditor::Controllers {
 
-FileNavigationController::FileNavigationController(QObject* parent)
-  : QObject{parent}
+FileNavigationController::FileNavigationController(QObject *parent)
+    : QObject{parent}
 {}
 
-void FileNavigationController::setModel(CleanEditor::Models::FileNavigationModel* model) {
-  model_ = model;
-  if (!model_) {
-    return;
-  }
-
-  model_->setParent(this);
+void FileNavigationController::setModel(CleanEditor::Models::FileNavigationModel &model)
+{
+    model_ = &model;
 }
 
-int FileNavigationController::selectedIndex() const {
-  if (!model_) {
-    return -1;
-  }
+int FileNavigationController::selectedIndex() const
+{
+    if (!model_) {
+        return -1;
+    }
 
-  return model_->selectedIndex();
+    return model_->selectedIndex();
 }
 
-void FileNavigationController::setSelectedIndex(int index) {
-  if (!model_) {
-    return;
-  }
+void FileNavigationController::setSelectedIndex(const int index)
+{
+    if (!model_) {
+        return;
+    }
 
-  model_->setSelectedIndex(index);
+    model_->setSelectedIndex(index);
 }
 
-} // namespace Controllers
-} // namespace CleanEditor
+} // namespace CleanEditor::Controllers

@@ -4,55 +4,55 @@
 
 using namespace CleanEditor::Models;
 
-namespace CleanEditor {
-namespace Controllers {
+namespace CleanEditor::Controllers {
 
-EditorController::EditorController(QObject* parent)
-  : QObject{parent}
+EditorController::EditorController(QObject *parent)
+    : QObject{parent}
 {}
 
-void EditorController::setModel(AbstractEditorModel* model) {
-  disconnect(text_changed_connection_);
-
-  model_ = model;
-  if (!model_) {
-    return;
-  }
-  model_->setParent(this);
-
-  text_changed_connection_ = connect(model, &AbstractEditorModel::textChanged, this, &EditorController::textChanged);
+void EditorController::setModel(AbstractEditorModel &model)
+{
+    disconnect(text_changed_connection_);
+    model_ = &model;
+    text_changed_connection_ = connect(model_,
+                                       &AbstractEditorModel::textChanged,
+                                       this,
+                                       &EditorController::textChanged);
 }
 
-QString EditorController::text() const {
-  if (!model_) {
-    return "";
-  }
+QString EditorController::text() const
+{
+    if (!model_) {
+        return "";
+    }
 
-  return model_->text();
+    return model_->text();
 }
-void EditorController::setText(const QString& text) {
-  if (!model_) {
-    return;
-  }
+void EditorController::setText(const QString &text)
+{
+    if (!model_) {
+        return;
+    }
 
-  model_->setText(text);
-}
-
-int EditorController::id() const {
-  if (!model_) {
-    return 0;
-  }
-
-  return model_->id();
+    model_->setText(text);
 }
 
-void EditorController::setId(int id) {
-  if (!model_) {
-    return;
-  }
+int EditorController::id() const
+{
+    if (!model_) {
+        return 0;
+    }
 
-  model_->setId(id);
+    return model_->id();
 }
 
-} // namespace Controllers
-} // namespace CleanEditor
+void EditorController::setId(const int id)
+{
+    if (!model_) {
+        return;
+    }
+
+    model_->setId(id);
+}
+
+} // namespace CleanEditor::Controllers

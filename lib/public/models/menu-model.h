@@ -2,39 +2,40 @@
 
 #include "globals.h"
 
-#include <QString>
 #include <QObject>
 #include <QPointer>
+#include <QString>
 
 class QTextDocument;
 
 namespace CleanEditor {
 namespace Logic {
-  class DocumentHandler;
+class DocumentHandler;
 }
 namespace Models {
 
-class CLEAN_EDITOR_EXPORT MenuModel : public QObject {
-  Q_OBJECT
-  Q_DISABLE_COPY(MenuModel)
+class CLEAN_EDITOR_EXPORT MenuModel : public QObject
+{
+    Q_OBJECT
+    Q_DISABLE_COPY_MOVE(MenuModel)
 
-  Q_PROPERTY(QString title READ title NOTIFY titleChanged)
-  Q_PROPERTY(bool isNewFile READ isNewFile NOTIFY isNewFileChanged)
+    Q_PROPERTY(QString title READ title NOTIFY titleChanged)
+    Q_PROPERTY(bool isNewFile READ isNewFile NOTIFY isNewFileChanged)
 
 public:
-  explicit MenuModel(QObject* parent = nullptr);
+    explicit MenuModel(QObject *parent = nullptr);
 
-  void setDocument(CleanEditor::Logic::DocumentHandler* document_handler);
+    void setDocument(CleanEditor::Logic::DocumentHandler &document_handler);
 
-  QString title() const;
-  bool isNewFile() const;
+    QString title() const;
+    bool isNewFile() const;
 
 Q_SIGNALS:
-  void titleChanged();
-  void isNewFileChanged();
+    void titleChanged();
+    void isNewFileChanged();
 
 private:
-  QPointer<CleanEditor::Logic::DocumentHandler> document_handler_;
+    QPointer<CleanEditor::Logic::DocumentHandler> document_handler_;
 };
 
 } // namespace Models

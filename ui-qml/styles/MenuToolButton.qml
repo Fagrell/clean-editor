@@ -1,6 +1,5 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.4
-import QtGraphicalEffects 1.0
+import QtQuick 6.0
+import QtQuick.Controls 6.0
 import "."
 
 ToolButton {

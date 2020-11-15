@@ -6,29 +6,28 @@
 
 namespace CleanEditor {
 namespace Models {
-  class FileNavigationModel;
+class FileNavigationModel;
 }
 namespace Controllers {
 
-class CLEAN_EDITOR_EXPORT FileNavigationController : public QObject {
-  Q_OBJECT
-  Q_DISABLE_COPY(FileNavigationController)
+class CLEAN_EDITOR_EXPORT FileNavigationController : public QObject
+{
+    Q_OBJECT
+    Q_DISABLE_COPY_MOVE(FileNavigationController)
 
 public:
-  explicit FileNavigationController(QObject* parent = nullptr);
+    explicit FileNavigationController(QObject *parent = nullptr);
 
-  //Takes ownership of model
-  void setModel(CleanEditor::Models::FileNavigationModel* model);
+    void setModel(CleanEditor::Models::FileNavigationModel &model);
 
-  int selectedIndex() const;
-  void setSelectedIndex(int index);
+    int selectedIndex() const;
+    void setSelectedIndex(int index);
 
 Q_SIGNALS:
-  void fileOpenedClicked(int id);
+    void fileOpenedClicked(int id);
 
 private:
-  CleanEditor::Models::FileNavigationModel* model_{nullptr};
-
+    CleanEditor::Models::FileNavigationModel *model_{nullptr};
 };
 
 } // namespace Controllers

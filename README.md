@@ -19,7 +19,7 @@ These are the instructions on how to build the sample application using the CMak
 
 The project requires:
 * `CMake version >= 3.8.2`
-* `Qt version >= 5.11` with `Core`, `Gui`, `Qml`, `Quick`, `QuickControls2` enabled.
+* `Qt version >= 6.0` with `Core`, `Gui`, `Qml`, `Quick`, `QuickControls2` enabled and `C++17` compiler.
 
 ### Instructions 
 
@@ -33,7 +33,7 @@ cd build
 2. Generate the desired project by using `cmake`. Specify the generator with the `-G` option. See `cmake --help` for more information. Example using default generator and debug build:
 
 ```
-cmake -DCMAKE_PREFIX_PATH=/qt5/install/path -DCMAKE_BUILD_TYPE=Debug ..
+cmake -DCMAKE_PREFIX_PATH=/qt6/install/path -DCMAKE_BUILD_TYPE=Debug ..
 ```
 
 3. Build by running either of the following commands:

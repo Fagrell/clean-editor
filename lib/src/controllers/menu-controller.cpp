@@ -1,27 +1,23 @@
 #include "menu-controller.h"
 #include "menu-model.h"
 
-namespace CleanEditor {
-namespace Controllers {
+namespace CleanEditor::Controllers {
 
-MenuController::MenuController(QObject* parent)
-  : QObject{parent}
+MenuController::MenuController(QObject *parent)
+    : QObject{parent}
 {}
 
-void MenuController::setModel(CleanEditor::Models::MenuModel* model) {
-  model_ = model;
-  if (!model_) {
-    return;
-  }
-  model_->setParent(this);
+void MenuController::setModel(CleanEditor::Models::MenuModel &model)
+{
+    model_ = &model;
 }
 
-void MenuController::setDocument(CleanEditor::Logic::DocumentHandler* document_handler) {
-  if (!model_) {
-    return;
-  }
+void MenuController::setDocument(CleanEditor::Logic::DocumentHandler &document_handler)
+{
+    if (!model_) {
+        return;
+    }
 
-  model_->setDocument(document_handler);
+    model_->setDocument(document_handler);
 }
-} // namespace Controllers
-} // namespace CleanEditor
+} // namespace CleanEditor::Controllers

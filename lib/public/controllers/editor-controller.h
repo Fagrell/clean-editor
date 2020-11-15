@@ -7,39 +7,39 @@
 
 namespace CleanEditor {
 namespace Models {
-  class AbstractEditorModel;
+class AbstractEditorModel;
 }
 
 namespace Controllers {
 
 /*!
- * \brief The EditorController class is the router that passes data onto the model.
- *        The class also recieves user input directly from a corresponding view (using the signals).
- *
- * \sa AbstractEditorModel
- */
-class CLEAN_EDITOR_EXPORT EditorController : public QObject {
-  Q_OBJECT
-  Q_DISABLE_COPY(EditorController)
+* \brief The EditorController class is the router that passes data onto the model.
+*        The class also recieves user input directly from a corresponding view (using the signals).
+*
+* \sa AbstractEditorModel
+*/
+class CLEAN_EDITOR_EXPORT EditorController : public QObject
+{
+    Q_OBJECT
+    Q_DISABLE_COPY_MOVE(EditorController)
 
 public:
-  explicit EditorController(QObject* parent = nullptr);
+    explicit EditorController(QObject *parent = nullptr);
 
-  //Takes ownership of model
-  void setModel(CleanEditor::Models::AbstractEditorModel* model);
+    void setModel(CleanEditor::Models::AbstractEditorModel &model);
 
-  QString text() const;
-  void setText(const QString& text);
+    QString text() const;
+    void setText(const QString &text);
 
-  int id() const;
-  void setId(int id);
+    int id() const;
+    void setId(int id);
 
 Q_SIGNALS:
-  void textChanged();
+    void textChanged();
 
 private:
-  CleanEditor::Models::AbstractEditorModel* model_{nullptr};
-  QMetaObject::Connection text_changed_connection_;
+    CleanEditor::Models::AbstractEditorModel *model_{nullptr};
+    QMetaObject::Connection text_changed_connection_;
 };
 
 } // namespace Controllers

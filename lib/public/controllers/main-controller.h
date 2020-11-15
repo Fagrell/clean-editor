@@ -3,54 +3,56 @@
 #include <QObject>
 #include <QString>
 
+#include "editor-controller.h"
+#include "file-navigation-controller.h"
+#include "menu-controller.h"
+
 #include "globals.h"
 
 namespace CleanEditor {
 namespace Models {
-  class DocumentsModel;
+class DocumentsModel;
 }
 
 namespace Controllers {
 
-class MenuController;
-class EditorController;
-class FileNavigationController;
+class CLEAN_EDITOR_EXPORT MainController : public QObject
+{
+    Q_OBJECT
+    Q_DISABLE_COPY_MOVE(MainController)
 
-class CLEAN_EDITOR_EXPORT MainController : public QObject {
-  Q_OBJECT
-  Q_DISABLE_COPY(MainController)
-
-  Q_PROPERTY(CleanEditor::Controllers::MenuController* menuController READ menuController CONSTANT)
-  Q_PROPERTY(CleanEditor::Controllers::EditorController* editorController READ editorController CONSTANT)
-  Q_PROPERTY(CleanEditor::Controllers::FileNavigationController* fileNavigationController READ fileNavigationController CONSTANT)
+    Q_PROPERTY(CleanEditor::Controllers::MenuController *menuController READ menuController CONSTANT)
+    Q_PROPERTY(
+        CleanEditor::Controllers::EditorController *editorController READ editorController CONSTANT)
+    Q_PROPERTY(CleanEditor::Controllers::FileNavigationController *fileNavigationController READ
+                   fileNavigationController CONSTANT)
 
 public:
-  explicit MainController(QObject* parent = nullptr);
+    explicit MainController(QObject *parent = nullptr);
 
-  //Takes ownership of model
-  void setDocumentsModel(CleanEditor::Models::DocumentsModel* documents_model);
+    void setDocumentsModel(CleanEditor::Models::DocumentsModel &documents_model);
 
-  MenuController* menuController() const;
-  EditorController* editorController() const;
-  FileNavigationController* fileNavigationController() const;
+    MenuController *menuController();
+    EditorController *editorController();
+    FileNavigationController *fileNavigationController();
 
 private:
-  void storeTextToCurrentFile();
+    void storeTextToCurrentFile();
 
-  MenuController* menu_controller_{nullptr};
-  EditorController* editor_controller_{nullptr};
-  FileNavigationController* file_navigation_controller_{nullptr};
-  CleanEditor::Models::DocumentsModel* documents_model_{nullptr};
-  QMetaObject::Connection document_created_connection_;
+    MenuController menu_controller_;
+    EditorController editor_controller_;
+    FileNavigationController file_navigation_controller_;
+    CleanEditor::Models::DocumentsModel *documents_model_{nullptr};
+    QMetaObject::Connection document_created_connection_;
 
 private Q_SLOTS:
-  void handleEditorTextChanged();
-  void openDocument(int id);
-  void handleSaveFileClicked();
-  void handleSaveAsFileClicked(const QUrl& url);
-  void handleNewFileClicked();
-  void handleOpenedFileClicked(int id);
-  void handleOpenFileClicked(const QUrl& url);
+    void handleEditorTextChanged();
+    void openDocument(int id);
+    void handleSaveFileClicked();
+    void handleSaveAsFileClicked(const QUrl &url);
+    void handleNewFileClicked();
+    void handleOpenedFileClicked(int id);
+    void handleOpenFileClicked(const QUrl &url);
 };
 
 } // namespace Controllers

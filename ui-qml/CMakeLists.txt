@@ -5,7 +5,7 @@ project(clean-editor-qml VERSION 1.0.0 LANGUAGES C CXX)
 ###########################
 # Dependencies
 
-find_package(Qt5 COMPONENTS Core Gui Qml Quick QuickControls2 REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Qml Quick QuickControls2 REQUIRED)
 
 ###########################
 # Targets
@@ -31,17 +31,17 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
   PUBLIC
-    Qt5::Core
-    Qt5::Gui
-    Qt5::Qml
-    Qt5::Quick
-    Qt5::QuickControls2
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Qml
+    Qt6::Quick
+    Qt6::QuickControls2
     clean-editor-lib
 )
 
 target_compile_features(${PROJECT_NAME}
   PUBLIC
-    cxx_std_14
+    cxx_std_17
 )
 
 set_target_properties(${PROJECT_NAME}
