@@ -3,8 +3,7 @@
 
 #include <QDebug>
 
-namespace CleanEditor {
-namespace Logic {
+namespace CleanEditor::Logic {
 
 static int next_id{1};
 
@@ -123,5 +122,4 @@ void DocumentHandler::onFileOpened() {
   emit fileOpened();
 }
 
-} //namespace Logic
-} //namespace CleanEditor
+} //namespace CleanEditor::Logic

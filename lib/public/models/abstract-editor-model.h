@@ -7,8 +7,7 @@
 
 class QTextDocument;
 
-namespace CleanEditor {
-namespace Models {
+namespace CleanEditor::Models {
 
 /*!
  * \brief The AbstractEditorModel class defines an abstract class that wraps around
@@ -48,5 +47,4 @@ private:
 
 };
 
-} // namespace Models
-} // namespace CleanEditor
+} // namespace CleanEditor::Models

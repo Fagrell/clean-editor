@@ -2,8 +2,7 @@
 
 #include <QQuickTextDocument>
 
-namespace CleanEditor {
-namespace Models {
+namespace CleanEditor::Models {
 
 QmlEditorModel::QmlEditorModel(QObject* parent) :
   EditorModel{parent} {
@@ -24,5 +23,4 @@ void QmlEditorModel::setDocument(QQuickTextDocument* document) {
   setTextDocument(document_->textDocument());
 }
 
-} //namespace Models
-} //namespace CleanEditor
+} //namespace CleanEditor::Models

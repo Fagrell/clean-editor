@@ -7,8 +7,7 @@
 
 class QTextDocument;
 
-namespace CleanEditor {
-namespace Models {
+namespace CleanEditor::Models {
 class CLEAN_EDITOR_EXPORT EditorModel : public AbstractEditorModel {
   Q_OBJECT
   Q_DISABLE_COPY_MOVE(EditorModel)
@@ -25,5 +24,4 @@ private:
   QTextDocument* text_document_{nullptr};
 };
 
-} // namespace Models
-} // namespace CleanEditor
+} // namespace CleanEditor::Models

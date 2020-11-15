@@ -1,8 +1,7 @@
 #include "file-navigation-controller.h"
 #include "file-navigation-model.h"
 
-namespace CleanEditor {
-namespace Controllers {
+namespace CleanEditor::Controllers {
 
 FileNavigationController::FileNavigationController(QObject* parent)
   : QObject{parent}
@@ -33,5 +32,4 @@ void FileNavigationController::setSelectedIndex(int index) {
   model_->setSelectedIndex(index);
 }
 
-} // namespace Controllers
-} // namespace CleanEditor
+} // namespace CleanEditor::Controllers

@@ -8,8 +8,7 @@
 
 using namespace CleanEditor::Models;
 
-namespace CleanEditor {
-namespace Controllers {
+namespace CleanEditor::Controllers {
 
 MainController::MainController(QObject* parent) :
   QObject{parent},
@@ -125,5 +124,4 @@ void MainController::storeTextToCurrentFile() {
   documents_model_->setFileContent(current_file_id, editor_controller_->text());
 }
 
-} // namespace Controllers
-} // namespace CleanEditor
+} // namespace CleanEditor::Controllers

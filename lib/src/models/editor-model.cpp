@@ -3,8 +3,7 @@
 #include <QTextDocument>
 #include <QSignalBlocker>
 
-namespace CleanEditor {
-namespace Models {
+namespace CleanEditor::Models {
 
 EditorModel::EditorModel(QObject* parent) : AbstractEditorModel{parent} {
 }
@@ -39,5 +38,4 @@ void EditorModel::setTextDocument(QTextDocument* text_document) {
   connect(text_document_, &QTextDocument::contentsChanged, this, &AbstractEditorModel::textChanged);
 }
 
-} //namespace Models
-} //namespace CleanEditor
+} //namespace CleanEditor::Models

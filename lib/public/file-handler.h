@@ -6,8 +6,7 @@
 
 #include "globals.h"
 
-namespace CleanEditor {
-namespace Logic {
+namespace CleanEditor::Logic {
 
 class CLEAN_EDITOR_EXPORT FileHandler : public QObject {
   Q_OBJECT
@@ -41,5 +40,4 @@ private:
   static QString localPathFromUrl(const QUrl& file_url);
 };
 
-} //namespace Logic
-} //namespace CleanEditor
+} //namespace CleanEditor::Logic

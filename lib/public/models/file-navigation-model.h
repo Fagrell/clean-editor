@@ -4,8 +4,7 @@
 
 #include <QObject>
 
-namespace CleanEditor {
-namespace Models {
+namespace CleanEditor::Models {
 
 class CLEAN_EDITOR_EXPORT FileNavigationModel : public QObject {
   Q_OBJECT
@@ -26,5 +25,4 @@ private:
   int selected_index_{-1};
 };
 
-} // namespace Models
-} // namespace CleanEditor
+} // namespace CleanEditor::Models

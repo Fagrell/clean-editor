@@ -3,8 +3,7 @@
 #include "editor-model.h"
 class QQuickTextDocument;
 
-namespace CleanEditor {
-namespace Models {
+namespace CleanEditor::Models {
 
 /*!
  * \brief The QmlEditorModel class is used to expose the EditorModel to an
@@ -34,5 +33,4 @@ private:
   QQuickTextDocument* document_{nullptr};
 };
 
-} //namespace Models
-} //namespace CleanEditor
+} //namespace CleanEditor::Models

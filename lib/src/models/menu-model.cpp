@@ -3,8 +3,7 @@
 
 using namespace CleanEditor::Logic;
 
-namespace CleanEditor {
-namespace Models {
+namespace CleanEditor::Models {
 
 MenuModel::MenuModel(QObject* parent) : QObject{parent} {
 }
@@ -46,6 +45,4 @@ bool MenuModel::isNewFile() const {
   return document_handler_->isNewFile();
 }
 
-
-} //namespace Models
-} //namespace CleanEditor
+} //namespace CleanEditor::Models

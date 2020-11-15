@@ -8,8 +8,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace CleanEditor {
-namespace UI {
+namespace CleanEditor::UI {
 
 static constexpr const int kLineNumberXOffset{5};
 
@@ -223,5 +222,4 @@ int LineNumbers::countLines(QStringView text) {
   return lines;
 }
 
-} //namspace UI
-} //namespace CleanEditor
+} //namspace CleanEditor::UI

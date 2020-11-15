@@ -4,8 +4,7 @@
 
 #include "file-handler.h"
 
-namespace CleanEditor {
-namespace Logic {
+namespace CleanEditor::Logic {
 
 FileHandler::FileHandler(QObject* parent) : QObject{parent} {}
 
@@ -90,5 +89,4 @@ QString FileHandler::localPathFromUrl(const QUrl& file_url) {
   return file_url.path();
 }
 
-} //namespace Logic
-} //namespace CleanEditor
+} //namespace CleanEditor::Logic

@@ -1,8 +1,7 @@
 #include "menu-controller.h"
 #include "menu-model.h"
 
-namespace CleanEditor {
-namespace Controllers {
+namespace CleanEditor::Controllers {
 
 MenuController::MenuController(QObject* parent)
   : QObject{parent}
@@ -23,5 +22,4 @@ void MenuController::setDocument(CleanEditor::Logic::DocumentHandler* document_h
 
   model_->setDocument(document_handler);
 }
-} // namespace Controllers
-} // namespace CleanEditor
+} // namespace CleanEditor::Controllers

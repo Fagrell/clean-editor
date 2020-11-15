@@ -2,8 +2,7 @@
 
 using namespace CleanEditor::Logic;
 
-namespace CleanEditor {
-namespace Models {
+namespace CleanEditor::Models {
 
 DocumentsModel::DocumentsModel(QObject* parent) : QAbstractListModel{parent} {
 }
@@ -172,5 +171,4 @@ void DocumentsModel::appendNewDocument(std::unique_ptr<DocumentHandler> document
   emit documentCreated(id);
 }
 
-} //namespace Models
-} //namespace CleanEditor
+} //namespace CleanEditor::Models

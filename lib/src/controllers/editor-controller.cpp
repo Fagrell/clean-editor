@@ -4,8 +4,7 @@
 
 using namespace CleanEditor::Models;
 
-namespace CleanEditor {
-namespace Controllers {
+namespace CleanEditor::Controllers {
 
 EditorController::EditorController(QObject* parent)
   : QObject{parent}
@@ -54,5 +53,4 @@ void EditorController::setId(int id) {
   model_->setId(id);
 }
 
-} // namespace Controllers
-} // namespace CleanEditor
+} // namespace CleanEditor::Controllers

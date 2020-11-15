@@ -1,7 +1,6 @@
 #include "abstract-editor-model.h"
 
-namespace CleanEditor {
-namespace Models {
+namespace CleanEditor::Models {
 
 AbstractEditorModel::AbstractEditorModel(QObject* parent) : QObject{parent} {
 }
@@ -20,5 +19,4 @@ void AbstractEditorModel::setId(int id) {
   emit idChanged();
 }
 
-} //namespace Models
-} //namespace CleanEditor
+} //namespace CleanEditor::Models

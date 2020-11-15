@@ -1,7 +1,6 @@
 #include "file-navigation-model.h"
 
-namespace CleanEditor {
-namespace Models {
+namespace CleanEditor::Models {
 
 FileNavigationModel::FileNavigationModel(QObject* parent) : QObject{parent} {
 }
@@ -19,5 +18,4 @@ void FileNavigationModel::setSelectedIndex(int index) {
   emit selectedIndexChanged();
 }
 
-} //namespace Models
-} //namespace CleanEditor
+} //namespace CleanEditor::Models

@@ -10,8 +10,7 @@
 class QTextDocument;
 class QQuickTextDocument;
 
-namespace CleanEditor {
-namespace Logic {
+namespace CleanEditor::Logic {
 
 class FileHandler;
 
@@ -91,7 +90,6 @@ private Q_SLOTS:
 
 };
 
-} //namespace Logic
-} //namespace CleanEditor
+} //namespace CleanEditor::Logic
 
 Q_DECLARE_METATYPE(CleanEditor::Logic::DocumentHandler*)
