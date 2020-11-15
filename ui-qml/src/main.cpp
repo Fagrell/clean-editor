@@ -3,17 +3,17 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "main-controller.h"
 #include "editor-controller.h"
-#include "menu-controller.h"
 #include "file-navigation-controller.h"
+#include "main-controller.h"
+#include "menu-controller.h"
 
 #include "document-handler.h"
 #include "documents-model.h"
-#include "qml-editor-model.h"
-#include "menu-model.h"
 #include "file-navigation-model.h"
 #include "line-numbers.h"
+#include "menu-model.h"
+#include "qml-editor-model.h"
 
 using namespace CleanEditor::Controllers;
 using namespace CleanEditor::Logic;

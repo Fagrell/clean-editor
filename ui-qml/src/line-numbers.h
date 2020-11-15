@@ -1,11 +1,11 @@
 #pragma once
 
-#include <QQuickPaintedItem>
-#include <QTextCursor>
-#include <QPointer>
 #include <QFont>
-#include <QStringView>
+#include <QPointer>
+#include <QQuickPaintedItem>
 #include <QQuickTextDocument>
+#include <QStringView>
+#include <QTextCursor>
 
 namespace CleanEditor::UI {
 
@@ -24,7 +24,8 @@ namespace CleanEditor::UI {
 *        offsetY is used to know if we've scrolled in the document. Top of the page means offsetY == 0.
 *
 */
-class LineNumbers : public QQuickPaintedItem {
+class LineNumbers : public QQuickPaintedItem
+{
     Q_OBJECT
     Q_DISABLE_COPY_MOVE(LineNumbers)
 

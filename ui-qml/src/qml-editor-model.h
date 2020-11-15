@@ -12,7 +12,8 @@ namespace CleanEditor::Models {
 *
 * \sa EditorModel
 */
-class QmlEditorModel : public EditorModel {
+class QmlEditorModel : public EditorModel
+{
     Q_OBJECT
     Q_DISABLE_COPY_MOVE(QmlEditorModel)
 

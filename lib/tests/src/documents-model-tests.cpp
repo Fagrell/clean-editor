@@ -1,17 +1,18 @@
 #include "documents-model-tests.h"
 
-#include <QSignalSpy>
-#include <QFile>
-#include <QTextStream>
 #include <QAbstractItemModelTester>
+#include <QFile>
+#include <QSignalSpy>
+#include <QTextStream>
 
 using namespace CleanEditor::Logic;
 using namespace CleanEditor::Models;
-static const constexpr char * kDummyContent = "dummy content in file";
+static const constexpr char *kDummyContent = "dummy content in file";
 
 namespace CleanEditor::Tests {
 
-void DocumentsModelTests::initTestCase() {
+void DocumentsModelTests::initTestCase()
+{
     if (tmp_file_.exists()) {
         return;
     }
@@ -24,7 +25,8 @@ void DocumentsModelTests::initTestCase() {
     stream << kDummyContent;
 }
 
-std::unique_ptr<DocumentsModel> DocumentsModelTests::createEmptyModel() {
+std::unique_ptr<DocumentsModel> DocumentsModelTests::createEmptyModel()
+{
     auto documents_model = std::make_unique<DocumentsModel>();
     new QAbstractItemModelTester{documents_model.get(),
                                  QAbstractItemModelTester::FailureReportingMode::QtTest,
@@ -32,7 +34,8 @@ std::unique_ptr<DocumentsModel> DocumentsModelTests::createEmptyModel() {
     return documents_model;
 }
 
-void DocumentsModelTests::newFile_empty_newEmptyFileHasBeenCreated() {
+void DocumentsModelTests::newFile_empty_newEmptyFileHasBeenCreated()
+{
     auto documents_model = createEmptyModel();
     QSignalSpy document_created{documents_model.get(), &DocumentsModel::documentCreated};
     documents_model->newFile();
@@ -51,7 +54,8 @@ void DocumentsModelTests::newFile_empty_newEmptyFileHasBeenCreated() {
     QVERIFY(documents_model->document(id) != nullptr);
 }
 
-void DocumentsModelTests::saveAs_newFile_openFileWithNewContent() {
+void DocumentsModelTests::saveAs_newFile_openFileWithNewContent()
+{
     auto documents_model = createEmptyModel();
     QSignalSpy document_created{documents_model.get(), &DocumentsModel::documentCreated};
     documents_model->newFile();

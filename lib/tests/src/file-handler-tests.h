@@ -1,13 +1,14 @@
 #pragma once
 
-#include <QTest>
 #include <QTemporaryFile>
+#include <QTest>
 
 #include "test-runner.h"
 
 namespace CleanEditor::Tests {
 
-class FileHandlerTests: public QObject {
+class FileHandlerTests : public QObject
+{
     Q_OBJECT
 
 private slots:

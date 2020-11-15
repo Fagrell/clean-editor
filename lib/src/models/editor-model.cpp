@@ -1,14 +1,16 @@
 #include "editor-model.h"
 
-#include <QTextDocument>
 #include <QSignalBlocker>
+#include <QTextDocument>
 
 namespace CleanEditor::Models {
 
-EditorModel::EditorModel(QObject* parent) : AbstractEditorModel{parent} {
-}
+EditorModel::EditorModel(QObject *parent)
+    : AbstractEditorModel{parent}
+{}
 
-QString EditorModel::text() const {
+QString EditorModel::text() const
+{
     if (!text_document_) {
         return "";
     }
@@ -16,7 +18,8 @@ QString EditorModel::text() const {
     return text_document_->toPlainText();
 }
 
-void EditorModel::setText(const QString& text) {
+void EditorModel::setText(const QString &text)
+{
     if (!text_document_) {
         return;
     }
@@ -29,7 +32,8 @@ void EditorModel::setText(const QString& text) {
     emit textReplaced();
 }
 
-void EditorModel::setTextDocument(QTextDocument* text_document) {
+void EditorModel::setTextDocument(QTextDocument *text_document)
+{
     text_document_ = text_document;
     if (!text_document_) {
         return;

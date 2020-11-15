@@ -2,14 +2,17 @@
 
 namespace CleanEditor::Models {
 
-FileNavigationModel::FileNavigationModel(QObject* parent) : QObject{parent} {
-}
+FileNavigationModel::FileNavigationModel(QObject *parent)
+    : QObject{parent}
+{}
 
-int FileNavigationModel::selectedIndex() const {
+int FileNavigationModel::selectedIndex() const
+{
     return selected_index_;
 }
 
-void FileNavigationModel::setSelectedIndex(int index) {
+void FileNavigationModel::setSelectedIndex(int index)
+{
     if (selected_index_ == index) {
         return;
     }

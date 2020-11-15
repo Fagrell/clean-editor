@@ -1,9 +1,9 @@
 #pragma once
 
 #include <QObject>
-#include <QUrl>
 #include <QPointer>
 #include <QString>
+#include <QUrl>
 
 #include "file-handler.h"
 
@@ -92,4 +92,4 @@ private Q_SLOTS:
 
 } //namespace CleanEditor::Logic
 
-Q_DECLARE_METATYPE(CleanEditor::Logic::DocumentHandler*)
+Q_DECLARE_METATYPE(CleanEditor::Logic::DocumentHandler *)

@@ -2,14 +2,17 @@
 
 namespace CleanEditor::Models {
 
-AbstractEditorModel::AbstractEditorModel(QObject* parent) : QObject{parent} {
-}
+AbstractEditorModel::AbstractEditorModel(QObject *parent)
+    : QObject{parent}
+{}
 
-int AbstractEditorModel::id() const {
+int AbstractEditorModel::id() const
+{
     return id_;
 }
 
-void AbstractEditorModel::setId(int id) {
+void AbstractEditorModel::setId(int id)
+{
     if (id_ == id) {
         return;
     }

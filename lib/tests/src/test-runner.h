@@ -1,13 +1,13 @@
 #pragma once
 
 #include <QObject>
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 namespace CleanEditor::Util {
 
-class TestRunner  {
-
+class TestRunner
+{
 public:
     static TestRunner &instance();
 

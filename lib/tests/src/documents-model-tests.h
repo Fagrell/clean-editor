@@ -1,7 +1,7 @@
 #pragma once
 
-#include <QTest>
 #include <QTemporaryFile>
+#include <QTest>
 #include <memory>
 
 #include "documents-model.h"
@@ -9,7 +9,8 @@
 
 namespace CleanEditor::Tests {
 
-class DocumentsModelTests : public QObject {
+class DocumentsModelTests : public QObject
+{
     Q_OBJECT
 
 private slots:

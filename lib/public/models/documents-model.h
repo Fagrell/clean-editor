@@ -3,12 +3,12 @@
 #include <QAbstractListModel>
 #include <QUrl>
 
-#include <unordered_map>
 #include <memory>
+#include <unordered_map>
 #include <utility>
 
-#include "globals.h"
 #include "document-handler.h"
+#include "globals.h"
 
 namespace CleanEditor {
 
@@ -31,7 +31,8 @@ namespace Models {
 *
 * \sa DocumentHandler
 */
-class CLEAN_EDITOR_EXPORT DocumentsModel : public QAbstractListModel {
+class CLEAN_EDITOR_EXPORT DocumentsModel : public QAbstractListModel
+{
     Q_OBJECT
     Q_DISABLE_COPY_MOVE(DocumentsModel)
 

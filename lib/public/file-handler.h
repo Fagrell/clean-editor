@@ -1,8 +1,8 @@
 #pragma once
 
 #include <QObject>
-#include <QUrl>
 #include <QString>
+#include <QUrl>
 
 #include "globals.h"
 

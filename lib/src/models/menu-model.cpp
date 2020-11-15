@@ -5,10 +5,12 @@ using namespace CleanEditor::Logic;
 
 namespace CleanEditor::Models {
 
-MenuModel::MenuModel(QObject* parent) : QObject{parent} {
-}
+MenuModel::MenuModel(QObject *parent)
+    : QObject{parent}
+{}
 
-void MenuModel::setDocument(DocumentHandler* document_handler) {
+void MenuModel::setDocument(DocumentHandler *document_handler)
+{
     if (document_handler_ == document_handler) {
         return;
     }
@@ -42,7 +44,8 @@ void MenuModel::setDocument(DocumentHandler* document_handler) {
     emit isNewFileChanged();
 }
 
-QString MenuModel::title() const {
+QString MenuModel::title() const
+{
     if (!document_handler_) {
         return tr("");
     }
@@ -50,7 +53,8 @@ QString MenuModel::title() const {
     return document_handler_->filename();
 }
 
-bool MenuModel::isNewFile() const {
+bool MenuModel::isNewFile() const
+{
     if (!document_handler_) {
         return false;
     }

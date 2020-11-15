@@ -14,7 +14,8 @@ class DocumentHandler;
 
 namespace Controllers {
 
-class CLEAN_EDITOR_EXPORT MenuController : public QObject {
+class CLEAN_EDITOR_EXPORT MenuController : public QObject
+{
     Q_OBJECT
     Q_DISABLE_COPY_MOVE(MenuController)
 

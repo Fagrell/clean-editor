@@ -8,11 +8,13 @@ QmlEditorModel::QmlEditorModel(QObject *parent)
     : EditorModel{parent}
 {}
 
-QQuickTextDocument* QmlEditorModel::document() const {
+QQuickTextDocument *QmlEditorModel::document() const
+{
     return document_;
 }
 
-void QmlEditorModel::setDocument(QQuickTextDocument* document) {
+void QmlEditorModel::setDocument(QQuickTextDocument *document)
+{
     setTextDocument(nullptr);
     document_ = document;
 

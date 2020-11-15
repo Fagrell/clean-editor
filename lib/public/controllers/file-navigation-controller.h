@@ -10,7 +10,8 @@ class FileNavigationModel;
 }
 namespace Controllers {
 
-class CLEAN_EDITOR_EXPORT FileNavigationController : public QObject {
+class CLEAN_EDITOR_EXPORT FileNavigationController : public QObject
+{
     Q_OBJECT
     Q_DISABLE_COPY_MOVE(FileNavigationController)
 

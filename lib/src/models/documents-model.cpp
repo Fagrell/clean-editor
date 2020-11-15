@@ -4,10 +4,12 @@ using namespace CleanEditor::Logic;
 
 namespace CleanEditor::Models {
 
-DocumentsModel::DocumentsModel(QObject* parent) : QAbstractListModel{parent} {
-}
+DocumentsModel::DocumentsModel(QObject *parent)
+    : QAbstractListModel{parent}
+{}
 
-int DocumentsModel::rowCount(const QModelIndex& parent) const {
+int DocumentsModel::rowCount(const QModelIndex &parent) const
+{
     if (parent.isValid()) {
         return 0;
     }
@@ -15,7 +17,8 @@ int DocumentsModel::rowCount(const QModelIndex& parent) const {
     return static_cast<int>(data_.size());
 }
 
-QVariant DocumentsModel::data(const QModelIndex& index, int role) const {
+QVariant DocumentsModel::data(const QModelIndex &index, int role) const
+{
     Q_ASSERT(checkIndex(index,
                         QAbstractItemModel::CheckIndexOption::IndexIsValid
                             | QAbstractItemModel::CheckIndexOption::ParentIsInvalid));
@@ -57,7 +60,8 @@ QVariant DocumentsModel::data(const QModelIndex& index, int role) const {
     return data;
 }
 
-QHash<int, QByteArray> DocumentsModel::roleNames() const {
+QHash<int, QByteArray> DocumentsModel::roleNames() const
+{
     QHash<int, QByteArray> roles;
     roles[FileDocumentRole] = "fileDocumentRole";
     roles[FileIdRole] = "fileId";
@@ -70,67 +74,82 @@ QHash<int, QByteArray> DocumentsModel::roleNames() const {
     return roles;
 }
 
-DocumentHandler* DocumentsModel::document(int id) const {
+DocumentHandler *DocumentsModel::document(int id) const
+{
     return getData<DocumentHandler *>(id, FileDocumentRole, nullptr);
 }
 
-QString DocumentsModel::filename(int id) const {
+QString DocumentsModel::filename(int id) const
+{
     return getData(id, FilenameRole, QString{""});
 }
 
-QString DocumentsModel::fileType(int id) const {
+QString DocumentsModel::fileType(int id) const
+{
     return getData(id, FileTypeRole, QString{""});
 }
 
-QUrl DocumentsModel::fileUrl(int id) const {
+QUrl DocumentsModel::fileUrl(int id) const
+{
     return getData(id, FileUrlRole, QUrl{""});
 }
 
-bool DocumentsModel::isFileNew(int id) const {
+bool DocumentsModel::isFileNew(int id) const
+{
     return getData(id, FileIsNewRole, false);
 }
 
-bool DocumentsModel::needsUpdating(int id) const {
+bool DocumentsModel::needsUpdating(int id) const
+{
     return getData(id, FileNeedsUpdatingRole, false);
 }
 
-bool DocumentsModel::needsSaving(int id) const {
+bool DocumentsModel::needsSaving(int id) const
+{
     return getData(id, FileNeedsSavingRole, false);
 }
 
-QString DocumentsModel::fileContent(int id) const {
+QString DocumentsModel::fileContent(int id) const
+{
     return getData(id, FileContentRole, QString{""});
 }
 
-void DocumentsModel::setFileContent(int id, const QString& text) {
+void DocumentsModel::setFileContent(int id, const QString &text)
+{
     setData(id, &DocumentHandler::setTextContent, text);
 }
 
-void DocumentsModel::save(int id) {
+void DocumentsModel::save(int id)
+{
     setData(id, &DocumentHandler::save);
 }
 
-void DocumentsModel::saveAs(int id, const QUrl& file_url) {
+void DocumentsModel::saveAs(int id, const QUrl &file_url)
+{
     setData(id, &DocumentHandler::saveAs, file_url);
 }
 
-void DocumentsModel::setNeedsUpdating(int id) {
+void DocumentsModel::setNeedsUpdating(int id)
+{
     setData(id, &DocumentHandler::setNeedsUpdating, true);
 }
 
-void DocumentsModel::newFile() {
+void DocumentsModel::newFile()
+{
     auto document_handler = std::make_unique<CleanEditor::Logic::DocumentHandler>();
     appendNewDocument(std::move(document_handler));
 }
 
-void DocumentsModel::openFile(const QUrl& file_url) {
+void DocumentsModel::openFile(const QUrl &file_url)
+{
     auto document_handler = std::make_unique<CleanEditor::Logic::DocumentHandler>();
     document_handler->load(file_url);
 
     appendNewDocument(std::move(document_handler));
 }
 
-void DocumentsModel::closeFile(int id) {
+void DocumentsModel::closeFile(int id)
+{
     QModelIndex index = indexForId(id);
 
     if (!index.isValid()) {
@@ -143,7 +162,8 @@ void DocumentsModel::closeFile(int id) {
     endRemoveRows();
 }
 
-QModelIndex DocumentsModel::indexForId(int id) const {
+QModelIndex DocumentsModel::indexForId(int id) const
+{
     size_t i{0};
     for (; i < data_.size(); i++) {
         if (data_.at(i)->id() == id) {
@@ -159,7 +179,8 @@ QModelIndex DocumentsModel::indexForId(int id) const {
     return index(static_cast<int>(i), 0);
 }
 
-void DocumentsModel::appendNewDocument(std::unique_ptr<DocumentHandler> document) {
+void DocumentsModel::appendNewDocument(std::unique_ptr<DocumentHandler> document)
+{
     if (!document) {
         return;
     }

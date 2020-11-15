@@ -1,8 +1,8 @@
 #include "main-controller.h"
 
-#include "menu-controller.h"
 #include "editor-controller.h"
 #include "file-navigation-controller.h"
+#include "menu-controller.h"
 
 #include "documents-model.h"
 
@@ -64,7 +64,8 @@ FileNavigationController *MainController::fileNavigationController()
     return &file_navigation_controller_;
 }
 
-void MainController::handleEditorTextChanged() {
+void MainController::handleEditorTextChanged()
+{
     if (!documents_model_) {
         return;
     }
@@ -73,7 +74,8 @@ void MainController::handleEditorTextChanged() {
     documents_model_->setNeedsUpdating(current_file_id);
 }
 
-void MainController::openDocument(int id) {
+void MainController::openDocument(int id)
+{
     if (!documents_model_) {
         return;
     }
@@ -85,7 +87,8 @@ void MainController::openDocument(int id) {
     file_navigation_controller_.setSelectedIndex(documents_model_->indexForId(id).row());
 }
 
-void MainController::handleSaveFileClicked() {
+void MainController::handleSaveFileClicked()
+{
     if (!documents_model_) {
         return;
     }
@@ -95,7 +98,8 @@ void MainController::handleSaveFileClicked() {
     documents_model_->save(current_file_id);
 }
 
-void MainController::handleSaveAsFileClicked(const QUrl& url) {
+void MainController::handleSaveAsFileClicked(const QUrl &url)
+{
     if (!documents_model_) {
         return;
     }
@@ -106,7 +110,8 @@ void MainController::handleSaveAsFileClicked(const QUrl& url) {
     documents_model_->saveAs(current_file_id, url);
 }
 
-void MainController::handleNewFileClicked() {
+void MainController::handleNewFileClicked()
+{
     if (!documents_model_) {
         return;
     }
@@ -115,7 +120,8 @@ void MainController::handleNewFileClicked() {
     documents_model_->newFile();
 }
 
-void MainController::handleOpenedFileClicked(int id) {
+void MainController::handleOpenedFileClicked(int id)
+{
     if (!documents_model_) {
         return;
     }
@@ -131,12 +137,14 @@ void MainController::handleOpenedFileClicked(int id) {
     openDocument(id);
 }
 
-void MainController::handleOpenFileClicked(const QUrl& url) {
+void MainController::handleOpenFileClicked(const QUrl &url)
+{
     storeTextToCurrentFile();
     documents_model_->openFile(url);
 }
 
-void MainController::storeTextToCurrentFile() {
+void MainController::storeTextToCurrentFile()
+{
     int current_file_id = editor_controller_.id();
     documents_model_->setFileContent(current_file_id, editor_controller_.text());
 }

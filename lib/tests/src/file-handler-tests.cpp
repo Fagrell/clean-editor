@@ -1,12 +1,12 @@
 #include "file-handler-tests.h"
 #include "file-handler.h"
 
-#include <QSignalSpy>
 #include <QFile>
+#include <QSignalSpy>
 #include <QTextStream>
 
 using namespace CleanEditor::Logic;
-static const constexpr char * kDummyContent = "dummy content in file";
+static const constexpr char *kDummyContent = "dummy content in file";
 
 namespace CleanEditor::Tests {
 

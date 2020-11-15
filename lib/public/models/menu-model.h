@@ -2,9 +2,9 @@
 
 #include "globals.h"
 
-#include <QString>
 #include <QObject>
 #include <QPointer>
+#include <QString>
 
 class QTextDocument;
 
