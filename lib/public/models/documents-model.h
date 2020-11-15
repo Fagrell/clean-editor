@@ -33,7 +33,7 @@ namespace Models {
  */
 class CLEAN_EDITOR_EXPORT DocumentsModel : public QAbstractListModel {
   Q_OBJECT
-  Q_DISABLE_COPY(DocumentsModel)
+  Q_DISABLE_COPY_MOVE(DocumentsModel)
 
 public:
   enum DocumentsRoles {

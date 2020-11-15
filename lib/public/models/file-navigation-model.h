@@ -9,7 +9,7 @@ namespace Models {
 
 class CLEAN_EDITOR_EXPORT FileNavigationModel : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(FileNavigationModel)
+  Q_DISABLE_COPY_MOVE(FileNavigationModel)
 
   Q_PROPERTY(int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedIndexChanged)
 

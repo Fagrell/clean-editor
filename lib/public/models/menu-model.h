@@ -16,7 +16,7 @@ namespace Models {
 
 class CLEAN_EDITOR_EXPORT MenuModel : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(MenuModel)
+  Q_DISABLE_COPY_MOVE(MenuModel)
 
   Q_PROPERTY(QString title READ title NOTIFY titleChanged)
   Q_PROPERTY(bool isNewFile READ isNewFile NOTIFY isNewFileChanged)

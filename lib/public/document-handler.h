@@ -33,7 +33,7 @@ class FileHandler;
  */
 class CLEAN_EDITOR_EXPORT DocumentHandler : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(DocumentHandler)
+  Q_DISABLE_COPY_MOVE(DocumentHandler)
 
   Q_PROPERTY(QString filename READ filename)
   Q_PROPERTY(QString fileType READ fileType)

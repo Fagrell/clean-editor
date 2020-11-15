@@ -11,7 +11,7 @@ namespace Logic {
 
 class CLEAN_EDITOR_EXPORT FileHandler : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(FileHandler)
+  Q_DISABLE_COPY_MOVE(FileHandler)
 
   Q_PROPERTY(QString fileName READ fileName NOTIFY fileUrlChanged)
   Q_PROPERTY(QString fileType READ fileType NOTIFY fileUrlChanged)

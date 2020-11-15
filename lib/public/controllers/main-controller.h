@@ -18,7 +18,7 @@ class FileNavigationController;
 
 class CLEAN_EDITOR_EXPORT MainController : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(MainController)
+  Q_DISABLE_COPY_MOVE(MainController)
 
   Q_PROPERTY(CleanEditor::Controllers::MenuController* menuController READ menuController CONSTANT)
   Q_PROPERTY(CleanEditor::Controllers::EditorController* editorController READ editorController CONSTANT)

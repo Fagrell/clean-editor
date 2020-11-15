@@ -20,7 +20,7 @@ namespace Controllers {
  */
 class CLEAN_EDITOR_EXPORT EditorController : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(EditorController)
+  Q_DISABLE_COPY_MOVE(EditorController)
 
 public:
   explicit EditorController(QObject* parent = nullptr);

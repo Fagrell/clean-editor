@@ -21,7 +21,7 @@ namespace Models {
  */
 class CLEAN_EDITOR_EXPORT AbstractEditorModel : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(AbstractEditorModel)
+  Q_DISABLE_COPY_MOVE(AbstractEditorModel)
 
   Q_PROPERTY(QString text READ text WRITE setText NOTIFY textReplaced)
   Q_PROPERTY(int id READ id WRITE setId NOTIFY idChanged)

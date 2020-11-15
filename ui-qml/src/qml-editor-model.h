@@ -15,7 +15,7 @@ namespace Models {
  */
 class QmlEditorModel : public EditorModel {
   Q_OBJECT
-  Q_DISABLE_COPY(QmlEditorModel)
+  Q_DISABLE_COPY_MOVE(QmlEditorModel)
 
   Q_PROPERTY(QQuickTextDocument *document READ document WRITE setDocument NOTIFY documentChanged)
 

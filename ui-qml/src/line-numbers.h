@@ -27,7 +27,7 @@ namespace UI {
  */
 class LineNumbers : public QQuickPaintedItem {
   Q_OBJECT
-  Q_DISABLE_COPY(LineNumbers)
+  Q_DISABLE_COPY_MOVE(LineNumbers)
 
   Q_PROPERTY(QFont font MEMBER font_ WRITE setFont)
   Q_PROPERTY(QColor selectedBackgroundColor MEMBER selected_background_color_ WRITE setSelectedBackgroundColor)

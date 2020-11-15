@@ -16,7 +16,7 @@ namespace Controllers {
 
 class CLEAN_EDITOR_EXPORT MenuController : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(MenuController)
+  Q_DISABLE_COPY_MOVE(MenuController)
 
 public:
   explicit MenuController(QObject* parent = nullptr);

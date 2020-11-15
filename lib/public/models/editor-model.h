@@ -11,7 +11,7 @@ namespace CleanEditor {
 namespace Models {
 class CLEAN_EDITOR_EXPORT EditorModel : public AbstractEditorModel {
   Q_OBJECT
-  Q_DISABLE_COPY(EditorModel)
+  Q_DISABLE_COPY_MOVE(EditorModel)
 
 public:
   explicit EditorModel(QObject* parent = nullptr);

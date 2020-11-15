@@ -12,7 +12,7 @@ namespace Controllers {
 
 class CLEAN_EDITOR_EXPORT FileNavigationController : public QObject {
   Q_OBJECT
-  Q_DISABLE_COPY(FileNavigationController)
+  Q_DISABLE_COPY_MOVE(FileNavigationController)
 
 public:
   explicit FileNavigationController(QObject* parent = nullptr);
