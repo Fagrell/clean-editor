@@ -10,17 +10,11 @@ EditorController::EditorController(QObject *parent)
     : QObject{parent}
 {}
 
-void EditorController::setModel(AbstractEditorModel *model)
+void EditorController::setModel(AbstractEditorModel &model)
 {
     disconnect(text_changed_connection_);
-
-    model_ = model;
-    if (!model_) {
-        return;
-    }
-    model_->setParent(this);
-
-    text_changed_connection_ = connect(model,
+    model_ = &model;
+    text_changed_connection_ = connect(model_,
                                        &AbstractEditorModel::textChanged,
                                        this,
                                        &EditorController::textChanged);

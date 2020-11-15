@@ -5,15 +5,14 @@
 #include <QPointer>
 #include <QString>
 
+#include "file-handler.h"
+
 #include "globals.h"
 
 class QTextDocument;
 class QQuickTextDocument;
 
 namespace CleanEditor::Logic {
-
-class FileHandler;
-
 /*!
 * \brief The DocumentHandler class handles a document that has been opened or is newly created.
 *
@@ -81,7 +80,7 @@ private:
     void setNeedsSaving(bool needs_saving);
 
     int id_{0};
-    QPointer<FileHandler> file_handler_;
+    FileHandler file_handler_;
     QString text_content_;
     bool needs_updating_{false};
     bool is_new_file_{true};

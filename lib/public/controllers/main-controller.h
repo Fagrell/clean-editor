@@ -3,6 +3,10 @@
 #include <QObject>
 #include <QString>
 
+#include "editor-controller.h"
+#include "file-navigation-controller.h"
+#include "menu-controller.h"
+
 #include "globals.h"
 
 namespace CleanEditor {
@@ -11,10 +15,6 @@ class DocumentsModel;
 }
 
 namespace Controllers {
-
-class MenuController;
-class EditorController;
-class FileNavigationController;
 
 class CLEAN_EDITOR_EXPORT MainController : public QObject
 {
@@ -30,19 +30,18 @@ class CLEAN_EDITOR_EXPORT MainController : public QObject
 public:
     explicit MainController(QObject *parent = nullptr);
 
-    //Takes ownership of model
-    void setDocumentsModel(CleanEditor::Models::DocumentsModel *documents_model);
+    void setDocumentsModel(CleanEditor::Models::DocumentsModel &documents_model);
 
-    MenuController *menuController() const;
-    EditorController *editorController() const;
-    FileNavigationController *fileNavigationController() const;
+    MenuController *menuController();
+    EditorController *editorController();
+    FileNavigationController *fileNavigationController();
 
 private:
     void storeTextToCurrentFile();
 
-    MenuController *menu_controller_{nullptr};
-    EditorController *editor_controller_{nullptr};
-    FileNavigationController *file_navigation_controller_{nullptr};
+    MenuController menu_controller_;
+    EditorController editor_controller_;
+    FileNavigationController file_navigation_controller_;
     CleanEditor::Models::DocumentsModel *documents_model_{nullptr};
     QMetaObject::Connection document_created_connection_;
 

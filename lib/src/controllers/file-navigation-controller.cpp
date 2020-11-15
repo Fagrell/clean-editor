@@ -7,16 +7,13 @@ FileNavigationController::FileNavigationController(QObject *parent)
     : QObject{parent}
 {}
 
-void FileNavigationController::setModel(CleanEditor::Models::FileNavigationModel* model) {
-    model_ = model;
-    if (!model_) {
-        return;
-    }
-
-    model_->setParent(this);
+void FileNavigationController::setModel(CleanEditor::Models::FileNavigationModel &model)
+{
+    model_ = &model;
 }
 
-int FileNavigationController::selectedIndex() const {
+int FileNavigationController::selectedIndex() const
+{
     if (!model_) {
         return -1;
     }

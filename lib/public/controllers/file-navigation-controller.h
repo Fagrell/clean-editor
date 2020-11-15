@@ -17,8 +17,7 @@ class CLEAN_EDITOR_EXPORT FileNavigationController : public QObject {
 public:
     explicit FileNavigationController(QObject *parent = nullptr);
 
-    //Takes ownership of model
-    void setModel(CleanEditor::Models::FileNavigationModel *model);
+    void setModel(CleanEditor::Models::FileNavigationModel &model);
 
     int selectedIndex() const;
     void setSelectedIndex(int index);

@@ -8,23 +8,22 @@ static int next_id{1};
 DocumentHandler::DocumentHandler(QObject *parent)
     : QObject{parent}
     , id_{next_id++}
-    , file_handler_{new FileHandler{this}}
 {
-    connect(file_handler_, &FileHandler::fileUrlChanged, this, &DocumentHandler::fileUrlChanged);
-    connect(file_handler_, &FileHandler::error, this, &DocumentHandler::error);
-    connect(file_handler_, &FileHandler::fileOpened, this, &DocumentHandler::onFileOpened);
+    connect(&file_handler_, &FileHandler::fileUrlChanged, this, &DocumentHandler::fileUrlChanged);
+    connect(&file_handler_, &FileHandler::error, this, &DocumentHandler::error);
+    connect(&file_handler_, &FileHandler::fileOpened, this, &DocumentHandler::onFileOpened);
 }
 
 QString DocumentHandler::filename() const {
-    return file_handler_->fileName();
+    return file_handler_.fileName();
 }
 
 QString DocumentHandler::fileType() const {
-    return file_handler_->fileType();
+    return file_handler_.fileType();
 }
 
 QUrl DocumentHandler::fileUrl() const {
-    return file_handler_->fileUrl();
+    return file_handler_.fileUrl();
 }
 
 QString DocumentHandler::textContent() const {
@@ -61,11 +60,11 @@ bool DocumentHandler::isNewFile() const {
 }
 
 void DocumentHandler::load(const QUrl& file_url) {
-    file_handler_->load(file_url);
+    file_handler_.load(file_url);
 }
 
 void DocumentHandler::saveAs(const QUrl& file_url) {
-    if (!file_handler_->saveAs(file_url, text_content_)) {
+    if (!file_handler_.saveAs(file_url, text_content_)) {
         return;
     }
     setIsNewFile(false);
@@ -78,7 +77,7 @@ void DocumentHandler::save() {
         return;
     }
 
-    if (!file_handler_->save(text_content_)) {
+    if (!file_handler_.save(text_content_)) {
         return;
     }
     setNeedsSaving(false);
@@ -114,7 +113,7 @@ void DocumentHandler::setNeedsSaving(bool needs_saving) {
 
 void DocumentHandler::onFileOpened() {
     needs_updating_ = true;
-    setTextContent(file_handler_->data());
+    setTextContent(file_handler_.data());
     needs_updating_ = false;
     setIsNewFile(false);
     emit fileOpened();

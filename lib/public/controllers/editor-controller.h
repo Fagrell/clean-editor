@@ -25,8 +25,7 @@ class CLEAN_EDITOR_EXPORT EditorController : public QObject {
 public:
     explicit EditorController(QObject *parent = nullptr);
 
-    //Takes ownership of model
-    void setModel(CleanEditor::Models::AbstractEditorModel *model);
+    void setModel(CleanEditor::Models::AbstractEditorModel &model);
 
     QString text() const;
     void setText(const QString &text);

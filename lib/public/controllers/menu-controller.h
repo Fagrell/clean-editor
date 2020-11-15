@@ -21,8 +21,7 @@ class CLEAN_EDITOR_EXPORT MenuController : public QObject {
 public:
     explicit MenuController(QObject *parent = nullptr);
 
-    //Takes ownership of model
-    void setModel(CleanEditor::Models::MenuModel *model);
+    void setModel(CleanEditor::Models::MenuModel &model);
 
     void setDocument(CleanEditor::Logic::DocumentHandler *document_handler);
 
