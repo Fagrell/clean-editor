@@ -1,7 +1,6 @@
 #include "line-numbers.h"
 
 #include <QPainter>
-#include <QQuickTextDocument>
 #include <QTextBlock>
 #include <QRegularExpression>
 #include <QFontMetrics>
@@ -141,7 +140,7 @@ int LineNumbers::positionToLine(int position) const {
   }
 
   auto text_document = document_->textDocument();
-  return countLines(text_document->toPlainText().leftRef(position));
+  return countLines(text_document->toPlainText().first(position));
 }
 
 void LineNumbers::paint(QPainter* painter) {

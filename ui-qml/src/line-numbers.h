@@ -5,8 +5,7 @@
 #include <QPointer>
 #include <QFont>
 #include <QStringView>
-
-class QQuickTextDocument;
+#include <QQuickTextDocument>
 
 namespace CleanEditor {
 namespace UI {

@@ -5,7 +5,7 @@ project(clean-editor-test VERSION 1.0.0 LANGUAGES C CXX)
 ###########################
 # Dependencies
 
-find_package(Qt5 COMPONENTS Test REQUIRED)
+find_package(Qt6 COMPONENTS Test REQUIRED)
 
 ###########################
 # Targets
@@ -34,13 +34,13 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
   PRIVATE
-    Qt5::Test
+    Qt6::Test
     clean-editor-lib
 )
 
 target_compile_features(${PROJECT_NAME}
   PRIVATE
-    cxx_std_14
+    cxx_std_17
 )
 
 set_target_properties(${PROJECT_NAME}
