@@ -3,33 +3,33 @@
 
 namespace CleanEditor::Controllers {
 
-FileNavigationController::FileNavigationController(QObject* parent)
-  : QObject{parent}
+FileNavigationController::FileNavigationController(QObject *parent)
+    : QObject{parent}
 {}
 
 void FileNavigationController::setModel(CleanEditor::Models::FileNavigationModel* model) {
-  model_ = model;
-  if (!model_) {
-    return;
-  }
+    model_ = model;
+    if (!model_) {
+        return;
+    }
 
-  model_->setParent(this);
+    model_->setParent(this);
 }
 
 int FileNavigationController::selectedIndex() const {
-  if (!model_) {
-    return -1;
-  }
+    if (!model_) {
+        return -1;
+    }
 
-  return model_->selectedIndex();
+    return model_->selectedIndex();
 }
 
 void FileNavigationController::setSelectedIndex(int index) {
-  if (!model_) {
-    return;
-  }
+    if (!model_) {
+        return;
+    }
 
-  model_->setSelectedIndex(index);
+    model_->setSelectedIndex(index);
 }
 
 } // namespace CleanEditor::Controllers

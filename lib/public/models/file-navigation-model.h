@@ -6,23 +6,25 @@
 
 namespace CleanEditor::Models {
 
-class CLEAN_EDITOR_EXPORT FileNavigationModel : public QObject {
-  Q_OBJECT
-  Q_DISABLE_COPY_MOVE(FileNavigationModel)
+class CLEAN_EDITOR_EXPORT FileNavigationModel : public QObject
+{
+    Q_OBJECT
+    Q_DISABLE_COPY_MOVE(FileNavigationModel)
 
-  Q_PROPERTY(int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedIndexChanged)
+    Q_PROPERTY(
+        int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedIndexChanged)
 
 public:
-  explicit FileNavigationModel(QObject* parent = nullptr);
+    explicit FileNavigationModel(QObject *parent = nullptr);
 
-  int selectedIndex() const;
-  void setSelectedIndex(int index);
+    int selectedIndex() const;
+    void setSelectedIndex(int index);
 
 Q_SIGNALS:
-  void selectedIndexChanged();
+    void selectedIndexChanged();
 
 private:
-  int selected_index_{-1};
+    int selected_index_{-1};
 };
 
 } // namespace CleanEditor::Models

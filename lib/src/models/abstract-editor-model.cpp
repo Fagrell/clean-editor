@@ -6,17 +6,17 @@ AbstractEditorModel::AbstractEditorModel(QObject* parent) : QObject{parent} {
 }
 
 int AbstractEditorModel::id() const {
-  return id_;
+    return id_;
 }
 
 void AbstractEditorModel::setId(int id) {
-  if (id_ == id) {
-    return;
-  }
+    if (id_ == id) {
+        return;
+    }
 
-  id_ = id;
+    id_ = id;
 
-  emit idChanged();
+    emit idChanged();
 }
 
 } //namespace CleanEditor::Models

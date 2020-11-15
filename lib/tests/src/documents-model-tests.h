@@ -4,29 +4,24 @@
 #include <QTemporaryFile>
 #include <memory>
 
-#include "test-runner.h"
 #include "documents-model.h"
+#include "test-runner.h"
 
-
-namespace CleanEditor {
-namespace Tests {
+namespace CleanEditor::Tests {
 
 class DocumentsModelTests : public QObject {
-  Q_OBJECT
+    Q_OBJECT
 
 private slots:
-  void initTestCase();
-  void newFile_empty_newEmptyFileHasBeenCreated();
-  void saveAs_newFile_openFileWithNewContent();
+    void initTestCase();
+    void newFile_empty_newEmptyFileHasBeenCreated();
+    void saveAs_newFile_openFileWithNewContent();
 
 private:
-  QTemporaryFile tmp_file_;
-  static std::unique_ptr<CleanEditor::Models::DocumentsModel> createEmptyModel();
+    QTemporaryFile tmp_file_;
+    static std::unique_ptr<CleanEditor::Models::DocumentsModel> createEmptyModel();
 };
 
 ADD_TEST_CLASS(DocumentsModelTests);
 
-} //namespace Tests
-} //namespace CleanEditor
-
-
+} //namespace CleanEditor::Tests
