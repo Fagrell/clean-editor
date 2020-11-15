@@ -1,8 +1,6 @@
 #include "document-handler.h"
 #include "file-handler.h"
 
-#include <QDebug>
-
 namespace CleanEditor::Logic {
 
 static int next_id{1};

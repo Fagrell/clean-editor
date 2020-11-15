@@ -15,8 +15,8 @@ public:
     T &addTest()
     {
         static T test;
-        auto it = std::find(tests_.cbegin(), tests_.cend(), &test);
-        if (it == tests_.cend()) {
+        auto it = std::find(cbegin(tests_), cend(tests_), &test);
+        if (it == cend(tests_)) {
             tests_.emplace_back(&test);
         }
         return test;

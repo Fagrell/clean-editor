@@ -1,8 +1,7 @@
+#include <QFontDatabase>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <QFontDatabase>
-#include <QDebug>
 
 #include "main-controller.h"
 #include "editor-controller.h"
@@ -28,17 +27,20 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    QStringList fonts = QStringList{} << ":/fonts/Hack-Regular.ttf"
-                                      << ":/fonts/Hack-Bold.ttf"
-                                      << ":/fonts/Hack-BoldItalic.ttf"
-                                      << ":/fonts/Hack-Italic.ttf"
-                                      << ":/fonts/fontello.ttf";
+    const auto addFonts = [](const auto &... fonts) {
+        const auto addFont = [](const auto &font) {
+            if (QFontDatabase::addApplicationFont(font) == -1) {
+                qWarning() << "Failed to load font: " << font;
+            }
+        };
+        (addFont(fonts), ...);
+    };
 
-    for (const auto &font : fonts) {
-        if (QFontDatabase::addApplicationFont(font) == -1) {
-            qWarning() << "Failed to load font: " << font;
-        }
-    }
+    addFonts(":/fonts/Hack-Regular.ttf",
+             ":/fonts/Hack-Bold.ttf",
+             ":/fonts/Hack-BoldItalic.ttf",
+             ":/fonts/Hack-Italic.ttf",
+             ":/fonts/fontello.ttf");
 
     qmlRegisterType<MainController>("CleanEditor", 1, 0, "MainController");
     qmlRegisterType<MenuController>("CleanEditor", 1, 0, "MenuController");

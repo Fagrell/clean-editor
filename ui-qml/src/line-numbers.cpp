@@ -10,7 +10,7 @@
 
 namespace CleanEditor::UI {
 
-static constexpr const int kLineNumberXOffset{5};
+static constexpr int kLineNumberXOffset{5};
 
 LineNumbers::LineNumbers(QQuickPaintedItem *parent)
     : QQuickPaintedItem(parent)
@@ -211,11 +211,9 @@ void LineNumbers::drawLineNumber(QPainter& painter, qreal y_position, const QCol
 
 int LineNumbers::countLines(QStringView text) {
     int lines = 1;
-    for (const auto &symbol : text) {
-        if (symbol == '\n' || symbol == '\r') {
-            lines++;
-        }
-    }
+    lines += std::count_if(std::begin(text), std::end(text), [](const auto &symbol) {
+        return (symbol == '\n' || symbol == '\r');
+    });
     return lines;
 }
 
